@@ -1,42 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles((theme) => ({
-  textField: {
-    outline: "none",
-    width: "90%",
-  },
-  button: {
-    height: "40%",
-    width: "45%",
-    color: "#000000",
-    fontSize: "12px",
-    margin: "2% 0",
-  },
-  button2: {
-    height: "40%",
-    width: "43%",
-    color: "#000000",
-    fontSize: "12px",
-    margin: "2% 0",
-  },
-  buttonAge: {
-    height: "40%",
-    width: "100%",
-    color: "#00c4b0",
-  },
-  select: {
-    minWidth: 200,
-    backgroundColor: "white",
-    color: "white",
-    borderRadius: 5,
-  },
-  selectEmpty: {},
-}));
 export const SideBar = () => {
-  const classes = useStyles();
   return (
     <>
       <SideBarCont>
@@ -49,15 +14,9 @@ export const SideBar = () => {
           <Package>
             <p>Current Package</p>
             <BtnCont>
-              <Button className={classes.button} variant="outlined">
-                240km
-              </Button>
-              <Button className={classes.button} variant="outlined">
-                480km
-              </Button>
-              <Button className={classes.button} variant="outlined">
-                700km
-              </Button>
+              <Button>240km</Button>
+              <Button>480km</Button>
+              <Button>700km</Button>
             </BtnCont>
           </Package>
         </BookingDetails>
@@ -65,44 +24,26 @@ export const SideBar = () => {
           <h4>Filter</h4>
           <Package>
             <p>Car type</p>
-            <BtnCont>
-              <Button className={classes.button2} variant="outlined">
-                Hatchback
-              </Button>
-              <Button className={classes.button2} variant="outlined">
-                Sedan
-              </Button>
-              <Button className={classes.button2} variant="outlined">
-                SUV
-              </Button>
-              <Button className={classes.button2} variant="outlined">
-                Mini SUV
-              </Button>
-            </BtnCont>
+            <BtnCont2>
+              <Button>Hatchback</Button>
+              <Button>Sedan</Button>
+              <Button>SUV</Button>
+              <Button>Mini SUV</Button>
+            </BtnCont2>
             <p>Transmission type</p>
-            <BtnCont>
-              <Button className={classes.button2} variant="outlined">
-                Manual
-              </Button>
-              <Button className={classes.button2} variant="outlined">
-                Automatic
-              </Button>
-            </BtnCont>
+            <BtnCont2>
+              <Button>Manual</Button>
+              <Button>Automatic</Button>
+            </BtnCont2>
             <p>Fuel type</p>
-            <BtnCont>
-              <Button className={classes.button2} variant="outlined">
-                Diesel
-              </Button>
-              <Button className={classes.button2} variant="outlined">
-                Petrol
-              </Button>
-            </BtnCont>
+            <BtnCont2>
+              <Button>Diesel</Button>
+              <Button>Petrol</Button>
+            </BtnCont2>
             <p>Age Limit</p>
-            <BtnCont>
-              <Button className={classes.buttonAge} variant="outlined">
-                18-21 years
-              </Button>
-            </BtnCont>
+            <BtnCont2>
+              <Button>18-21 years</Button>
+            </BtnCont2>
           </Package>
         </Filter>
       </SideBarCont>
@@ -165,11 +106,17 @@ const Package = styled.div`
   width: 89%;
   height: 50%;
   padding: 5%;
+  p:nth-child(1) {
+    margin-bottom: 5%;
+  }
+  p:nth-child(3) {
+    margin-top: 5%;
+  }
 `;
 
 const BtnCont = styled.div`
   width: 90%;
-  margin-top: 3%;
+  height: 60%;
   padding: 5%;
   display: flex;
   flex-wrap: wrap;
@@ -195,4 +142,27 @@ const Filter = styled.div`
     margin-top: 5%;
     font-size: 18px;
   }
+`;
+
+const Button = styled.div`
+  width: 45%;
+  height: 45%;
+  color: #000000;
+  font-size: 12px;
+  margin-bottom: 3%;
+  border-radius: 7px;
+  border: 1px solid gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: gray;
+`;
+
+const BtnCont2 = styled.div`
+  height: 30%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0 5%;
+  justify-content: space-between;
 `;
