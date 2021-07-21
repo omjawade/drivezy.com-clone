@@ -1,0 +1,21 @@
+.Box {
+    width: 1436px;
+    padding: 15px 50px;
+    margin: auto;
+    display: flex;
+    gap: 350px;
+    /* align-content:space-between; */
+}
+.left {
+    display: flex;
+    -ms-flex-align: start;
+    gap: 50px;
+}
+.right {
+    display: flex;
+    -ms-flex-align: end;
+    gap: 50px;
+}
+.flex {
+    display: flex;
+}
