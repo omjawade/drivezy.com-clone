@@ -11,13 +11,15 @@ const useStyles = makeStyles((theme) => ({
   button: {
     height: "40%",
     width: "45%",
-    color: "#00c4b0",
+    color: "#000000",
+    fontSize: "12px",
     margin: "2% 0",
   },
   button2: {
     height: "40%",
     width: "43%",
-    color: "#00c4b0",
+    color: "#000000",
+    fontSize: "12px",
     margin: "2% 0",
   },
   buttonAge: {
@@ -114,6 +116,14 @@ const SideBarCont = styled.div`
   height: 100%;
   overflow: overlay;
   padding: 1%;
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  h4 {
+    margin: 0;
+    padding: 0;
+  }
 `;
 
 const BookingDetails = styled.div`
