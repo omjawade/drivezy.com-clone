@@ -26,14 +26,6 @@ const Main = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  p {
-    margin: 0;
-    padding: 0;
-  }
-  h4 {
-    margin: 0;
-    padding: 0;
-  }
 `;
 const DetailsSection = styled.div`
   width: 100%;
