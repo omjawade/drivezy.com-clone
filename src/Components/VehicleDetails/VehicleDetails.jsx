@@ -1,43 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import Switch from "@material-ui/core/Switch";
 import NativeSelect from "@material-ui/core/NativeSelect";
 
-const useStyles = makeStyles((theme) => ({
-  textField: {
-    outline: "none",
-    width: "90%",
-  },
-  button: {
-    height: "40%",
-    width: "45%",
-    color: "#00c4b0",
-    margin: "2% 0",
-  },
-  button2: {
-    height: "40%",
-    width: "43%",
-    color: "#00c4b0",
-    margin: "2% 0",
-  },
-  buttonAge: {
-    height: "40%",
-    width: "100%",
-    color: "#00c4b0",
-  },
-  select: {
-    minWidth: 200,
-    backgroundColor: "white",
-    color: "white",
-    borderRadius: 5,
-  },
-  selectEmpty: {},
-}));
 export const VehicleDetails = () => {
-  const classes = useStyles();
+  const [sortBy, setSortBy] = React.useState("");
+  const [checked, setChecked] = React.useState(false);
+  const handleChange = (event) => {
+    setSortBy(event.target.value);
+  };
 
+  const toggleChecked = () => {
+    setChecked((prev) => !prev);
+  };
   return (
     <>
       <CarDetails>
@@ -56,8 +32,8 @@ export const VehicleDetails = () => {
           </FilterBoxes>
           <DropDown>
             <div>Sort By</div>
-            <FormControl className={classes.select} variant="outlined">
-              <NativeSelect className={classes.select} variant="outlined">
+            <FormControl variant="outlined">
+              <NativeSelect variant="outlined" value={sortBy} onChange={handleChange}>
                 <option value={"distance"}>Distance</option>
                 <option value={"low"}>Price - Low to High</option>
                 <option value={"high"}>Price - High to Low</option>
@@ -66,7 +42,7 @@ export const VehicleDetails = () => {
           </DropDown>
           <MapBox>
             Map View
-            <Switch color="default" />
+            <Switch color="default" checked={checked} onChange={toggleChecked} />
           </MapBox>
         </FilterBar>
         <CarsCont>
@@ -169,10 +145,11 @@ const DropDown = styled.div`
     color: #646464;
   }
   div:nth-child(2) {
+    width: 80%;
     border: none;
-
     div {
       border: none;
+      width: 100%;
       padding: 0 20px;
     }
   }

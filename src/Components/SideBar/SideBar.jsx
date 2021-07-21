@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 export const SideBar = () => {
+  const [val, setVal] = useState([]);
+
+  const handleClick = (e) => {
+    // console.log(e.target.textContent);
+    setVal([...val, e.target.textContent]);
+  };
+  console.log(val);
   return (
     <>
       <SideBarCont>
@@ -14,9 +21,9 @@ export const SideBar = () => {
           <Package>
             <p>Current Package</p>
             <BtnCont>
-              <Button>240km</Button>
-              <Button>480km</Button>
-              <Button>700km</Button>
+              <Button onClick={(e) => handleClick(e)}>240km</Button>
+              <Button onClick={(e) => handleClick(e)}>480km</Button>
+              <Button onClick={(e) => handleClick(e)}>700km</Button>
             </BtnCont>
           </Package>
         </BookingDetails>
@@ -84,8 +91,8 @@ const BookingDetails = styled.div`
 const FuelCont = styled.div`
   width: 100%;
   height: 13%;
-  border-top: 1px solid #555555d5;
-  border-bottom: 1px solid #555555d5;
+  border-top: 1px solid #80808083;
+  border-bottom: 1px solid #80808083;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -106,6 +113,10 @@ const Package = styled.div`
   width: 89%;
   height: 50%;
   padding: 5%;
+  p {
+    font-size: 14px;
+    color: #474747;
+  }
   p:nth-child(1) {
     margin-bottom: 5%;
   }
@@ -151,11 +162,12 @@ const Button = styled.div`
   font-size: 12px;
   margin-bottom: 3%;
   border-radius: 7px;
-  border: 1px solid gray;
+  border: 1px solid #80808083;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: gray;
+  color: #414141;
+  font-size: 14px;
 `;
 
 const BtnCont2 = styled.div`
