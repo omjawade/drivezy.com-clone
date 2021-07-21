@@ -1,52 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import TextField from "@material-ui/core/TextField";
-import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles((theme) => ({
-  textField: {
-    outline: "none",
-    width: "90%",
-  },
-  button: {
-    height: "40%",
-    width: "45%",
-    color: "#00c4b0",
-    margin: "2% 0",
-  },
-  button2: {
-    height: "40%",
-    width: "43%",
-    color: "#00c4b0",
-    margin: "2% 0",
-  },
-  buttonAge: {
-    height: "40%",
-    width: "100%",
-    color: "#00c4b0",
-  },
-  select: {
-    minWidth: 200,
-    backgroundColor: "white",
-    color: "white",
-    borderRadius: 5,
-  },
-  selectEmpty: {},
-}));
 export const TopBar = () => {
-  const classes = useStyles();
+  const [time, setTime] = useState({
+    pickUpTime: "",
+    dropUpTime: "",
+  });
+  const [vehicle, setVehicle] = useState(false);
+
+  // const handleVehicle = () => {
+  //   setVehicle(!vehicle);
+  // };
+  const handleChange = (e) => {
+    const { value, name } = e.target;
+    setTime({ ...time, [name]: value });
+  };
+
   return (
     <>
       <TopBarCont>
         <VehicleSection>
           <p>I want to rent a</p>
           <VehicleBox>
-            <div>
-              <img src="https://jtride-data.s3.ap-south-1.amazonaws.com/uploads/1555509635_group-3%403x.png" alt="" />
+            <div onClick={() => setVehicle(true)}>
+              <img
+                style={{ filter: vehicle ? "" : "grayscale(100%)" }}
+                src="https://jtride-data.s3.ap-south-1.amazonaws.com/uploads/1555509635_group-3%403x.png"
+                alt=""
+              />
             </div>
             <span></span>
-            <div>
-              <img src="https://jtride-data.s3.ap-south-1.amazonaws.com/uploads/1555509998_group-2%403x.png" alt="" />
+            <div onClick={() => setVehicle(false)}>
+              <img
+                style={{ filter: vehicle ? "grayscale(100%)" : "" }}
+                src="https://jtride-data.s3.ap-south-1.amazonaws.com/uploads/1555509998_group-2%403x.png"
+                alt=""
+              />
             </div>
           </VehicleBox>
         </VehicleSection>
@@ -57,13 +47,13 @@ export const TopBar = () => {
         <DateSection>
           <p>Select your pickup date & time</p>
           <DateBox>
-            <TextField className={classes.textField} type="datetime-local" defaultValue="2021-07-10T10:52" />
+            <TextField type="datetime-local" name="pickUpTime" value={time.pickUpTime} onChange={handleChange} />
           </DateBox>
         </DateSection>
         <DateSection>
           <p>Select your pickup drop & time</p>
           <DateBox>
-            <TextField className={classes.textField} type="datetime-local" defaultValue="2021-07-10T10:52" />
+            <TextField type="datetime-local" name="dropUpTime" value={time.dropUpTime} onChange={handleChange} />
           </DateBox>
         </DateSection>
         <SearchBtn>SEARCH</SearchBtn>
