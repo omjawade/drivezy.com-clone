@@ -1,0 +1,44 @@
+.home{
+    width: 100%;
+ 
+   
+}
+
+.container{
+    width: 100%;
+    height: 110vh;
+    
+    display: flex;
+    flex-basis: 1;
+}
+.info{
+    padding-top: 60px;
+}
+.info,.cover{
+    width: 50%;
+    height: 100%;
+   
+}
+.info h1{
+    font-weight: 400;
+    color: rgb(43, 43, 43);
+    font-size: 42px;
+    margin: -10px;
+    margin-left: 10%;
+}
+.info h1 span{
+    color: #F15D61;
+    font-weight: 500;
+}
+.info h3{
+    margin: 10px;
+    font-weight: 500;
+    font-size: 18px;
+    margin-left: 10%;
+    color: gray;
+}
+
+.cover img{
+    width: 100%;
+    border-top-left-radius: 12%;
+}
