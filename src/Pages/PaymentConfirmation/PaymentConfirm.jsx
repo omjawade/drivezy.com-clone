@@ -4,7 +4,7 @@ import CarPriceD from './CarPriceD';
 import "./CarDetail.css"
 import FooterPay from './FooterPay';
 import { NavBar } from '../../Components/NavBar/NavBar';
-import { TopBar } from '../../Components/TopBar/TopBar';
+
 
 function PaymentConfirm(props) {
     return (

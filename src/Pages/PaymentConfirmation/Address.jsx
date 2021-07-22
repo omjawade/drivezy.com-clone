@@ -3,9 +3,6 @@ import React from 'react';
 function Address(props) {
 
     var currentDate= new Date()
-
-
-    
     
     var month = currentDate.getMonth() 
     

@@ -1,6 +1,5 @@
 import React from 'react';
 import Address from './Address';
-import FooterPay from './FooterPay';
 import FuelInfo from './FuelInfo';
 import Templete from './Templete';
 
