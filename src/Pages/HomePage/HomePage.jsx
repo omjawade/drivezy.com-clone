@@ -1,4 +1,5 @@
 import React from "react";
+import { Footer } from "../../Components/Footer/Footer";
 import { NavBar } from "../../Components/NavBar/NavBar"
 import SearchBar from "../../Components/SearchBarHome/SearchBar";
 import styles from "./HomePage.module.css"
@@ -27,6 +28,7 @@ function HomePage() {
 
 
             </div>
+            <Footer />
         </>
     )
 }
