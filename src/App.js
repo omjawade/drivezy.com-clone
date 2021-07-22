@@ -1,12 +1,12 @@
 import "./App.css";
-import { RentalDetails } from "./Pages/RentalDetails/RentalDetails";
-import { HomePage } from "./Pages/HomePage/HomePage";
+import Router from "./Router/Router";
+
+
 
 function App() {
   return (
     <>
-      {/* <HomePage /> */}
-      <RentalDetails />
+   <Router/>
     </>
   );
 }

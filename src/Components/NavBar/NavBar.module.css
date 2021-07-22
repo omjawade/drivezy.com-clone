@@ -3,8 +3,14 @@
 } */
 
 .Box {
+<<<<<<< HEAD
+   
+    width: 90%;
+    height: 50px;
+=======
     /* border: 1px solid red; */
     width: 90%;
+>>>>>>> 183f736d29a0b0cde5743cac11e2fe4a4b67d6fe
     padding: 15px 5%;
     margin: auto;
     display: flex;
@@ -23,9 +29,15 @@
 }
 
 .right {
+<<<<<<< HEAD
+    width: 60%;
+    display: flex;
+    gap: 5%;
+=======
     width: 45%;
     display: flex;
     gap: 9.5%;
+>>>>>>> 183f736d29a0b0cde5743cac11e2fe4a4b67d6fe
 }
 
 .flex {
