@@ -1,14 +1,57 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+let carType = [];
+let distanceArr = [];
+let transmissionArr = [];
+let fuelArr = [];
+let ageLimit = [];
 export const SideBar = () => {
   const [val, setVal] = useState([]);
-
   const handleClick = (e) => {
     // console.log(e.target.textContent);
+    if (carType.includes(e.target.textContent)) {
+      const index = carType.indexOf(e.target.textContent);
+      if (index > -1) {
+        carType.splice(index, 1);
+      }
+    } else {
+      carType.push(e.target.textContent);
+    }
+    setVal([...val, e.target.textContent]);
+    // console.log(carType);
+  };
+  const handleDistanceClick = (e) => {
+    distanceArr.pop();
+    distanceArr.push(e.target.textContent);
     setVal([...val, e.target.textContent]);
   };
+  const handleTransmissionClick = (e) => {
+    transmissionArr.pop();
+    transmissionArr.push(e.target.textContent);
+    setVal([...val, e.target.textContent]);
+    // if (transmissionArr.length == 1) {
+    // } else {
+    // }
+  };
+  const handleFuelClick = (e) => {
+    fuelArr.pop();
+    fuelArr.push(e.target.textContent);
+    setVal([...val, e.target.textContent]);
+  };
+  const handleAgeClick = (e) => {
+    if (ageLimit.length > 0) {
+      ageLimit.pop();
+    } else {
+      ageLimit.push(e.target.textContent);
+      setVal([...val, e.target.textContent]);
+    }
+  };
+  // console.log(ageLimit);
+  // console.log(distanceArr);
   console.log(val);
+  // console.log(carType);
+  // console.log(transmissionArr);
   return (
     <>
       <SideBarCont>
@@ -21,9 +64,33 @@ export const SideBar = () => {
           <Package>
             <p>Current Package</p>
             <BtnCont>
-              <Button onClick={(e) => handleClick(e)}>240km</Button>
-              <Button onClick={(e) => handleClick(e)}>480km</Button>
-              <Button onClick={(e) => handleClick(e)}>700km</Button>
+              <Button
+                style={{
+                  border: distanceArr.includes("240km") ? "2px solid #41b6ac" : "",
+                  color: distanceArr.includes("240km") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleDistanceClick(e)}
+              >
+                240km
+              </Button>
+              <Button
+                style={{
+                  border: distanceArr.includes("480km") ? "2px solid #41b6ac" : "",
+                  color: distanceArr.includes("480km") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleDistanceClick(e)}
+              >
+                480km
+              </Button>
+              <Button
+                style={{
+                  border: distanceArr.includes("700km") ? "2px solid #41b6ac" : "",
+                  color: distanceArr.includes("700km") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleDistanceClick(e)}
+              >
+                700km
+              </Button>
             </BtnCont>
           </Package>
         </BookingDetails>
@@ -32,24 +99,96 @@ export const SideBar = () => {
           <Package>
             <p>Car type</p>
             <BtnCont2>
-              <Button>Hatchback</Button>
-              <Button>Sedan</Button>
-              <Button>SUV</Button>
-              <Button>Mini SUV</Button>
+              <Button
+                style={{
+                  border: carType.includes("Hatchback") ? "2px solid #41b6ac" : "",
+                  color: carType.includes("Hatchback") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleClick(e)}
+              >
+                Hatchback
+              </Button>
+              <Button
+                style={{
+                  border: carType.includes("Sedan") ? "2px solid #41b6ac" : "",
+                  color: carType.includes("Sedan") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleClick(e)}
+              >
+                Sedan
+              </Button>
+              <Button
+                style={{
+                  border: carType.includes("SUV") ? "2px solid #41b6ac" : "",
+                  color: carType.includes("SUV") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleClick(e)}
+              >
+                SUV
+              </Button>
+              <Button
+                style={{
+                  border: carType.includes("Mini SUV") ? "2px solid #41b6ac" : "",
+                  color: carType.includes("Mini SUV") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleClick(e)}
+              >
+                Mini SUV
+              </Button>
             </BtnCont2>
             <p>Transmission type</p>
             <BtnCont2>
-              <Button>Manual</Button>
-              <Button>Automatic</Button>
+              <Button
+                style={{
+                  border: transmissionArr.includes("Manual") ? "2px solid #41b6ac" : "",
+                  color: transmissionArr.includes("Manual") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleTransmissionClick(e)}
+              >
+                Manual
+              </Button>
+              <Button
+                style={{
+                  border: transmissionArr.includes("Automatic") ? "2px solid #41b6ac" : "",
+                  color: transmissionArr.includes("Automatic") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleTransmissionClick(e)}
+              >
+                Automatic
+              </Button>
             </BtnCont2>
             <p>Fuel type</p>
             <BtnCont2>
-              <Button>Diesel</Button>
-              <Button>Petrol</Button>
+              <Button
+                style={{
+                  border: fuelArr.includes("Diesel") ? "2px solid #41b6ac" : "",
+                  color: fuelArr.includes("Diesel") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleFuelClick(e)}
+              >
+                Diesel
+              </Button>
+              <Button
+                style={{
+                  border: fuelArr.includes("Petrol") ? "2px solid #41b6ac" : "",
+                  color: fuelArr.includes("Petrol") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleFuelClick(e)}
+              >
+                Petrol
+              </Button>
             </BtnCont2>
             <p>Age Limit</p>
             <BtnCont2>
-              <Button>18-21 years</Button>
+              <Button
+                style={{
+                  border: ageLimit.includes("18-21 years") ? "2px solid #41b6ac" : "",
+                  color: ageLimit.includes("18-21 years") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleAgeClick(e)}
+              >
+                18-21 years
+              </Button>
             </BtnCont2>
           </Package>
         </Filter>
@@ -168,6 +307,7 @@ const Button = styled.div`
   justify-content: center;
   color: #414141;
   font-size: 14px;
+  font-weight: 500;
 `;
 
 const BtnCont2 = styled.div`
