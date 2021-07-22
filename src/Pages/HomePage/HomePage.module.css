@@ -4,10 +4,10 @@
 
 .container{
     width: 100%;
-    height: 110vh;
-    
+    height: 150vh;
     display: flex;
-    flex-basis: 1;
+    /* flex-basis: 1;
+    flex-direction: row; */
 }
 
 .info{
@@ -16,8 +16,7 @@
 
 .info,.cover{
     width: 50%;
-    height: 100%;
-   
+    /* height: 100%; */
 }
 
 .info h1{
