@@ -1,0 +1,128 @@
+.top {
+    padding: 2.5%;
+    background-color: #131d27;
+    display: flex;
+    flex-direction: column;
+}
+
+.row1 {
+    padding: 2.5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.row2 {
+    padding: 2.5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.left1 {
+    display: flex;
+    flex-direction: column;
+    color: #404e5e;
+}
+
+.right1 {
+    display: flex;
+    flex-direction: row;
+}
+
+.right2{
+    width: 15%;
+    display: flex;
+    flex-direction: row;
+}
+
+.right2 img {
+    margin: 0 5%;
+}
+
+.right1 div p {
+    color: white;
+    font-size:large;
+}
+
+.Box1 ul{
+    list-style: none;
+    margin-left: -17.5%;
+}
+
+.Box2 ul{
+    list-style: none;
+    margin-left: -20%;
+}
+
+.Box3 ul{
+    list-style: none;
+    margin-left: -30%;
+}
+
+.right1 div ul li{
+    color: #616d7a;
+    margin: 7.5% 0;
+}
+
+.right1 div ul li:hover{
+    color: white;
+    cursor: pointer;
+}
+
+.right2 img {
+    padding: 0 5%;
+}
+
+.right2 img:hover {
+    cursor: pointer;
+}
+
+.left2 {
+    color: #616d7a;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex p{
+    color: #616d7a;
+}
+
+.flex p:hover{
+    color: white;
+    cursor: pointer;
+}
+
+.bottom {
+    padding: 5%;
+    background-color: #dde2e8;
+}
+.bottom h1 {
+    color: #384553;
+}
+
+.bottom h3 {
+    color: #384553;
+}
+
+.bottom p {
+    color: #78828d;
+}
+
+.area {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 3.5%;
+}
+
+.area div {
+    color: #78828d;
+}
+
+.area div:hover{
+    cursor: pointer;
+    color: black;
+}

@@ -1,12 +1,12 @@
-
 import "./App.css";
+import Router from "./Router/Router";
 
-import PaymentConfirm from "./Pages/PaymentConfirmation/PaymentConfirm";
 function App() {
-  return <>
-  <PaymentConfirm />
-
-  </>;
+  return (
+    <>
+   <Router/>
+    </>
+  );
 }
 
 export default App;

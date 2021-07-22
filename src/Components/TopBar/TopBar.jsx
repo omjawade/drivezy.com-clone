@@ -1,20 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import TextField from "@material-ui/core/TextField";
-
+import { useDispatch, useSelector } from "react-redux";
+import { addDateDetails } from "../../Redux/vehicleDetails/vehicleAction";
+import { getVehicleData } from "../../Redux/vehicleDetails/vehicleAction";
 export const TopBar = () => {
   const [time, setTime] = useState({
     pickUpTime: "",
     dropUpTime: "",
   });
-  const [vehicle, setVehicle] = useState(false);
+  const [vehicleSelect, setVehicleSelect] = useState(true);
+  const dispatch = useDispatch();
 
-  // const handleVehicle = () => {
-  //   setVehicle(!vehicle);
-  // };
   const handleChange = (e) => {
     const { value, name } = e.target;
     setTime({ ...time, [name]: value });
+  };
+
+  useEffect(() => {
+    dispatch(getVehicleData());
+  }, [vehicleSelect]);
+
+  const handleSearch = () => {
+    dispatch(addDateDetails(time));
   };
 
   return (
@@ -23,17 +31,17 @@ export const TopBar = () => {
         <VehicleSection>
           <p>I want to rent a</p>
           <VehicleBox>
-            <div onClick={() => setVehicle(true)}>
+            <div onClick={() => setVehicleSelect(true)}>
               <img
-                style={{ filter: vehicle ? "" : "grayscale(100%)" }}
+                style={{ filter: vehicleSelect ? "" : "grayscale(100%)" }}
                 src="https://jtride-data.s3.ap-south-1.amazonaws.com/uploads/1555509635_group-3%403x.png"
                 alt=""
               />
             </div>
             <span></span>
-            <div onClick={() => setVehicle(false)}>
+            <div onClick={() => setVehicleSelect(false)}>
               <img
-                style={{ filter: vehicle ? "grayscale(100%)" : "" }}
+                style={{ filter: vehicleSelect ? "grayscale(100%)" : "" }}
                 src="https://jtride-data.s3.ap-south-1.amazonaws.com/uploads/1555509998_group-2%403x.png"
                 alt=""
               />
@@ -56,7 +64,7 @@ export const TopBar = () => {
             <TextField type="datetime-local" name="dropUpTime" value={time.dropUpTime} onChange={handleChange} />
           </DateBox>
         </DateSection>
-        <SearchBtn>SEARCH</SearchBtn>
+        <SearchBtn onClick={() => handleSearch()}>SEARCH</SearchBtn>
       </TopBarCont>
     </>
   );
