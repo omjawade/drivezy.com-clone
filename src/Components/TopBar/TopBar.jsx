@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import TextField from "@material-ui/core/TextField";
-
+import { useDispatch, useSelector } from "react-redux";
+import { getVehicleData } from "../../Redux/vehicleDetails/vehicleAction";
 export const TopBar = () => {
   const [time, setTime] = useState({
     pickUpTime: "",
     dropUpTime: "",
   });
-  const [vehicle, setVehicle] = useState(true);
+  const [vehicleSelect, setVehicleSelect] = useState(true);
 
   // const handleVehicle = () => {
   //   setVehicle(!vehicle);
@@ -17,23 +18,30 @@ export const TopBar = () => {
     setTime({ ...time, [name]: value });
   };
 
+  const dispatch = useDispatch();
+  const { data: vehicle, isLoading, isError } = useSelector((state) => state.vehicle.vehicle);
+  console.log(vehicle.data);
+  useEffect(() => {
+    dispatch(getVehicleData(vehicleSelect ? "cars" : "bikes"));
+  }, [vehicleSelect]);
+
   return (
     <>
       <TopBarCont>
         <VehicleSection>
           <p>I want to rent a</p>
           <VehicleBox>
-            <div onClick={() => setVehicle(true)}>
+            <div onClick={() => setVehicleSelect(true)}>
               <img
-                style={{ filter: vehicle ? "" : "grayscale(100%)" }}
+                style={{ filter: vehicleSelect ? "" : "grayscale(100%)" }}
                 src="https://jtride-data.s3.ap-south-1.amazonaws.com/uploads/1555509635_group-3%403x.png"
                 alt=""
               />
             </div>
             <span></span>
-            <div onClick={() => setVehicle(false)}>
+            <div onClick={() => setVehicleSelect(false)}>
               <img
-                style={{ filter: vehicle ? "grayscale(100%)" : "" }}
+                style={{ filter: vehicleSelect ? "grayscale(100%)" : "" }}
                 src="https://jtride-data.s3.ap-south-1.amazonaws.com/uploads/1555509998_group-2%403x.png"
                 alt=""
               />

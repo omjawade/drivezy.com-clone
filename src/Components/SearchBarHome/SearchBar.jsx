@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import styles from "./SearchBar.module.css"
 import PinDropIcon from '@material-ui/icons/PinDrop';
 import styled from "styled-components";
-const SearchBar = () => {
+import CloseIcon from '@material-ui/icons/Close';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+const SearchBar = ({input,handleInput,handleOpen}) => {
 
     const [vehicle,setVehicle]=useState(true)
 
@@ -10,7 +12,7 @@ const SearchBar = () => {
         <div className={styles.container} >
             <div className={styles.title}>
               <PinDropIcon className={styles.title_icon} />
-              <h3>Rent Vehicle</h3>
+              <h3 style={{color:"white",margin:"15px 0px"}}>Rent Vehicle</h3>
             </div>
             <div className={styles.searchbar} >
                 <div className={styles.vehicle_box}>
@@ -34,19 +36,25 @@ const SearchBar = () => {
                 </div>
                 </div>
 
-                <div className={styles.input_box}>
+                <div  style={input==""?{width:"80%"}:{}} className={styles.input_box}>
                     <p>I need my vehicle near</p>
-                    <input type="text"  />
+                    <input type="text" value={input} onClick={handleOpen} placeholder="Type or Select your location here" />
+                    <div style={input==""?{right:"30px"}:{}} className={styles.input_box_icons}>
+                   <div onClick={()=>handleInput("")}>
+                         <CloseIcon/>
+                        </div>
+                        <div  className={styles.divider}></div>
+                        <div onClick={handleOpen}>
+                            <ExpandMoreIcon/>
+                        </div>
+                   </div>
                 </div>
-                <div className={styles.submit}>
+                <div style={input==""?{display:"none"}:{}} className={styles.submit}>
                   
                     <input type="submit" value="Search" />
-                    <div>
-                        <div>
-                            
-                        </div>
-                        <div></div>
-                    </div>
+              
+                        
+                  
                 </div>
             </div>
         </div>

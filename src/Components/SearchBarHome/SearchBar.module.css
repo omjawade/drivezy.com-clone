@@ -13,10 +13,7 @@
     display: flex;
     color: white;
 }
-.title h3{
-    color: white;
-    margin: 20px 0px;
-}
+
 .title_icon{
     font-size: 35px;
     margin: 15px;
@@ -58,17 +55,19 @@
 }
 
 .input_box{
-    width: 45%;
+    width: 50%;
     padding: 20px 0px;
 }
 .input_box input{
-    width: 100%;
+    width: 85%;
     height: 48px;
     border-radius: 10px;
     border: 1px solid gray;
     outline: none;
-    padding: 0px;
+    padding: 0px 5px;
+    padding-right: 70px;
     font-size: 20px;
+   
 }
 
 .submit{
@@ -77,6 +76,8 @@
     padding: 0px 20px;
     padding-top: 30px;
     margin: 20px 0px;
+    position: relative;
+    
 }
 .submit input{
     width: 100%;
@@ -91,3 +92,23 @@
 .submit input:hover{
     background-color: #328b84;
 }
+
+.input_box{
+    position: relative;
+}
+.input_box_icons{
+    position: absolute;
+    display: flex;
+    right: 0;
+    bottom: 25px;
+   
+    color: gray;
+}
+.input_box_icons div{
+margin: 4px 2px;
+cursor: pointer;
+}
+.divider{
+    border: 1px solid rgb(155, 154, 154);
+}
+

@@ -42,3 +42,43 @@
     width: 100%;
     border-top-left-radius: 12%;
 }
+
+.input_model{
+    width: 650px;
+    outline: none;
+    border-radius: 20px;
+    margin-top: 22.8%;
+    margin-left: 25%;
+}
+.input_box input{
+    height: 50px;
+    width: 99%;
+    font-size: 20px;
+    outline: none;
+}
+
+.suggetion_container{
+    height: 300px;
+   overflow-y: scroll;
+    color: gray;
+}
+.suggetion_container h5{
+    margin: 10px 20px;
+}
+.heading{
+    height: 120px;
+    transition: height 0.3s ease-in-out;
+}
+
+.suggetion_icon{
+   
+    margin: 20px;
+}
+.suggetion{
+    display: flex;
+    margin: 10px 0px;
+}
+.suggetion:hover{
+    background-color: rgb(245, 240, 240);
+    color: rgb(56, 55, 55);
+}

@@ -1,7 +1,9 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
-
+import { vehicleReducer } from "./vehicleDetails/vehicleReducer";
 import thunk from "redux-thunk";
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  vehicle: vehicleReducer,
+});
 
 export const store = createStore(
   rootReducer,
