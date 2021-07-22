@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import TextField from "@material-ui/core/TextField";
 import { useDispatch, useSelector } from "react-redux";
+import { addDateDetails } from "../../Redux/vehicleDetails/vehicleAction";
 import { getVehicleData } from "../../Redux/vehicleDetails/vehicleAction";
 export const TopBar = () => {
   const [time, setTime] = useState({
@@ -9,21 +10,20 @@ export const TopBar = () => {
     dropUpTime: "",
   });
   const [vehicleSelect, setVehicleSelect] = useState(true);
+  const dispatch = useDispatch();
 
-  // const handleVehicle = () => {
-  //   setVehicle(!vehicle);
-  // };
   const handleChange = (e) => {
     const { value, name } = e.target;
     setTime({ ...time, [name]: value });
   };
 
-  const dispatch = useDispatch();
-  const { data: vehicle, isLoading, isError } = useSelector((state) => state.vehicle.vehicle);
-  console.log(vehicle.data);
   useEffect(() => {
-    dispatch(getVehicleData(vehicleSelect ? "cars" : "bikes"));
+    dispatch(getVehicleData());
   }, [vehicleSelect]);
+
+  const handleSearch = () => {
+    dispatch(addDateDetails(time));
+  };
 
   return (
     <>
@@ -64,7 +64,7 @@ export const TopBar = () => {
             <TextField type="datetime-local" name="dropUpTime" value={time.dropUpTime} onChange={handleChange} />
           </DateBox>
         </DateSection>
-        <SearchBtn>SEARCH</SearchBtn>
+        <SearchBtn onClick={() => handleSearch()}>SEARCH</SearchBtn>
       </TopBarCont>
     </>
   );

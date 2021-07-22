@@ -5,12 +5,33 @@ import Popover from '@material-ui/core/Popover';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import ShoppingCartRoundedIcon from '@material-ui/icons/ShoppingCartRounded';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
+import { useDispatch, useSelector } from "react-redux";
+import { authFailureAction, authRequest } from "../../Redux/AuthReducer/AuthAction";
+import LoginModel from "../Login_Popup/LoginModel";
 
 function NavBar() {
+
+    const authLoading = useSelector((state) => state.auth.authLoading)
+
+    const dispatch = useDispatch()
+
+    const handlechange = () => {
+        dispatch(authRequest())
+        console.log("calling", authLoading);
+    }
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [anchorE2, setAnchorE2] = React.useState(null);
     const [anchorE3, setAnchorE3] = React.useState(null);
+    const [openLogin, setOpenLogin] = React.useState(false)
+
+    const handleCloseLogin = () => {
+        setOpenLogin(false)
+    }
+
+    const handleModel = () => {
+        setOpenLogin(true)
+    }
 
     const handleClick1 = (event) => {
         setAnchorEl(event.currentTarget);
@@ -45,6 +66,7 @@ function NavBar() {
 
     return (
         <div className={styles.Box}>
+            <LoginModel openLogin={openLogin} handleCloseLogin={handleCloseLogin} />
             <div className={styles.left}>
                 <div>
                     <img style={{ height: "40px", marginTop: "5%" }} src="Drivezyheaderlogo.svg" alt="logo" />
@@ -160,10 +182,12 @@ function NavBar() {
                     <ShoppingCartRoundedIcon style={{ marginTop: "20%", fontSize: 25 }} />
                     <p>My Plan</p>
                 </div>
-                <div className={styles.flex}>
+                <div onClick={handleModel} className={styles.flex}>
                     <AccountCircleOutlinedIcon style={{ fontSize: 50 }} />
                 </div>
             </div>
+
+
         </div>
     )
 }

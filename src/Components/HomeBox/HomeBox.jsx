@@ -19,7 +19,7 @@ function HomeBox() {
                         KNOW MORE
                     </Button>
                 </div>
-                
+
                 <div className={styles.right1}>
                     <img src="IPhoneXTemplate.png" alt="logo" />
                 </div>

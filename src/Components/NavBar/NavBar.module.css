@@ -1,9 +1,4 @@
-/* body{
-    width: 99.70%;
-} */
-
 .Box {
-    /* border: 1px solid red; */
     width: 90%;
     padding: 15px 5%;
     margin: auto;
@@ -23,7 +18,7 @@
 }
 
 .right {
-    width: 50%;
+    width: 45%;
     display: flex;
     gap: 6%;
 }

@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { addFilterDetails } from "../../Redux/vehicleDetails/vehicleAction";
 
 let carType = [];
 let distanceArr = [];
@@ -7,7 +9,7 @@ let transmissionArr = [];
 let fuelArr = [];
 let ageLimit = [];
 export const SideBar = () => {
-  const [val, setVal] = useState([]);
+  const [val, setVal] = useState({});
   const handleClick = (e) => {
     // console.log(e.target.textContent);
     if (carType.includes(e.target.textContent)) {
@@ -18,18 +20,21 @@ export const SideBar = () => {
     } else {
       carType.push(e.target.textContent);
     }
-    setVal([...val, e.target.textContent]);
+    setVal({ ...val, [e.target.textContent]: 1 });
+    // setVal([...val, e.target.textContent]);
     // console.log(carType);
   };
   const handleDistanceClick = (e) => {
     distanceArr.pop();
     distanceArr.push(e.target.textContent);
-    setVal([...val, e.target.textContent]);
+    setVal({ ...val, [e.target.textContent]: 1 });
+    // setVal([...val, e.target.textContent]);
   };
   const handleTransmissionClick = (e) => {
     transmissionArr.pop();
     transmissionArr.push(e.target.textContent);
-    setVal([...val, e.target.textContent]);
+    setVal({ ...val, [e.target.textContent]: 1 });
+    // setVal([...val, e.target.textContent]);
     // if (transmissionArr.length == 1) {
     // } else {
     // }
@@ -37,21 +42,26 @@ export const SideBar = () => {
   const handleFuelClick = (e) => {
     fuelArr.pop();
     fuelArr.push(e.target.textContent);
-    setVal([...val, e.target.textContent]);
+    // setVal([...val, e.target.textContent]);
+    setVal({ ...val, [e.target.textContent]: 1 });
   };
   const handleAgeClick = (e) => {
     if (ageLimit.length > 0) {
       ageLimit.pop();
+      setVal({ ...val, [e.target.textContent]: 0 });
     } else {
       ageLimit.push(e.target.textContent);
-      setVal([...val, e.target.textContent]);
+      // setVal([...val, e.target.textContent]);
+      setVal({ ...val, [e.target.textContent]: 1 });
     }
   };
-  // console.log(ageLimit);
-  // console.log(distanceArr);
-  // console.log(val);
-  // console.log(carType);
-  // console.log(transmissionArr);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const successAction = addFilterDetails(val);
+    dispatch(successAction);
+  }, [val]);
   return (
     <>
       <SideBarCont>
