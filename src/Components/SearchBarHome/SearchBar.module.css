@@ -1,0 +1,93 @@
+.container{
+    width: 30%;
+    margin: 50px;
+    margin-left: 10%;
+    background-color: #F15D61;
+   border-top-left-radius: 10px;
+   border-top-right-radius: 10px;
+    height: 100px;
+    position: relative;
+}
+
+.title{
+    display: flex;
+    color: white;
+}
+.title h3{
+    color: white;
+    margin: 20px 0px;
+}
+.title_icon{
+    font-size: 35px;
+    margin: 15px;
+}
+.searchbar{
+   position: absolute;
+   width: 480%;
+   border-radius: 20px;
+   box-shadow: 1px 1px 3px 1px gray;
+   height: 120px;
+   background-color: white;
+  display: flex;
+}
+
+.vehicle_box{
+    width: 25%;
+    padding: 20px;
+}
+.vehicle_box p,.input_box p{
+    margin: 5px;
+    color: gray;
+}
+.vehicle_box div{
+    display: flex;
+    border: 1px solid gray;
+    height: 50px;
+   border-radius: 10px;
+   
+}
+.vehicle_box div div{
+    border: none;
+    width: 50%;
+
+}
+.vehicle_box div div img{
+    width: 70%;
+    margin: auto;
+    height: 40px;
+}
+
+.input_box{
+    width: 45%;
+    padding: 20px 0px;
+}
+.input_box input{
+    width: 100%;
+    height: 48px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    outline: none;
+    padding: 0px;
+    font-size: 20px;
+}
+
+.submit{
+   
+    width: 20%;
+    padding: 0px 20px;
+    padding-top: 30px;
+    margin: 20px 0px;
+}
+.submit input{
+    width: 100%;
+    height: 100%;
+    background-color: #41B6AC;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.submit input:hover{
+    background-color: #328b84;
+}
