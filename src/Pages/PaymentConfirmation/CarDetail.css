@@ -1,0 +1,113 @@
+
+ 
+.Header-Parent {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    height:300px;
+    margin-top: 140px;
+    margin-left: 90px;
+  
+
+}
+
+
+.inp-fuel {
+ width:200px;
+ height:40px;
+ margin-top: 30px;
+
+}
+
+
+.inp-fuel:focus {
+    border-color:none;
+    width:200px;
+    height:40px;
+    margin-top: 30px;
+   
+   }
+
+
+
+
+
+/* >>>>>>>>>>Car Details Page all css >>>>>>>>> */
+
+
+/* /// Main div head div */
+
+
+.Car-detail-maindiv {
+    border: 1px solid whitesmoke;
+    display: flex;
+    box-shadow: 0 2px 8px -2px rgb(31 45 61 / 40%);
+    width: 1000px;
+   
+
+    text-align: left;
+  
+    justify-content:  center;
+ 
+}
+
+  
+.car-name1 {
+    font-family: 'Open Sans', sans-serif;
+ 
+}
+
+.features-block1 {
+    display:flex;
+    margin-top:-24px;
+    flex-grow: 8;
+}
+.car-features1 {
+    margin-left:"2px"
+}
+
+
+
+/* >>>>>>>>>>Car PriceD Page all css >>>>>>>>> */
+
+
+/* /// Main div head div */
+
+.CarPrice-maindiv {
+
+   
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px -2px rgb(31 45 61 / 40%);
+    padding: 24px 32px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    width: 140%;
+
+}
+
+.fare-block {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    line-height: 17px;
+    margin-bottom: 10px;
+    width: 100%;
+   
+
+}
+
+.fare-name{
+    color: #77899b;
+   font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+    
+}
+
+.fare-amount {
+    color: #1f2d3d;
+    display: flex;
+    font-weight: lighter;
+    
+
+}
