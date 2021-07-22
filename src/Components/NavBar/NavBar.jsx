@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./NavBar.module.css"
-import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import Popover from '@material-ui/core/Popover';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
@@ -9,12 +8,6 @@ import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import { useDispatch, useSelector } from "react-redux";
 import { authFailureAction, authRequest } from "../../Redux/AuthReducer/AuthAction";
 import LoginModel from "../Login_Popup/LoginModel";
-
-const useStyles = makeStyles((theme) => ({
-    typography: {
-        padding: theme.spacing(3),
-    },
-}));
 
 function NavBar() {
 
@@ -77,7 +70,7 @@ function NavBar() {
              <LoginModel openLogin={openLogin}  handleCloseLogin={handleCloseLogin}/>
             <div className={styles.left}>
                 <div>
-                    <img style={{height: "50px"}}src="Drivezyheaderlogo.svg" alt="logo" />
+                    <img style={{ height: "50px" }} src="Drivezyheaderlogo.svg" alt="logo" />
                 </div>
                 <div className={styles.flex} >
                     <div className={styles.flex} onClick={handleClick1}>
@@ -91,7 +84,7 @@ function NavBar() {
                         anchorEl={anchorEl}
                         onClose={handleClose1}
                         anchorReference="anchorPosition"
-                        anchorPosition={{ top: 75, left: 200 }}
+                        anchorPosition={{ top: 75, left: 250 }}
                         anchorOrigin={{
                             vertical: 'top',
                             horizontal: 'left',
@@ -101,12 +94,12 @@ function NavBar() {
                             horizontal: 'left',
                         }}
                     >
-                        <MenuItem className={classes.typography} onClick={handleClose1}>
-                            <img style={{ height: "25px", paddingRight: "5%" }} src="IndianFlag.png" alt="flag" />
+                        <MenuItem className={styles.typography} onClick={handleClose1}>
+                            <img style={{ height: "25px" }} src="IndianFlag.png" alt="flag" />
                             <p>India</p>
                         </MenuItem>
-                        <MenuItem className={classes.typography} onClick={handleClose1}>
-                            <img style={{ height: "25px", paddingRight: "5%" }} src="AmericanFlag.png" alt="flag" />
+                        <MenuItem className={styles.typography} onClick={handleClose1}>
+                            <img style={{ height: "25px" }} src="AmericanFlag.png" alt="flag" />
                             <p>United States</p>
                         </MenuItem>
                     </Popover>
@@ -128,7 +121,7 @@ function NavBar() {
                         anchorE2={anchorE2}
                         onClose={handleClose2}
                         anchorReference="anchorPosition"
-                        anchorPosition={{ top: 75, left: 775 }}
+                        anchorPosition={{ top: 75, left: 700 }}
                         anchorOrigin={{
                             vertical: 'top',
                             horizontal: 'left',
@@ -138,12 +131,12 @@ function NavBar() {
                             horizontal: 'left',
                         }}
                     >
-                        <MenuItem className={classes.typography} onClick={handleClose2}>
-                            <img style={{ height: "25px", paddingRight: "5%" }} src="PartnerDashboard.svg" alt="flag" />
+                        <MenuItem className={styles.typography} onClick={handleClose2}>
+                            <img style={{ height: "25px" }} src="PartnerDashboard.svg" alt="flag" />
                             <p>Share-A-Business - become a franchise partner</p>
                         </MenuItem>
-                        <MenuItem className={classes.typography} onClick={handleClose2}>
-                            <img style={{ height: "25px", paddingRight: "5%" }} src="ListYourCar.svg" alt="flag" />
+                        <MenuItem className={styles.typography} onClick={handleClose2}>
+                            <img style={{ height: "25px" }} src="ListYourCar.svg" alt="flag" />
                             <p>List your vehicle</p>
                         </MenuItem>
                     </Popover>
@@ -162,7 +155,7 @@ function NavBar() {
                         anchorE3={anchorE3}
                         onClose={handleClose3}
                         anchorReference="anchorPosition"
-                        anchorPosition={{ top: 75, left: 1160 }}
+                        anchorPosition={{ top: 75, left: 1150 }}
                         anchorOrigin={{
                             vertical: 'top',
                             horizontal: 'left',
@@ -172,16 +165,16 @@ function NavBar() {
                             horizontal: 'left',
                         }}
                     >
-                        <MenuItem className={classes.typography} onClick={handleClose3}>
-                            <img style={{ height: "25px", paddingRight: "5%" }} src="Jobs.svg" alt="flag" />
+                        <MenuItem className={styles.typography} onClick={handleClose3}>
+                            <img style={{ height: "25px" }} src="Jobs.svg" alt="flag" />
                             <p>Jobs</p>
                         </MenuItem>
-                        <MenuItem className={classes.typography} onClick={handleClose3}>
-                            <img style={{ height: "25px", paddingRight: "5%" }} src="People.svg" alt="flag" />
+                        <MenuItem className={styles.typography} onClick={handleClose3}>
+                            <img style={{ height: "25px" }} src="People.svg" alt="flag" />
                             <p>People</p>
                         </MenuItem>
-                        <MenuItem className={classes.typography} onClick={handleClose3}>
-                            <img style={{ height: "25px", paddingRight: "5%" }} src="Culture.svg" alt="flag" />
+                        <MenuItem className={styles.typography} onClick={handleClose3}>
+                            <img style={{ height: "25px" }} src="Culture.svg" alt="flag" />
                             <p>Culture</p>
                         </MenuItem>
                     </Popover>

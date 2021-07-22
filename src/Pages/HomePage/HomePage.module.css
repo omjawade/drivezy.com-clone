@@ -1,7 +1,5 @@
 .home{
     width: 100%;
- 
-   
 }
 
 .container{
@@ -11,14 +9,17 @@
     display: flex;
     flex-basis: 1;
 }
+
 .info{
     padding-top: 60px;
 }
+
 .info,.cover{
     width: 50%;
     height: 100%;
    
 }
+
 .info h1{
     font-weight: 400;
     color: rgb(43, 43, 43);
@@ -26,10 +27,12 @@
     margin: -10px;
     margin-left: 10%;
 }
+
 .info h1 span{
     color: #F15D61;
     font-weight: 500;
 }
+
 .info h3{
     margin: 10px;
     font-weight: 500;
