@@ -2,6 +2,7 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import InputBase from '@material-ui/core/InputBase';
 import { FormControl, InputLabel, makeStyles, withStyles } from '@material-ui/core';
 import React from "react"
+import "./CarDetail.css"
 const BootstrapInput = withStyles((theme) => ({
   root: {
     'label + &': {
@@ -49,6 +50,8 @@ function FuelInfo(props) {
     const handleChange = (event) => {
       setAge(event.target.value);
     };
+
+    console.log(age,"nil")
     return (
         <div>
             <p className="car-name1">Fuel Package</p>
@@ -60,24 +63,22 @@ function FuelInfo(props) {
                 <a style={{color: "#77899b"}}>Selected Package</a>
             </div>
             <div>
-            <FormControl className={classes.margin} >
-              <InputLabel  >Fuel</InputLabel>
-             <NativeSelect
-            id="demo-customized-select-native"
-            value={age}
-            onChange={handleChange}
-            input={<BootstrapInput />}
-            style={{width:"200px"}}
+
+              <div>
+
+        <select  className= "inp-fuel" onChange={handleChange} >
+        <option> </option>
+        <option value="60">60 km</option>
+        <option value="120">120 km</option>
+        <option value="180">180 km</option>
+        <option value="No Fuel">No Fuel</option>
+      </select>
+              </div>
+         
           
-        >
-          <option aria-label="None" value="" />
-          <option value={10}>60 km</option>
-          <option value={20}>120 km</option>
-          <option value={30}>180 km</option>
-          <option value={40}>No Fuel</option>
-        </NativeSelect>
-      </FormControl>
       <br/>
+
+      
     
      
             </div>

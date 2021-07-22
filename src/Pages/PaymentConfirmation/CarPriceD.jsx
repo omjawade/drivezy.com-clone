@@ -3,8 +3,9 @@ import "./CarDetail.css"
 function CarPriceD(props) {
     return (
         <div>
-            
+                 
             <div className="CarPrice-maindiv">
+
                 <div>Fare Details</div>
                 <br/>
                 <div className="fare-block" style={{marginTop: "-10px"}} >

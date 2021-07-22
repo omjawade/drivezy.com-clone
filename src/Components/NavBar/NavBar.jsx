@@ -20,7 +20,7 @@ function NavBar() {
         console.log("calling",authLoading);
     }
 
-    const classes = useStyles();
+    // const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [anchorE2, setAnchorE2] = React.useState(null);
     const [anchorE3, setAnchorE3] = React.useState(null);

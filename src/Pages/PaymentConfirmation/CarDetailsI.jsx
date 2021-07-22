@@ -10,6 +10,7 @@ function CarDetailsI(props) {
 
           <div className="Car-detail-maindiv">
               <div>
+              <br/>         
                   <div style={{display:"flex"}}>
                       <div style={{padding:"10px"}}>
                            <h2 className="car-name1">Maruti Suzuki Wagon R VXi (Manual)</h2>

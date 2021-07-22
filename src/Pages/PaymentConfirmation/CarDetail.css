@@ -12,7 +12,21 @@
 }
 
 
+.inp-fuel {
+ width:200px;
+ height:40px;
+ margin-top: 30px;
 
+}
+
+
+.inp-fuel:focus {
+    border-color:none;
+    width:200px;
+    height:40px;
+    margin-top: 30px;
+   
+   }
 
 
 
