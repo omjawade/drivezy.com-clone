@@ -42,7 +42,7 @@ function HomePage() {
   );
   return (
     <>
-      <NavBar />
+      {/* <NavBar /> */}
 
       <div className={styles.home}>
         <div className={styles.container}>
@@ -92,7 +92,7 @@ function HomePage() {
         </Paper>
       </Modal>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

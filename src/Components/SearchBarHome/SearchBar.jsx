@@ -4,9 +4,16 @@ import PinDropIcon from '@material-ui/icons/PinDrop';
 import styled from "styled-components";
 import CloseIcon from '@material-ui/icons/Close';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { useHistory } from 'react-router-dom';
 const SearchBar = ({input,handleInput,handleOpen}) => {
 
     const [vehicle,setVehicle]=useState(true)
+
+    const history = useHistory()
+
+    const redirect=()=>{
+      history.push(`/search?name=${input}`)
+    }
 
     return (
         <div className={styles.container} >
@@ -51,7 +58,7 @@ const SearchBar = ({input,handleInput,handleOpen}) => {
                 </div>
                 <div style={input==""?{display:"none"}:{}} className={styles.submit}>
                   
-                    <input type="submit" value="Search" />
+                    <input type="submit" value="Search" onClick={redirect} />
               
                         
                   
