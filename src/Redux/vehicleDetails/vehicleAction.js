@@ -5,6 +5,8 @@ import {
   GET_VEHICLE_DETAILS_FAILURE,
   GET_VEHICLE_DETAILS_REQUEST,
   GET_VEHICLE_DETAILS_SUCCESS,
+  ADD_FILTER_DETAILS,
+  ADD_DATE_DETAILS,
 } from "./vehicleActionTypes";
 
 import axios from "axios";
@@ -29,6 +31,18 @@ export const getVehicleDetailsFailure = (error) => {
   };
 };
 
+export const addFilterDetails = (payload) => {
+  return {
+    type: ADD_FILTER_DETAILS,
+    payload,
+  };
+};
+export const addDateDetails = (payload) => {
+  return {
+    type: ADD_DATE_DETAILS,
+    payload,
+  };
+};
 export const getVehicleData = (query) => (dispatch) => {
   const requestAction = getVehicleDetailsRequest();
   dispatch(requestAction);
