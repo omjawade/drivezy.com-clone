@@ -1,10 +1,70 @@
 
+ 
+.Header-Parent {
+    display: flex;
+    justify-content:  center;
+}
+
+
+
+
+
+
+
+
 /* >>>>>>>>>>Car Details Page all css >>>>>>>>> */
 
 
 /* /// Main div head div */
 
-
+.Car-Detail-ParentDi1 {
+    border-top: 1px solid blue;
+    
+}
 .Car-detail-maindiv {
-    border-top: 1px solid red;
+    border: 1px solid red;
+    display: flex;
+   
+    justify-content:  center;
+ 
+}
+
+
+
+
+
+/* >>>>>>>>>>Car PriceD Page all css >>>>>>>>> */
+
+
+/* /// Main div head div */
+
+.CarPrice-maindiv {
+
+    border: 1px solid red;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px -2px rgb(31 45 61 / 40%);
+    padding: 24px 32px;
+    margin-bottom: 20px;
+
+}
+
+.fare-block {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    line-height: 17px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.fare-name{
+    color: #77899b;
+}
+
+.fare-amount {
+    color: #1f2d3d;
+    display: flex;
+    
+
 }

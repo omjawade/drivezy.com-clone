@@ -1,11 +1,15 @@
 import React from 'react';
-
+import "./CarDetail.css"
 function CarPriceD(props) {
     return (
         <div>
             
-            <div style={{border: '1px solid red'}}>
-                <h1>HIIII</h1>
+            <div className="CarPrice-maindiv">
+                <div>Fare Details</div>
+                <div className="fare-block">
+                    <span className="fare-name">Weekday Charges</span>
+                    <span className="fare-amout">$466.40</span>
+                </div>
             </div>
             
         </div>
