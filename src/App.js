@@ -1,8 +1,10 @@
-import logo from "./logo.svg";
-import "./App.css";
 
+import "./App.css";
+import PaymentConfirm from "./Pages/PaymentConfirmation/PaymentConfirm";
 function App() {
-  return <></>;
+  return <>
+  <PaymentConfirm />
+  </>;
 }
 
 export default App;
