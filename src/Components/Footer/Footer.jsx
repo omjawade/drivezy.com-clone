@@ -20,21 +20,21 @@ function Footer() {
             <div className={styles.top}>
                 <div className={styles.row1}>
                     <div className={`${styles.left1} ${classes.root}`}>
-                        <img style={{height: "75px", marginLeft: "-20%"}} src="logowhite.svg" alt="logo" />
+                        <img style={{ height: "75px", marginLeft: "-20%" }} src="logowhite.svg" alt="logo" />
                         <div className={styles.flex}>
-                            <img style={{marginRight:"5%"}} src="Mail.svg" alt="logo" />
+                            <img style={{ marginRight: "5%" }} src="Mail.svg" alt="logo" />
                             <p>support@drivezy.com</p>
                         </div>
                         <div className={styles.flex}>
-                            <img style={{marginRight:"5%"}} src="Phone.svg" alt="logo" />
+                            <img style={{ marginRight: "5%" }} src="Phone.svg" alt="logo" />
                             <p>08061933715</p>
                         </div>
                         <div className={styles.flex}>
-                            <Button variant="outlined" style={{border: "none", marginLeft:"-5%"}}>
-                                <img src="Appstore.svg" alt="logo"/>
+                            <Button variant="outlined" style={{ border: "none", marginLeft: "-5%" }}>
+                                <img src="Appstore.svg" alt="logo" />
                             </Button>
-                            <Button variant="outlined" style={{border: "none"}}>
-                                <img src="Playstore.svg" alt="logo"/>
+                            <Button variant="outlined" style={{ border: "none" }}>
+                                <img src="Playstore.svg" alt="logo" />
                             </Button>
                         </div>
                     </div>
@@ -74,9 +74,9 @@ function Footer() {
                         © 2020 Drivezy, Inc. All rights reserved.
                     </div>
                     <div className={styles.right2}>
-                        <img src="Twitter.svg" alt="logo"/>
-                        <img src="Fb.svg" alt="logo"/>
-                        <img src="Insta.svg" alt="logo"/>
+                        <img src="Twitter.svg" alt="logo" />
+                        <img src="Fb.svg" alt="logo" />
+                        <img src="Insta.svg" alt="logo" />
                     </div>
                 </div>
             </div>
