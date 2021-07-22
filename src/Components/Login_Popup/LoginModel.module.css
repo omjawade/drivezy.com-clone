@@ -1,3 +1,16 @@
 .login_model{
+    width: 30%;
+
+    margin: auto;
+    margin-top: 5%;
     
+}
+
+.title{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+}
+.close_icon{
+    margin: 20px;
 }

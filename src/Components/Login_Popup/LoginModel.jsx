@@ -2,7 +2,8 @@
 import React from 'react';
 import Modal from "@material-ui/core/Modal";
 import Paper from "@material-ui/core/Paper";
-import styles from "./LoginModel.module.css"
+import styles from "./LoginModel.module.css";
+import CloseIcon from '@material-ui/icons/Close';
 const LoginModel = ({openLogin,handleCloseLogin}) => {
     
 
@@ -17,7 +18,10 @@ const LoginModel = ({openLogin,handleCloseLogin}) => {
         disableAutoFocus
       >
    <Paper>
-       <h1>hi</h1>
+       <div className={styles.title}>
+           <h4>Login/SignUp</h4>
+           <CloseIcon  className={styles.close_icon}/>
+       </div>
    </Paper>
 
       </Modal>
