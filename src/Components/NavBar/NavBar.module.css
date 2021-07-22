@@ -23,9 +23,9 @@
 }
 
 .right {
-    width: 45%;
+    width: 50%;
     display: flex;
-    gap: 9.5%;
+    gap: 6%;
 }
 
 .flex {

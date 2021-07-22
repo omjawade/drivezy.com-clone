@@ -3,7 +3,7 @@ import { Footer } from "../../Components/Footer/Footer";
 import { NavBar } from "../../Components/NavBar/NavBar"
 import SearchBar from "../../Components/SearchBarHome/SearchBar";
 import styles from "./HomePage.module.css"
-
+import { HomeBox } from "../../Components/HomeBox/HomeBox";
 
 function HomePage() {
 
@@ -23,11 +23,10 @@ function HomePage() {
                     <div className={styles.cover}>
                         <img src="https://jtride-data.s3.ap-south-1.amazonaws.com/uploads/1569575901_bangalore1.jpg" alt="" />
                     </div>
-
                 </div>
-
-
             </div>
+
+            <HomeBox />
 
             <Footer />
         </>

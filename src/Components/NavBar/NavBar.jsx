@@ -47,13 +47,13 @@ function NavBar() {
         <div className={styles.Box}>
             <div className={styles.left}>
                 <div>
-                    <img style={{ height: "50px" }} src="Drivezyheaderlogo.svg" alt="logo" />
+                    <img style={{ height: "40px", marginTop: "5%" }} src="Drivezyheaderlogo.svg" alt="logo" />
                 </div>
                 <div className={styles.flex} >
                     <div className={styles.flex} onClick={handleClick1}>
-                        <img style={{ height: "25px", paddingRight: "5%", marginTop: "15%" }} src="IndianFlag.png" alt="flag" />
+                        <img style={{ height: "20px", paddingRight: "5%", marginTop: "20%" }} src="IndianFlag.png" alt="flag" />
                         <p>India</p>
-                        <KeyboardArrowDownIcon style={{ marginTop: "17.5%" }} />
+                        <KeyboardArrowDownIcon style={{ marginTop: "20%" }} />
                     </div>
                     <Popover
                         id={id1}
@@ -61,7 +61,7 @@ function NavBar() {
                         anchorEl={anchorEl}
                         onClose={handleClose1}
                         anchorReference="anchorPosition"
-                        anchorPosition={{ top: 75, left: 250 }}
+                        anchorPosition={{ top: 75, left: 200 }}
                         anchorOrigin={{
                             vertical: 'top',
                             horizontal: 'left',
@@ -83,14 +83,14 @@ function NavBar() {
                 </div>
                 <div className={styles.flex}>
                     <p>Bengaluru</p>
-                    <KeyboardArrowDownIcon style={{ marginTop: "17.5%" }} />
+                    <KeyboardArrowDownIcon style={{ marginTop: "20%" }} />
                 </div>
             </div>
             <div className={styles.right}>
                 <div className={styles.flex}>
                     <div className={styles.flex} onClick={handleClick2}>
                         <p>Earn with us</p>
-                        <KeyboardArrowDownIcon style={{ marginTop: "15%" }} />
+                        <KeyboardArrowDownIcon style={{ marginTop: "17.5%" }} />
                     </div>
                     <Popover
                         id={id2}
@@ -98,7 +98,7 @@ function NavBar() {
                         anchorE2={anchorE2}
                         onClose={handleClose2}
                         anchorReference="anchorPosition"
-                        anchorPosition={{ top: 75, left: 700 }}
+                        anchorPosition={{ top: 75, left: 525 }}
                         anchorOrigin={{
                             vertical: 'top',
                             horizontal: 'left',
@@ -124,7 +124,7 @@ function NavBar() {
                 <div className={styles.flex}>
                     <div className={styles.flex} onClick={handleClick3}>
                         <p>Careers</p>
-                        <KeyboardArrowDownIcon style={{ marginTop: "20%" }} />
+                        <KeyboardArrowDownIcon style={{ marginTop: "22.5%" }} />
                     </div>
                     <Popover
                         id={id3}
@@ -132,7 +132,7 @@ function NavBar() {
                         anchorE3={anchorE3}
                         onClose={handleClose3}
                         anchorReference="anchorPosition"
-                        anchorPosition={{ top: 75, left: 1150 }}
+                        anchorPosition={{ top: 75, left: 900 }}
                         anchorOrigin={{
                             vertical: 'top',
                             horizontal: 'left',

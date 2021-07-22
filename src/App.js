@@ -1,5 +1,5 @@
 import "./App.css";
-import { RentalDetails } from "./Pages/RentalDetails/RentalDetails";
+// import { RentalDetails } from "./Pages/RentalDetails/RentalDetails";
 import { HomePage } from "./Pages/HomePage/HomePage";
 
 function App() {

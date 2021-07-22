@@ -1,0 +1,103 @@
+.container1 {
+    width: 90%;
+    padding: 5%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 20%;
+    background-color: #f7f8f9;
+}
+
+.left1 {
+    width: 45%;
+}
+
+.left1 p {
+    line-height: 35px;
+}
+
+.left1 p span {
+    color: #41b6ac;
+    font-weight: bolder;
+    font-size: 15px;
+}
+
+.right1 {
+    width: 35%;
+}
+
+.right1 img {
+    /* height: 500px; */
+    width: 55%;
+    margin-left: 30%;
+    margin-top: -25%;
+}
+
+.plane img {
+    width: 35%;
+    margin-left: 27.5%;
+    margin-bottom: -6%;
+}
+
+.container2 {
+    width: 90%;
+    padding: 5%;
+    margin: auto;
+}
+
+.container2 h3{
+    font-weight: 600;
+    font-size:x-large;
+}
+
+.features {
+    width: 90%;
+    margin: auto;
+    padding: 5% 0;
+    display: flex;
+    flex-direction: row;
+    gap: 11.5%;
+}
+
+.features img {
+    height: 75px;
+    margin-left: 20%;
+}
+
+.features div:nth-child(4) p {
+    margin-left: 17.5%;
+}
+
+.container3 {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+}
+
+.left3 {
+    width: 45%;
+}
+
+.right3 {
+    width: 50%;
+}
+
+.left3 img {
+    width: 100%;
+}
+
+.right3 h3 {
+    font-weight: 600;
+    font-size:x-large;
+    margin-top: 15%;
+}
+
+.right3 p {
+    width: 80%;
+}
+
+
+
+
