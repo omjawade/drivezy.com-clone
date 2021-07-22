@@ -1,20 +1,24 @@
+body{
+    width: 99.70%;
+}
 .Box {
-    width: 1436px;
-    padding: 15px 50px;
+    width: 90%;
+    padding: 15px 5%;
     margin: auto;
     display: flex;
-    gap: 350px;
+    gap: 20%;
+ 
     /* align-content:space-between; */
 }
 .left {
     display: flex;
     -ms-flex-align: start;
-    gap: 50px;
+    gap: 10%;
 }
 .right {
     display: flex;
     -ms-flex-align: end;
-    gap: 50px;
+    gap: 30px;
 }
 .flex {
     display: flex;
