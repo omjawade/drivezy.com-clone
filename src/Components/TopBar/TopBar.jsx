@@ -7,7 +7,7 @@ export const TopBar = () => {
     pickUpTime: "",
     dropUpTime: "",
   });
-  const [vehicle, setVehicle] = useState(false);
+  const [vehicle, setVehicle] = useState(true);
 
   // const handleVehicle = () => {
   //   setVehicle(!vehicle);
