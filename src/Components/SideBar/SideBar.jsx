@@ -55,19 +55,13 @@ export const SideBar = () => {
       setVal({ ...val, [e.target.textContent]: 1 });
     }
   };
-  // console.log(ageLimit);
-  // console.log(distanceArr);
-  // console.log(val);
-  // console.log(carType);
-  // console.log(transmissionArr);
 
   const dispatch = useDispatch();
-  const { filters: vehicle, isLoading, isError } = useSelector((state) => state.vehicle.vehicle);
-  console.log(vehicle);
+
   useEffect(() => {
     const successAction = addFilterDetails(val);
     dispatch(successAction);
-  }, [dispatch]);
+  }, [val]);
   return (
     <>
       <SideBarCont>

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import FormControl from "@material-ui/core/FormControl";
 import Switch from "@material-ui/core/Switch";
 import NativeSelect from "@material-ui/core/NativeSelect";
+import { useSelector } from "react-redux";
 
 export const VehicleDetails = () => {
   const [sortBy, setSortBy] = React.useState("");
@@ -14,6 +15,10 @@ export const VehicleDetails = () => {
   const toggleChecked = () => {
     setChecked((prev) => !prev);
   };
+  const { data: vehicle, isLoading, isError } = useSelector((state) => state.vehicle.vehicle);
+  console.log(vehicle?.data);
+  const carDetails = vehicle?.data;
+  // console.log(carDetails[0].Sub_area[0].distance);
   return (
     <>
       <CarDetails>
@@ -46,23 +51,31 @@ export const VehicleDetails = () => {
           </MapBox>
         </FilterBar>
         <CarsCont>
-          <CarCard>
-            <PriceCont>
-              <p>₹3864</p>
-            </PriceCont>
-            <ImgCont>
-              <img src="https://jtride-data.s3.ap-south-1.amazonaws.com/uploads/1558701126_vitara-breeza.png" alt="" />
-            </ImgCont>
-            <TextCont>
-              <h5>Brezza LDI</h5>
-              <p>Manual,5 Seats,Diesel</p>
-              <p>Koramangala Agara</p>
-              <p>Approx 16.4 km away</p>
-            </TextCont>
-            <BtnCont>
-              <p>QUICK VIEW</p>
-            </BtnCont>
-          </CarCard>
+          {carDetails?.map((item) => (
+            <CarCard key={item.id}>
+              <PriceCont>
+                <p>{item.Price}</p>
+              </PriceCont>
+              <ImgCont>
+                <img src={item.Image} alt="vehicleImage" />
+              </ImgCont>
+              <TextCont>
+                <h5>{item.Title}</h5>
+                <p>
+                  {item.Transmission_type},{item.Seats},{item.Fuel_type}
+                </p>
+                <p>{item.Location.Area}</p>
+                {/* <p>{item.Sub_area[0].distance}</p> */}
+
+                {/* {item.Sub_area?.map((el) => (
+                  <p>{el.distance}</p>
+                ))} */}
+              </TextCont>
+              <BtnCont>
+                <p>QUICK VIEW</p>
+              </BtnCont>
+            </CarCard>
+          ))}
         </CarsCont>
       </CarDetails>
     </>
@@ -188,6 +201,8 @@ const CarsCont = styled.div`
   border-radius: 7px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
 `;
 
 const CarCard = styled.div`
@@ -195,6 +210,7 @@ const CarCard = styled.div`
   height: 90%;
   border-radius: 7px;
   border: 1px solid gray;
+  margin-bottom: 2%;
 `;
 
 const ImgCont = styled.div`
