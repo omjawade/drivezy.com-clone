@@ -37,13 +37,14 @@
 
 .CarPrice-maindiv {
 
-    border: 1px solid red;
+
     background: #fff;
     border-radius: 6px;
     box-shadow: 0 2px 8px -2px rgb(31 45 61 / 40%);
     padding: 24px 32px;
     margin-bottom: 20px;
     margin-left: 20px;
+    width: 100%;
 
 }
 
@@ -54,15 +55,21 @@
     line-height: 17px;
     margin-bottom: 10px;
     width: 100%;
+   
+
 }
 
 .fare-name{
     color: #77899b;
+   font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+    
 }
 
 .fare-amount {
     color: #1f2d3d;
     display: flex;
+    font-weight: lighter;
     
 
 }
