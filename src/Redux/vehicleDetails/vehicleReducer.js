@@ -12,10 +12,16 @@ import {
 const initState = {
   vehicle: {
     data: [],
-    filters: [],
-    dates: [],
+    // filters: [],
+    // dates: [],
     isLoading: false,
     isError: false,
+  },
+  filters: {
+    data: [],
+  },
+  dates: {
+    data: [],
   },
 };
 
@@ -53,16 +59,16 @@ export const vehicleReducer = (state = initState, action) => {
     case ADD_FILTER_DETAILS: {
       return {
         ...state,
-        vehicle: {
-          filters: action.payload,
+        filters: {
+          data: action.payload,
         },
       };
     }
     case ADD_DATE_DETAILS: {
       return {
         ...state,
-        vehicle: {
-          dates: action.payload,
+        dates: {
+          data: action.payload,
         },
       };
     }

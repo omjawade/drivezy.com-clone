@@ -10,28 +10,20 @@ export const TopBar = () => {
     dropUpTime: "",
   });
   const [vehicleSelect, setVehicleSelect] = useState(true);
-  // const [val, setVal] = useState({});
+  const dispatch = useDispatch();
 
-  // const handleVehicle = () => {
-  //   setVehicle(!vehicle);
-  // };
   const handleChange = (e) => {
     const { value, name } = e.target;
     setTime({ ...time, [name]: value });
   };
 
-  const dispatch = useDispatch();
-  const { data: vehicle, isLoading, isError } = useSelector((state) => state.vehicle.vehicle);
-  console.log(vehicle?.data);
-
-  const { dates: date } = useSelector((state) => state.vehicle.vehicle);
-  console.log(date);
-
   useEffect(() => {
-    dispatch(getVehicleData(vehicleSelect ? "cars" : "bikes"));
-    const successAction = addDateDetails(time);
-    dispatch(successAction);
-  }, [dispatch, time]);
+    dispatch(getVehicleData());
+  }, [vehicleSelect]);
+
+  const handleSearch = () => {
+    dispatch(addDateDetails(time));
+  };
 
   return (
     <>
@@ -72,7 +64,7 @@ export const TopBar = () => {
             <TextField type="datetime-local" name="dropUpTime" value={time.dropUpTime} onChange={handleChange} />
           </DateBox>
         </DateSection>
-        <SearchBtn>SEARCH</SearchBtn>
+        <SearchBtn onClick={() => handleSearch()}>SEARCH</SearchBtn>
       </TopBarCont>
     </>
   );
