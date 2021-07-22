@@ -28,7 +28,7 @@ function FooterPay(props) {
       
     
     return (
-        <div style={{marginTop:"210px",width:"100%"}}>
+        <div style={{marginTop:"210px",width:"130%"}}>
             <div style={{backgroundColor:"white",border:"1px solid whitesmoke",height:"100px",display:"flex", boxShadow:" 0 2px 8px -2px rgb(31 45 61 / 40%)",}}>
 
                 <div style={{
@@ -40,15 +40,15 @@ function FooterPay(props) {
                   type="checkbox"
                   placeholder="write married"
                   onChange={handlechange}
-                   style={{padding:"10px",height:"20px",width:"20px"}}
+                   style={{padding:"10px",height:"20px",width:"20px",marginRight:"60px"}}
                    />
                     </div>
-                   <p style={{marginTop:"-10px",marginLeft:"10px"}}>Rider, You are just one step away from confirming your booking. Confirm that you are above 18 and you agree to all the terms mentioned 
+                   <p style={{marginTop:"-10px",marginRight:"10px",width:"1700px"}}>Rider, You are just one step away from confirming your booking. Confirm that you are above 18 and you agree to all the terms mentioned 
                        in <a href="" style={{color:"orange"}}>Terms & Conditions</a></p>
                 </div>
 
 
-                <div style={{display:"flex",marginLeft:"20px",marginTop:"13px"}}>
+                <div style={{display:"flex",marginLeft:"4px",marginTop:"13px"}}>
                     <p>To Pay 700 <br/>
                     <a style={{color:"gray"}}>Show Breakup</a></p>
 
@@ -70,11 +70,11 @@ function FooterPay(props) {
                     <button disabled style={{marginLeft:"20px",borderRadius:"6px",height:"40px",width:"240px",color:"gray",backgroundColor:"whitesmoke",border:"1px solid gray"}} >
                         Quick Book
                     </button>
-                    
+                   
                     </div> }
                    
                 </div>
-
+            
              
             
             </div>
