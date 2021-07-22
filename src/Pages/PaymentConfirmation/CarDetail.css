@@ -17,10 +17,7 @@
 
 /* /// Main div head div */
 
-.Car-Detail-ParentDi1 {
-    border-top: 1px solid blue;
-    
-}
+
 .Car-detail-maindiv {
     border: 1px solid red;
     display: flex;
