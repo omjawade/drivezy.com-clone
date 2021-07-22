@@ -17,7 +17,7 @@ function CarPriceD(props) {
                     <p className="fare-amout">₹0</p>
                 </div>
                 
-                <div style={{ borderBottom:"1px solid gray",marginTop: "-10px"}}></div>
+                <div style={{ borderBottom:"0.2px solid gray",marginTop: "-10px"}}></div>
 
                 <div className="fare-block">
                     <h4 className="fare-name">Total Fare</h4>
