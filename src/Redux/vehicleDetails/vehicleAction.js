@@ -45,17 +45,17 @@ export const addDateDetails = (payload) => {
 };
 export const getVehicleData =
   (query = "cars") =>
-  (dispatch) => {
-    const requestAction = getVehicleDetailsRequest();
-    dispatch(requestAction);
-    return axios
-      .get(`http://localhost:8080/${query}`)
-      .then((response) => {
-        const successAction = getVehicleDetailsSuccess(response.data);
-        dispatch(successAction);
-      })
-      .catch((error) => {
-        const errorAction = getVehicleDetailsFailure(error);
-        dispatch(errorAction);
-      });
-  };
+    (dispatch) => {
+      const requestAction = getVehicleDetailsRequest();
+      dispatch(requestAction);
+      return axios
+        .get(`http://localhost:8080/${query}`)
+        .then((response) => {
+          const successAction = getVehicleDetailsSuccess(response.data);
+          dispatch(successAction);
+        })
+        .catch((error) => {
+          const errorAction = getVehicleDetailsFailure(error);
+          dispatch(errorAction);
+        });
+    };

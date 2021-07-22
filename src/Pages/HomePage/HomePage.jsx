@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Footer } from "../../Components/Footer/Footer";
-import { NavBar } from "../../Components/NavBar/NavBar";
+// import { Footer } from "../../Components/Footer/Footer";
+// import { NavBar } from "../../Components/NavBar/NavBar";
+import { HomeBox } from "../../Components/HomeBox/HomeBox"
 import SearchBar from "../../Components/SearchBarHome/SearchBar";
 import styles from "./HomePage.module.css";
 import Modal from "@material-ui/core/Modal";
@@ -12,9 +13,9 @@ const array = ["test,trst"];
 function HomePage() {
   const [open, setClose] = useState(false);
 
-  const [input,setInput]=useState("")
+  const [input, setInput] = useState("")
 
-  const handleInput=(area)=>{
+  const handleInput = (area) => {
     setInput(area)
     setClose(false);
   }
@@ -29,7 +30,7 @@ function HomePage() {
   const body = (
     <>
       {suggtionDATA.bengaluru.map((area) => (
-        <div onClick={()=>handleInput(area)} className={styles.suggetion}>
+        <div onClick={() => handleInput(area)} className={styles.suggetion}>
           <div>
             <LocationOnIcon className={styles.suggetion_icon} />
           </div>
@@ -82,15 +83,17 @@ function HomePage() {
               type="text"
               placeholder="Type or Select your location here"
               value={input}
-              onChange={(e)=>setInput(e.target.value)}
+              onChange={(e) => setInput(e.target.value)}
             />
           </div>
 
           <div className={styles.suggetion_container}>
-              <h5>SUGGETIONS</h5>
-              {body}</div>
+            <h5>SUGGETIONS</h5>
+            {body}</div>
         </Paper>
       </Modal>
+
+      <HomeBox />
 
       {/* <Footer /> */}
     </>

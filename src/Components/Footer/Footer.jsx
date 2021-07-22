@@ -20,7 +20,7 @@ function Footer() {
             <div className={styles.top}>
                 <div className={styles.row1}>
                     <div className={`${styles.left1} ${classes.root}`}>
-                        <img style={{ height: "75px", marginLeft: "-20%" }} src="logowhite.svg" alt="logo" />
+                        <img style={{ height: "50px", marginLeft: "-40%" }} src="logowhite.svg" alt="logo" />
                         <div className={styles.flex}>
                             <img style={{ marginRight: "5%" }} src="Mail.svg" alt="logo" />
                             <p>support@drivezy.com</p>

@@ -7,21 +7,21 @@ import { HomePage } from '../Pages/HomePage/HomePage';
 import { RentalDetails } from '../Pages/RentalDetails/RentalDetails';
 
 const Router = () => {
-    return (
-        <div>
-            <NavBar/>
-            <Switch>
-            <Route exact path="/">
-               <HomePage/>
-            </Route>
-            <Route exact path="/search">
-              <RentalDetails/>
-            </Route>
+  return (
+    <div>
+      <NavBar />
+      <Switch>
+        <Route exact path="/">
+          <HomePage />
+        </Route>
+        <Route exact path="/search">
+          <RentalDetails />
+        </Route>
 
-                </Switch>
-          <Footer/>
-        </div>
-    );
+      </Switch>
+      <Footer />
+    </div>
+  );
 };
 
 export default Router;

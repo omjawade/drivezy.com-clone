@@ -5,34 +5,34 @@ import styled from "styled-components";
 import CloseIcon from '@material-ui/icons/Close';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useHistory } from 'react-router-dom';
-const SearchBar = ({input,handleInput,handleOpen}) => {
+const SearchBar = ({ input, handleInput, handleOpen }) => {
 
-    const [vehicle,setVehicle]=useState(true)
+  const [vehicle, setVehicle] = useState(true)
 
-    const history = useHistory()
+  const history = useHistory()
 
-    const redirect=()=>{
-      history.push(`/search?name=${input}`)
-    }
+  const redirect = () => {
+    history.push(`/search?name=${input}`)
+  }
 
-    return (
-        <div className={styles.container} >
-            <div className={styles.title}>
-              <PinDropIcon className={styles.title_icon} />
-              <h3 style={{color:"white",margin:"15px 0px"}}>Rent Vehicle</h3>
-            </div>
-            <div className={styles.searchbar} >
-                <div className={styles.vehicle_box}>
-                    <p>I want to rent a</p>
-                <div>
-                <div onClick={() => setVehicle(true)}>
+  return (
+    <div className={styles.container} >
+      <div className={styles.title}>
+        <PinDropIcon className={styles.title_icon} />
+        <h3 style={{ color: "white", margin: "15px 0px" }}>Rent Vehicle</h3>
+      </div>
+      <div className={styles.searchbar} >
+        <div className={styles.vehicle_box}>
+          <p>I want to rent a</p>
+          <div>
+            <div onClick={() => setVehicle(true)}>
               <img
                 style={{ filter: vehicle ? "" : "grayscale(100%)" }}
                 src="https://jtride-data.s3.ap-south-1.amazonaws.com/uploads/1555509635_group-3%403x.png"
                 alt=""
               />
             </div>
-          
+
             <div onClick={() => setVehicle(false)}>
               <img
                 style={{ filter: vehicle ? "grayscale(100%)" : "" }}
@@ -40,32 +40,32 @@ const SearchBar = ({input,handleInput,handleOpen}) => {
                 alt=""
               />
             </div>
-                </div>
-                </div>
-
-                <div  style={input==""?{width:"80%"}:{}} className={styles.input_box}>
-                    <p>I need my vehicle near</p>
-                    <input type="text" value={input} onClick={handleOpen} placeholder="Type or Select your location here" />
-                    <div style={input==""?{right:"30px"}:{}} className={styles.input_box_icons}>
-                   <div onClick={()=>handleInput("")}>
-                         <CloseIcon/>
-                        </div>
-                        <div  className={styles.divider}></div>
-                        <div onClick={handleOpen}>
-                            <ExpandMoreIcon/>
-                        </div>
-                   </div>
-                </div>
-                <div style={input==""?{display:"none"}:{}} className={styles.submit}>
-                  
-                    <input type="submit" value="Search" onClick={redirect} />
-              
-                        
-                  
-                </div>
-            </div>
+          </div>
         </div>
-    );
+
+        <div style={input === "" ? { width: "80%" } : {}} className={styles.input_box}>
+          <p>I need my vehicle near</p>
+          <input type="text" value={input} onClick={handleOpen} placeholder="Type or Select your location here" />
+          <div style={input === "" ? { right: "30px" } : {}} className={styles.input_box_icons}>
+            <div onClick={() => handleInput("")}>
+              <CloseIcon />
+            </div>
+            <div className={styles.divider}></div>
+            <div onClick={handleOpen}>
+              <ExpandMoreIcon />
+            </div>
+          </div>
+        </div>
+        <div style={input === "" ? { display: "none" } : {}} className={styles.submit}>
+
+          <input type="submit" value="Search" onClick={redirect} />
+
+
+
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default SearchBar;
