@@ -1,56 +1,39 @@
 import React from "react";
 import styled from "styled-components";
-import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import Switch from "@material-ui/core/Switch";
 import NativeSelect from "@material-ui/core/NativeSelect";
 
-const useStyles = makeStyles((theme) => ({
-  textField: {
-    outline: "none",
-    width: "90%",
-  },
-  button: {
-    height: "40%",
-    width: "45%",
-    color: "#00c4b0",
-    margin: "2% 0",
-  },
-  button2: {
-    height: "40%",
-    width: "43%",
-    color: "#00c4b0",
-    margin: "2% 0",
-  },
-  buttonAge: {
-    height: "40%",
-    width: "100%",
-    color: "#00c4b0",
-  },
-  select: {
-    minWidth: 200,
-    backgroundColor: "white",
-    color: "white",
-    borderRadius: 5,
-  },
-  selectEmpty: {},
-}));
 export const VehicleDetails = () => {
-  const classes = useStyles();
+  const [sortBy, setSortBy] = React.useState("");
+  const [checked, setChecked] = React.useState(false);
+  const handleChange = (event) => {
+    setSortBy(event.target.value);
+  };
 
+  const toggleChecked = () => {
+    setChecked((prev) => !prev);
+  };
   return (
     <>
       <CarDetails>
-        <Banner></Banner>
-        <LocationBar></LocationBar>
+        <Banner>
+          <img
+            src="https://jtride-data.s3.ap-south-1.amazonaws.com/uploads/1589900796_long-booking-banner-3.png"
+            alt=""
+          />
+        </Banner>
+        <LocationBar>
+          <p>Vehicles are available at the following location Koramangala Agara</p>
+        </LocationBar>
         <FilterBar>
           <FilterBoxes>
             <FilterBoxes2>240 kms</FilterBoxes2>
           </FilterBoxes>
           <DropDown>
             <div>Sort By</div>
-            <FormControl className={classes.select} variant="outlined">
-              <NativeSelect className={classes.select} variant="outlined">
+            <FormControl variant="outlined">
+              <NativeSelect variant="outlined" value={sortBy} onChange={handleChange}>
                 <option value={"distance"}>Distance</option>
                 <option value={"low"}>Price - Low to High</option>
                 <option value={"high"}>Price - High to Low</option>
@@ -59,9 +42,28 @@ export const VehicleDetails = () => {
           </DropDown>
           <MapBox>
             Map View
-            <Switch color="default" />
+            <Switch color="default" checked={checked} onChange={toggleChecked} />
           </MapBox>
         </FilterBar>
+        <CarsCont>
+          <CarCard>
+            <PriceCont>
+              <p>₹3864</p>
+            </PriceCont>
+            <ImgCont>
+              <img src="https://jtride-data.s3.ap-south-1.amazonaws.com/uploads/1558701126_vitara-breeza.png" alt="" />
+            </ImgCont>
+            <TextCont>
+              <h5>Brezza LDI</h5>
+              <p>Manual,5 Seats,Diesel</p>
+              <p>Koramangala Agara</p>
+              <p>Approx 16.4 km away</p>
+            </TextCont>
+            <BtnCont>
+              <p>QUICK VIEW</p>
+            </BtnCont>
+          </CarCard>
+        </CarsCont>
       </CarDetails>
     </>
   );
@@ -72,37 +74,12 @@ export const VehicleDetails = () => {
 const CarDetails = styled.div`
   width: 75%;
   height: 100%;
-  border: 1px solid black;
+
   padding-left: 1%;
-`;
-
-const BtnCont = styled.div`
-  width: 90%;
-  margin-top: 3%;
-  padding: 5%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const Filter = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0px 0px 10px #00000037;
-  align-items: left;
-  border-radius: 10px;
-  margin-top: 5%;
-  ${BtnCont} {
-    width: 90%;
-  }
-  h4 {
-    font-weight: 500;
-    padding: 0% 5%;
-    margin-top: 5%;
-    font-size: 18px;
+  p,
+  h5 {
+    margin: 0;
+    padding: 0;
   }
 `;
 
@@ -110,19 +87,31 @@ const Banner = styled.div`
   width: 100%;
   height: 15%;
   border-radius: 7px;
-  border: 1px solid black;
+
+  img {
+    width: 100%;
+    border-radius: 7px;
+  }
 `;
 const LocationBar = styled.div`
   width: 100%;
   height: 5%;
-  border: 1px solid black;
+
   margin: 0.5% 0;
   border-radius: 7px;
+  background-color: #dde2e8;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  p {
+    margin-left: 3%;
+  }
 `;
 const FilterBar = styled.div`
   width: 100%;
   height: 8%;
-  border: 1px solid black;
+
   margin: 1% 0;
   border-radius: 7px;
   display: flex;
@@ -132,7 +121,7 @@ const FilterBar = styled.div`
 const FilterBoxes = styled.div`
   width: 55%;
   height: 100%;
-  border: 1px solid black;
+
   display: flex;
   align-items: center;
 `;
@@ -156,10 +145,11 @@ const DropDown = styled.div`
     color: #646464;
   }
   div:nth-child(2) {
+    width: 80%;
     border: none;
-
     div {
       border: none;
+      width: 100%;
       padding: 0 20px;
     }
   }
@@ -189,4 +179,81 @@ const FilterBoxes2 = styled.div`
   font-size: 14px;
   color: gray;
   font-weight: 500;
+`;
+
+const CarsCont = styled.div`
+  width: 100%;
+  height: 67%;
+  margin: 1% 0;
+  border-radius: 7px;
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const CarCard = styled.div`
+  width: 32%;
+  height: 90%;
+  border-radius: 7px;
+  border: 1px solid gray;
+`;
+
+const ImgCont = styled.div`
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid gray;
+  img {
+    width: 60%;
+  }
+`;
+const TextCont = styled.div`
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: left;
+  justify-content: center;
+  flex-direction: column;
+  border-bottom: 1px solid gray;
+  h5,
+  p {
+    margin: 0.5% 0;
+    margin-left: 5%;
+  }
+  h5 {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  p {
+    font-size: 14px;
+    color: gray;
+  }
+`;
+const BtnCont = styled.div`
+  width: 100%;
+  height: 18%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    font-size: 15px;
+    margin-bottom: 8%;
+    font-weight: bold;
+    color: #41b6ac;
+  }
+`;
+
+const PriceCont = styled.div`
+  border: 1px solid gray;
+  width: 30%;
+  height: 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  background-color: white;
+  position: relative;
+  top: 54%;
+  right: -60%;
 `;

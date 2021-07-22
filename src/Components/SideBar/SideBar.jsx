@@ -1,40 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles((theme) => ({
-  textField: {
-    outline: "none",
-    width: "90%",
-  },
-  button: {
-    height: "40%",
-    width: "45%",
-    color: "#00c4b0",
-    margin: "2% 0",
-  },
-  button2: {
-    height: "40%",
-    width: "43%",
-    color: "#00c4b0",
-    margin: "2% 0",
-  },
-  buttonAge: {
-    height: "40%",
-    width: "100%",
-    color: "#00c4b0",
-  },
-  select: {
-    minWidth: 200,
-    backgroundColor: "white",
-    color: "white",
-    borderRadius: 5,
-  },
-  selectEmpty: {},
-}));
+let carType = [];
+let distanceArr = [];
+let transmissionArr = [];
+let fuelArr = [];
+let ageLimit = [];
 export const SideBar = () => {
-  const classes = useStyles();
+  const [val, setVal] = useState([]);
+  const handleClick = (e) => {
+    // console.log(e.target.textContent);
+    if (carType.includes(e.target.textContent)) {
+      const index = carType.indexOf(e.target.textContent);
+      if (index > -1) {
+        carType.splice(index, 1);
+      }
+    } else {
+      carType.push(e.target.textContent);
+    }
+    setVal([...val, e.target.textContent]);
+    // console.log(carType);
+  };
+  const handleDistanceClick = (e) => {
+    distanceArr.pop();
+    distanceArr.push(e.target.textContent);
+    setVal([...val, e.target.textContent]);
+  };
+  const handleTransmissionClick = (e) => {
+    transmissionArr.pop();
+    transmissionArr.push(e.target.textContent);
+    setVal([...val, e.target.textContent]);
+    // if (transmissionArr.length == 1) {
+    // } else {
+    // }
+  };
+  const handleFuelClick = (e) => {
+    fuelArr.pop();
+    fuelArr.push(e.target.textContent);
+    setVal([...val, e.target.textContent]);
+  };
+  const handleAgeClick = (e) => {
+    if (ageLimit.length > 0) {
+      ageLimit.pop();
+    } else {
+      ageLimit.push(e.target.textContent);
+      setVal([...val, e.target.textContent]);
+    }
+  };
+  // console.log(ageLimit);
+  // console.log(distanceArr);
+  // console.log(val);
+  // console.log(carType);
+  // console.log(transmissionArr);
   return (
     <>
       <SideBarCont>
@@ -47,13 +64,31 @@ export const SideBar = () => {
           <Package>
             <p>Current Package</p>
             <BtnCont>
-              <Button className={classes.button} variant="outlined">
+              <Button
+                style={{
+                  border: distanceArr.includes("240km") ? "2px solid #41b6ac" : "",
+                  color: distanceArr.includes("240km") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleDistanceClick(e)}
+              >
                 240km
               </Button>
-              <Button className={classes.button} variant="outlined">
+              <Button
+                style={{
+                  border: distanceArr.includes("480km") ? "2px solid #41b6ac" : "",
+                  color: distanceArr.includes("480km") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleDistanceClick(e)}
+              >
                 480km
               </Button>
-              <Button className={classes.button} variant="outlined">
+              <Button
+                style={{
+                  border: distanceArr.includes("700km") ? "2px solid #41b6ac" : "",
+                  color: distanceArr.includes("700km") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleDistanceClick(e)}
+              >
                 700km
               </Button>
             </BtnCont>
@@ -63,44 +98,98 @@ export const SideBar = () => {
           <h4>Filter</h4>
           <Package>
             <p>Car type</p>
-            <BtnCont>
-              <Button className={classes.button2} variant="outlined">
+            <BtnCont2>
+              <Button
+                style={{
+                  border: carType.includes("Hatchback") ? "2px solid #41b6ac" : "",
+                  color: carType.includes("Hatchback") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleClick(e)}
+              >
                 Hatchback
               </Button>
-              <Button className={classes.button2} variant="outlined">
+              <Button
+                style={{
+                  border: carType.includes("Sedan") ? "2px solid #41b6ac" : "",
+                  color: carType.includes("Sedan") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleClick(e)}
+              >
                 Sedan
               </Button>
-              <Button className={classes.button2} variant="outlined">
+              <Button
+                style={{
+                  border: carType.includes("SUV") ? "2px solid #41b6ac" : "",
+                  color: carType.includes("SUV") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleClick(e)}
+              >
                 SUV
               </Button>
-              <Button className={classes.button2} variant="outlined">
+              <Button
+                style={{
+                  border: carType.includes("Mini SUV") ? "2px solid #41b6ac" : "",
+                  color: carType.includes("Mini SUV") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleClick(e)}
+              >
                 Mini SUV
               </Button>
-            </BtnCont>
+            </BtnCont2>
             <p>Transmission type</p>
-            <BtnCont>
-              <Button className={classes.button2} variant="outlined">
+            <BtnCont2>
+              <Button
+                style={{
+                  border: transmissionArr.includes("Manual") ? "2px solid #41b6ac" : "",
+                  color: transmissionArr.includes("Manual") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleTransmissionClick(e)}
+              >
                 Manual
               </Button>
-              <Button className={classes.button2} variant="outlined">
+              <Button
+                style={{
+                  border: transmissionArr.includes("Automatic") ? "2px solid #41b6ac" : "",
+                  color: transmissionArr.includes("Automatic") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleTransmissionClick(e)}
+              >
                 Automatic
               </Button>
-            </BtnCont>
+            </BtnCont2>
             <p>Fuel type</p>
-            <BtnCont>
-              <Button className={classes.button2} variant="outlined">
+            <BtnCont2>
+              <Button
+                style={{
+                  border: fuelArr.includes("Diesel") ? "2px solid #41b6ac" : "",
+                  color: fuelArr.includes("Diesel") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleFuelClick(e)}
+              >
                 Diesel
               </Button>
-              <Button className={classes.button2} variant="outlined">
+              <Button
+                style={{
+                  border: fuelArr.includes("Petrol") ? "2px solid #41b6ac" : "",
+                  color: fuelArr.includes("Petrol") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleFuelClick(e)}
+              >
                 Petrol
               </Button>
-            </BtnCont>
+            </BtnCont2>
             <p>Age Limit</p>
-            <BtnCont>
-              <Button className={classes.buttonAge} variant="outlined">
+            <BtnCont2>
+              <Button
+                style={{
+                  border: ageLimit.includes("18-21 years") ? "2px solid #41b6ac" : "",
+                  color: ageLimit.includes("18-21 years") ? "#41b6ac" : "",
+                }}
+                onClick={(e) => handleAgeClick(e)}
+              >
                 18-21 years
               </Button>
-            </BtnCont>
+            </BtnCont2>
           </Package>
         </Filter>
       </SideBarCont>
@@ -114,6 +203,14 @@ const SideBarCont = styled.div`
   height: 100%;
   overflow: overlay;
   padding: 1%;
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  h4 {
+    margin: 0;
+    padding: 0;
+  }
 `;
 
 const BookingDetails = styled.div`
@@ -133,8 +230,8 @@ const BookingDetails = styled.div`
 const FuelCont = styled.div`
   width: 100%;
   height: 13%;
-  border-top: 1px solid #555555d5;
-  border-bottom: 1px solid #555555d5;
+  border-top: 1px solid #80808083;
+  border-bottom: 1px solid #80808083;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -155,11 +252,21 @@ const Package = styled.div`
   width: 89%;
   height: 50%;
   padding: 5%;
+  p {
+    font-size: 14px;
+    color: #474747;
+  }
+  p:nth-child(1) {
+    margin-bottom: 5%;
+  }
+  p:nth-child(3) {
+    margin-top: 5%;
+  }
 `;
 
 const BtnCont = styled.div`
   width: 90%;
-  margin-top: 3%;
+  height: 60%;
   padding: 5%;
   display: flex;
   flex-wrap: wrap;
@@ -185,4 +292,29 @@ const Filter = styled.div`
     margin-top: 5%;
     font-size: 18px;
   }
+`;
+
+const Button = styled.div`
+  width: 45%;
+  height: 45%;
+  color: #000000;
+  font-size: 12px;
+  margin-bottom: 3%;
+  border-radius: 7px;
+  border: 1px solid #80808083;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #414141;
+  font-size: 14px;
+  font-weight: 500;
+`;
+
+const BtnCont2 = styled.div`
+  height: 30%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0 5%;
+  justify-content: space-between;
 `;

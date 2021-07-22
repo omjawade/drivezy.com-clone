@@ -69,7 +69,7 @@ function NavBar() {
                         anchorEl={anchorEl}
                         onClose={handleClose1}
                         anchorReference="anchorPosition"
-                        anchorPosition={{ top: 75, left: 260 }}
+                        anchorPosition={{ top: 75, left: 200 }}
                         anchorOrigin={{
                             vertical: 'top',
                             horizontal: 'left',
