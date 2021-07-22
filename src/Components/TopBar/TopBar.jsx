@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import TextField from "@material-ui/core/TextField";
 import { useDispatch, useSelector } from "react-redux";
+import { addDateDetails } from "../../Redux/vehicleDetails/vehicleAction";
 import { getVehicleData } from "../../Redux/vehicleDetails/vehicleAction";
 export const TopBar = () => {
   const [time, setTime] = useState({
@@ -9,6 +10,7 @@ export const TopBar = () => {
     dropUpTime: "",
   });
   const [vehicleSelect, setVehicleSelect] = useState(true);
+  // const [val, setVal] = useState({});
 
   // const handleVehicle = () => {
   //   setVehicle(!vehicle);
@@ -20,10 +22,16 @@ export const TopBar = () => {
 
   const dispatch = useDispatch();
   const { data: vehicle, isLoading, isError } = useSelector((state) => state.vehicle.vehicle);
-  console.log(vehicle.data);
+  console.log(vehicle?.data);
+
+  const { dates: date } = useSelector((state) => state.vehicle.vehicle);
+  console.log(date);
+
   useEffect(() => {
     dispatch(getVehicleData(vehicleSelect ? "cars" : "bikes"));
-  }, [vehicleSelect]);
+    const successAction = addDateDetails(time);
+    dispatch(successAction);
+  }, [dispatch, time]);
 
   return (
     <>
