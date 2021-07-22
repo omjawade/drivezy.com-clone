@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { TopBar } from "../../Components/TopBar/TopBar";
 import { SideBar } from "../../Components/SideBar/SideBar";
 import { VehicleDetails } from "../../Components/VehicleDetails/VehicleDetails";
+import { useDispatch, useSelector } from "react-redux";
+import { getVehicleData } from "../../Redux/vehicleDetails/vehicleAction";
 export const RentalDetails = () => {
+  // const dispatch = useDispatch();
+  // const { data: vehicle, isLoading, isError } = useSelector((state) => state.vehicle.vehicle);
+  // console.log(vehicle.data);
+  // useEffect(() => {
+  //   dispatch(getVehicleData());
+  // }, [dispatch]);
   return (
     <>
       <Main>

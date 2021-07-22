@@ -49,7 +49,7 @@ export const SideBar = () => {
   };
   // console.log(ageLimit);
   // console.log(distanceArr);
-  console.log(val);
+  // console.log(val);
   // console.log(carType);
   // console.log(transmissionArr);
   return (
