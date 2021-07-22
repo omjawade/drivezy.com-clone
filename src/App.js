@@ -1,11 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
-import { RentalDetails } from "./Pages/RentalDetails/RentalDetails";
+import { HomePage } from "./Pages/HomePage/HomePage";
+// import { RentalDetails } from "./Pages/RentalDetails/RentalDetails";
 
 function App() {
   return (
     <>
-      <RentalDetails />
+      <HomePage />
+      {/* <RentalDetails /> */}
     </>
   );
 }

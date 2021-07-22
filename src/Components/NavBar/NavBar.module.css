@@ -1,0 +1,22 @@
+.Box {
+    width: 90%;
+    padding: 1% 5%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+.left {
+    display: flex;
+    flex-direction: row;
+    gap: 15%;
+}
+.right {
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    gap: 7.5%;
+}
+.flex {
+    display: flex;
+    cursor: pointer;
+}
