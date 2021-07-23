@@ -12,6 +12,7 @@ export const RentalDetails = () => {
   // console.log(date);
   const { data: filter } = useSelector((state) => state.vehicle.filters);
   console.log(filter);
+
   return (
     <>
       <Main>

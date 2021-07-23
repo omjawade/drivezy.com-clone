@@ -7,6 +7,7 @@ import {
   GET_VEHICLE_DETAILS_SUCCESS,
   ADD_FILTER_DETAILS,
   ADD_DATE_DETAILS,
+  ADD_VEHICLE_TYPE,
 } from "./vehicleActionTypes";
 
 import axios from "axios";
@@ -37,6 +38,12 @@ export const addFilterDetails = (payload) => {
     payload,
   };
 };
+export const addVehicleType = (payload) => {
+  return {
+    type: ADD_VEHICLE_TYPE,
+    payload,
+  };
+};
 export const addDateDetails = (payload) => {
   return {
     type: ADD_DATE_DETAILS,
@@ -45,17 +52,17 @@ export const addDateDetails = (payload) => {
 };
 export const getVehicleData =
   (query = "cars") =>
-    (dispatch) => {
-      const requestAction = getVehicleDetailsRequest();
-      dispatch(requestAction);
-      return axios
-        .get(`http://localhost:8080/${query}`)
-        .then((response) => {
-          const successAction = getVehicleDetailsSuccess(response.data);
-          dispatch(successAction);
-        })
-        .catch((error) => {
-          const errorAction = getVehicleDetailsFailure(error);
-          dispatch(errorAction);
-        });
-    };
+  (dispatch) => {
+    const requestAction = getVehicleDetailsRequest();
+    dispatch(requestAction);
+    return axios
+      .get(`http://localhost:8080/${query}`)
+      .then((response) => {
+        const successAction = getVehicleDetailsSuccess(response.data);
+        dispatch(successAction);
+      })
+      .catch((error) => {
+        const errorAction = getVehicleDetailsFailure(error);
+        dispatch(errorAction);
+      });
+  };

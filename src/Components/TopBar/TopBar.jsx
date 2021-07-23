@@ -18,7 +18,7 @@ export const TopBar = () => {
   };
 
   useEffect(() => {
-    dispatch(getVehicleData());
+    dispatch(getVehicleData(vehicleSelect ? "cars" : "bikes"));
   }, [vehicleSelect]);
 
   const handleSearch = () => {
@@ -64,13 +64,24 @@ export const TopBar = () => {
               name="pickUpTime"
               defaultValue="2021-07-23T12:30"
               onChange={handleChange}
+              InputProps={{
+                disableUnderline: true,
+              }}
             />
           </DateBox>
         </DateSection>
         <DateSection>
           <p>Select your pickup drop & time</p>
           <DateBox>
-            <TextField type="datetime-local" name="dropUpTime" value={time.dropUpTime} onChange={handleChange} />
+            <TextField
+              InputProps={{
+                disableUnderline: true,
+              }}
+              type="datetime-local"
+              name="dropUpTime"
+              value={time.dropUpTime}
+              onChange={handleChange}
+            />
           </DateBox>
         </DateSection>
         <SearchBtn onClick={() => handleSearch()}>SEARCH</SearchBtn>

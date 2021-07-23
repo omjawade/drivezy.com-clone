@@ -17,6 +17,7 @@ const Router = () => {
         <Route exact path="/search">
           <RentalDetails />
         </Route>
+        <Route path="/vehicleDetails/:id"></Route>
       </Switch>
       <Footer />
     </div>
