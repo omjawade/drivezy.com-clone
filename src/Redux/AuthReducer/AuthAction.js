@@ -1,14 +1,21 @@
 import { AUTH_FAILURE, AUTH_REQUEST, AUTH_SUCCESS,LOGIN_REQUEST } from "./AuthActionTypes"
 import axios from "axios";
 export const authRequest = () => {
-    console.log("action");
+  
     return {
         type: AUTH_REQUEST
     }
 }
 
+export const authSuccess = (payload) => {
+   
+    return {
+        type: AUTH_SUCCESS,
+        payload
+    }
+}
 export const authFailureAction = () => {
-    console.log("failureaction");
+   
     return {
         type: AUTH_FAILURE
     }
@@ -28,6 +35,16 @@ export const authLoginPhone=(payload)=>(dispatch)=>{
       dispatch(loginRequest(mobile))
        console.log(mobile,res.data);
     })
+
+}
+export const authVerifyPhone=(payload)=>(dispatch)=>{
+    console.log(payload);
+  return axios.post("http://localhost:8080/auth/verify",payload)
+  .then((res)=>{
+       const data= res.data.data
+       dispatch(authSuccess(data))
+       console.log(data);
+  })
 
 }
 

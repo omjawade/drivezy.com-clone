@@ -16,7 +16,10 @@ const handleinput=(e)=>{
 }
 
 const handleVerify=(e)=>{
+    handleCloseLogin()
 dispatch(authLoginPhone({mobile:input}))
+
+
 }
     return (
 

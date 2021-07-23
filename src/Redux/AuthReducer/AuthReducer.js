@@ -4,13 +4,14 @@ import { AUTH_FAILURE, AUTH_REQUEST, AUTH_SUCCESS, LOGIN_REQUEST } from "./AuthA
 const initState = {
   authLoading: false,
   authFailure: false,
-  user: null,
-  token: null,
-  loginRes:null
+  user: localStorage.getItem("user") || null,
+  token: localStorage.getItem("token") || null,
+  loginRes:null,
+  verified:false
 };
-console.log("reducer");
+
 export const authReducer = (state = initState, action) => {
-  console.log("reducer", action)
+
   switch (action.type) {
 
     case AUTH_REQUEST: {
@@ -21,10 +22,14 @@ export const authReducer = (state = initState, action) => {
       }
     }
     case AUTH_SUCCESS: {
+      localStorage.setItem("drivezyuserKey",JSON.stringify(action.payload.user))
+      localStorage.setItem("drivezytoken",JSON.stringify(action.payload.token))
       return {
         ...state,
         authLoading: false,
-        user: action.payload
+        user: action.payload.user,
+        token:action.payload.token,
+        verified:true
       };
     }
     case AUTH_FAILURE: {
