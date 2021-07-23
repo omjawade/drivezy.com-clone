@@ -1,0 +1,45 @@
+.container1 {
+    padding-top: 1%;
+}
+
+.container2 {
+    padding: 5% 10%;
+    width: 110%;
+    display:flex;
+    flex-direction: row;
+}
+
+.left2 {
+    width: 65%;
+}
+
+.right2 {
+    width: 35%;
+}
+
+.left2 p {
+    font-size: 12px;
+}
+.left2 p ul {
+    margin-top: 0%;
+    margin-left: -1%;
+}
+
+.left2 div {
+    display:flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-between;
+}
+
+.left2 div p:nth-child(2) {
+    font-size: 75%;
+    font-weight: bold;
+}
+
+.right2 img {
+    width: 50px;
+    margin-left: 37.5%;
+    margin-top: 20%;
+    margin-bottom: 15%;
+}
