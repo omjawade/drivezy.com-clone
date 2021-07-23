@@ -17,14 +17,14 @@ export const VehicleDetails = () => {
     setChecked((prev) => !prev);
   };
   const { data: vehicle, isLoading, isError } = useSelector((state) => state.vehicle.vehicle);
-  console.log(vehicle?.data);
+  // console.log(vehicle?.data);
   const carDetails = vehicle?.data;
   let params = new URLSearchParams(document.location.search.substring(1));
   let searchName = params.get("name");
   const { data: filter } = useSelector((state) => state.vehicle.filters);
   let filterData = filter;
-  console.log(filterData);
-  const { data: type } = useSelector((state) => state.vehicle.vehicleType);
+  // console.log(filterData);
+  const { data: type = "Hatchback" } = useSelector((state) => state.vehicle.vehicleType);
   // console.log(type);
   // const filteringFunction=()=>{
   //   let newArr = []
@@ -33,7 +33,7 @@ export const VehicleDetails = () => {
   //   }
   // }
   // useEffect(() => {}, [type]);
-  console.log(type);
+  // console.log(type);
 
   return (
     <>
@@ -73,11 +73,16 @@ export const VehicleDetails = () => {
         <CarsCont>
           {carDetails
             ?.filter((el) => el.Location.Area == searchName)
+            // .filter((el) => {
+            //   if (type?.length > 0) {
+            //     return el.Car_type == type;
+            //   }
+            //   return el;
+            // })
             .filter((el) => {
-              if (type?.length > 0) {
-                return el.Car_type == type;
+              if (filterData.includes(el.Car_type && el.Fuel_type && el.Transmission_type)) {
+                return el;
               }
-              return el;
             })
             .map((item) => (
               <CarCard key={item.id}>
