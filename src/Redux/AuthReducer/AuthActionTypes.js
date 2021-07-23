@@ -1,3 +1,7 @@
 export const AUTH_REQUEST = "AUTH_REQUEST"
 export const AUTH_SUCCESS = "AUTH_SUCCESS"
 export const AUTH_FAILURE = "AUTH_FAILURE"
+
+
+export const LOGIN_REQUEST="LOGIN_REQUEST"
+export const SAVE_NAME="SAVE_NAME"

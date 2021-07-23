@@ -1,14 +1,18 @@
-import { AUTH_FAILURE, AUTH_REQUEST, AUTH_SUCCESS } from "./AuthActionTypes";
+import { AUTH_FAILURE, AUTH_REQUEST, AUTH_SUCCESS, LOGIN_REQUEST, SAVE_NAME } from "./AuthActionTypes"
+
 
 const initState = {
   authLoading: false,
   authFailure: false,
-  user: null,
-  token: null,
+  user: localStorage.getItem("user") || null,
+  token: localStorage.getItem("token") || null,
+  loginRes:null,
+  verified:false,
+  name:null
 };
-// console.log("reducer");
+
 export const authReducer = (state = initState, action) => {
-  // console.log("reducer", action)
+
   switch (action.type) {
     case AUTH_REQUEST: {
       // console.log("reducer auth", action)
@@ -18,10 +22,14 @@ export const authReducer = (state = initState, action) => {
       };
     }
     case AUTH_SUCCESS: {
+      localStorage.setItem("drivezyuserKey",JSON.stringify(action.payload.user))
+      localStorage.setItem("drivezytoken",JSON.stringify(action.payload.token))
       return {
         ...state,
         authLoading: false,
-        user: action.payload,
+        user: action.payload.user,
+        token:action.payload.token,
+        verified:true
       };
     }
     case AUTH_FAILURE: {
@@ -29,6 +37,19 @@ export const authReducer = (state = initState, action) => {
         ...state,
         authLoading: false,
         authFailure: true,
+      };
+    }
+    case SAVE_NAME: {
+      return {
+        ...state,
+       name:action.payload
+      };
+    }
+    case LOGIN_REQUEST: {
+      return {
+        ...state,
+        authLoading: false,
+        loginRes:action.payload
       };
     }
 
