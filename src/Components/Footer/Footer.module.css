@@ -40,9 +40,10 @@
     margin: 0 5%;
 }
 
-.right1 div p {
+.Box1 p, .Box2 p, .Box3 p {
     color: white;
-    font-size:large;
+    font-size: small;
+    font-weight: bold;
 }
 
 .Box1 ul{
@@ -62,7 +63,8 @@
 
 .right1 div ul li{
     color: #616d7a;
-    margin: 7.5% 0;
+    margin: 5% 0;
+    font-size: 90%;
 }
 
 .right1 div ul li:hover{
@@ -80,6 +82,7 @@
 
 .left2 {
     color: #616d7a;
+    font-size: 80%;
 }
 
 .flex {
@@ -88,6 +91,7 @@
 
 .flex p{
     color: #616d7a;
+    font-size: 80%;
 }
 
 .flex p:hover{
@@ -101,14 +105,20 @@
 }
 .bottom h1 {
     color: #384553;
+    font-weight: 450;
+    font-size: 140%;
+    margin-bottom: 5%;
 }
 
 .bottom h3 {
     color: #384553;
+    font-weight: 500;
+    font-size: 100%;
 }
 
 .bottom p {
     color: #78828d;
+    font-size: 87.5%;
 }
 
 .area {
@@ -120,6 +130,7 @@
 
 .area div {
     color: #78828d;
+    font-size: 82.5%;
 }
 
 .area div:hover{

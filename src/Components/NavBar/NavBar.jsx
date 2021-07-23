@@ -10,6 +10,7 @@ import { authFailureAction, authRequest } from "../../Redux/AuthReducer/AuthActi
 import LoginModel from "../Login_Popup/LoginModel";
 
 function NavBar() {
+
   const authLoading = useSelector((state) => state.auth.authLoading);
 
   const dispatch = useDispatch();
@@ -183,6 +184,7 @@ function NavBar() {
         </div>
         <div onClick={handleModel} className={styles.flex}>
           <AccountCircleOutlinedIcon style={{ fontSize: 50 }} />
+
         </div>
       </div>
     </div>
