@@ -4,6 +4,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Switch from "@material-ui/core/Switch";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import { useSelector } from "react-redux";
+import { useParams, useHistory } from "react-router-dom";
 
 export const VehicleDetails = () => {
   const [sortBy, setSortBy] = React.useState("");
@@ -16,9 +17,13 @@ export const VehicleDetails = () => {
     setChecked((prev) => !prev);
   };
   const { data: vehicle, isLoading, isError } = useSelector((state) => state.vehicle.vehicle);
-  console.log(vehicle?.data);
+  // console.log(vehicle?.data);
   const carDetails = vehicle?.data;
-  // console.log(carDetails[0].Sub_area[0].distance);
+  let params = new URLSearchParams(document.location.search.substring(1));
+  let searchName = params.get("name");
+  const { data: filter } = useSelector((state) => state.vehicle.filters);
+  let filterData = filter;
+
   return (
     <>
       <CarDetails>
@@ -29,11 +34,15 @@ export const VehicleDetails = () => {
           />
         </Banner>
         <LocationBar>
-          <p>Vehicles are available at the following location Koramangala Agara</p>
+          <p>Vehicles are available at the following location {searchName}.</p>
         </LocationBar>
         <FilterBar>
           <FilterBoxes>
-            <FilterBoxes2>240 kms</FilterBoxes2>
+            {filterData.map((item, i) => (
+              <FilterBoxes2 key={i}>
+                <p> {item}</p>
+              </FilterBoxes2>
+            ))}
           </FilterBoxes>
           <DropDown>
             <div>Sort By</div>
@@ -51,31 +60,33 @@ export const VehicleDetails = () => {
           </MapBox>
         </FilterBar>
         <CarsCont>
-          {carDetails?.map((item) => (
-            <CarCard key={item.id}>
-              <PriceCont>
-                <p>{item.Price}</p>
-              </PriceCont>
-              <ImgCont>
-                <img src={item.Image} alt="vehicleImage" />
-              </ImgCont>
-              <TextCont>
-                <h5>{item.Title}</h5>
-                <p>
-                  {item.Transmission_type},{item.Seats},{item.Fuel_type}
-                </p>
-                <p>{item.Location.Area}</p>
-                {/* <p>{item.Sub_area[0].distance}</p> */}
+          {carDetails
+            ?.filter((el) => el.Location.Area == searchName)
+            .map((item) => (
+              <CarCard key={item.id}>
+                <PriceCont>
+                  <p>{item.Price}</p>
+                </PriceCont>
+                <ImgCont>
+                  <img src={item.Image} alt="vehicleImage" />
+                </ImgCont>
+                <TextCont>
+                  <h5>{item.Title}</h5>
+                  <p>
+                    {item.Transmission_type},{item.Seats},{item.Fuel_type}
+                  </p>
+                  <p>{item.Location.Area}</p>
+                  {/* <p>{item.Sub_area[0].distance}</p> */}
 
-                {/* {item.Sub_area?.map((el) => (
+                  {/* {item.Sub_area?.map((el) => (
                   <p>{el.distance}</p>
                 ))} */}
-              </TextCont>
-              <BtnCont>
-                <p>QUICK VIEW</p>
-              </BtnCont>
-            </CarCard>
-          ))}
+                </TextCont>
+                <BtnCont>
+                  <p>QUICK VIEW</p>
+                </BtnCont>
+              </CarCard>
+            ))}
         </CarsCont>
       </CarDetails>
     </>
@@ -182,16 +193,19 @@ const MapBox = styled.div`
 `;
 
 const FilterBoxes2 = styled.div`
-  width: 12%;
   height: 75%;
   border-radius: 7px;
   border: 1px solid gray;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
-  color: gray;
-  font-weight: 500;
+  margin: 0 5px;
+  p {
+    font-size: 14px;
+    color: gray;
+    font-weight: 500;
+    padding: 0 5px;
+  }
 `;
 
 const CarsCont = styled.div`

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addFilterDetails } from "../../Redux/vehicleDetails/vehicleAction";
 
 let carType = [];
-let distanceArr = [];
+let distanceArr = ["240km"];
 let transmissionArr = [];
 let fuelArr = [];
 let ageLimit = [];
@@ -57,9 +57,9 @@ export const SideBar = () => {
   };
 
   const dispatch = useDispatch();
-
+  let filterArray = [...carType, ...transmissionArr, ...fuelArr, ...distanceArr, ...ageLimit];
   useEffect(() => {
-    const successAction = addFilterDetails(val);
+    const successAction = addFilterDetails(filterArray);
     dispatch(successAction);
   }, [val]);
   return (

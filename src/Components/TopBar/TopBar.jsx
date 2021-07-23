@@ -24,6 +24,8 @@ export const TopBar = () => {
   const handleSearch = () => {
     dispatch(addDateDetails(time));
   };
+  let params = new URLSearchParams(document.location.search.substring(1));
+  let name = params.get("name");
 
   return (
     <>
@@ -50,12 +52,19 @@ export const TopBar = () => {
         </VehicleSection>
         <LocationSection>
           <p>I need my vehicle near</p>
-          <SearchBox></SearchBox>
+          <SearchBox>
+            <p>{name}</p>
+          </SearchBox>
         </LocationSection>
         <DateSection>
           <p>Select your pickup date & time</p>
           <DateBox>
-            <TextField type="datetime-local" name="pickUpTime" value={time.pickUpTime} onChange={handleChange} />
+            <TextField
+              type="datetime-local"
+              name="pickUpTime"
+              defaultValue="2021-07-23T12:30"
+              onChange={handleChange}
+            />
           </DateBox>
         </DateSection>
         <DateSection>
@@ -168,6 +177,12 @@ const SearchBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  p {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+  }
 `;
 
 const DateBox = styled.div`
