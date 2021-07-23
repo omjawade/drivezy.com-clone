@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { addFilterDetails } from "../../Redux/vehicleDetails/vehicleAction";
+import { addFilterDetails, addVehicleType } from "../../Redux/vehicleDetails/vehicleAction";
 
 let carType = [];
 let distanceArr = ["240km"];
@@ -58,9 +58,11 @@ export const SideBar = () => {
 
   const dispatch = useDispatch();
   let filterArray = [...carType, ...transmissionArr, ...fuelArr, ...distanceArr, ...ageLimit];
+
   useEffect(() => {
     const successAction = addFilterDetails(filterArray);
     dispatch(successAction);
+    dispatch(addVehicleType(carType[carType.length - 1]));
   }, [val]);
   return (
     <>
