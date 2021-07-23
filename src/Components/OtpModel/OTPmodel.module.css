@@ -25,22 +25,11 @@ input::-webkit-inner-spin-button {
 }
 
 .login_model label{
-    margin: 10px 30px;
-    font-size: 12px;
+    margin: 20px 140px;
+    text-align: center;
+    font-size: 15px;
 }
 .login_model input[type=number] {
-    -moz-appearance: textfield;
-    width: 80%;
-    margin: auto;
-    height: 40px;
-    margin-left: 30px;
-    margin-bottom: 0px;
-    border-radius: 5px;
-    outline: none;
-    border: 1px solid gray;
-    padding: 0px 10px;
-  }
-  .login_model input[type=text] {
     -moz-appearance: textfield;
     width: 80%;
     margin: auto;
@@ -93,4 +82,8 @@ input::-webkit-inner-spin-button {
   .login_model img{
       width: 200px;
       margin: 10px 95px;
+  }
+  .pin{
+      width: 50%;
+      margin: auto;
   }

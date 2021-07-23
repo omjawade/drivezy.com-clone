@@ -1,29 +1,31 @@
 .Box {
-    width: 90%;
-    padding: 15px 5%;
-    margin: auto;
-    display: flex;
-    gap: 25%;
-    justify-content: space-between;
+  /* border: 1px solid red; */
+  width: 90%;
+  padding: 15px 5%;
+  margin: auto;
+  display: flex;
+  gap: 25%;
+  justify-content: space-between;
+
 }
 
 .typography {
-    padding: 5%;
+  padding: 5%;
 }
 
 .left {
-    width: 30%;
-    display: flex;
-    gap: 10%;
+  width: 30%;
+  display: flex;
+  gap: 10%;
 }
 
 .right {
-    width: 45%;
-    display: flex;
-    gap: 6%;
+  width: 45%;
+  display: flex;
+  gap: 9.5%;
 }
 
 .flex {
-    display: flex;
-    cursor: pointer;
+  display: flex;
+  cursor: pointer;
 }
