@@ -6,9 +6,11 @@ import styles from "./LoginModel.module.css";
 import CloseIcon from '@material-ui/icons/Close';
 import { Button } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
-import { authLoginPhone } from '../../Redux/AuthReducer/AuthAction';
+import { authgooglelogin, authLoginPhone, savename } from '../../Redux/AuthReducer/AuthAction';
+import { useHistory } from 'react-router-dom';
 const LoginModel = ({ openLogin, handleCloseLogin }) => {
 const [input,setInput]=useState("")
+const [name,setName]=useState("")
 const dispatch= useDispatch()
 const handleinput=(e)=>{
 
@@ -17,10 +19,16 @@ const handleinput=(e)=>{
 
 const handleVerify=(e)=>{
     handleCloseLogin()
+    dispatch(savename({name:name}))
 dispatch(authLoginPhone({mobile:input}))
-
-
 }
+
+const history=useHistory()
+
+const handlegoogleauth=()=>{
+ history.push("http://localhost:8080/auth/google")
+}
+
     return (
 
         <Modal
@@ -37,6 +45,15 @@ dispatch(authLoginPhone({mobile:input}))
                     <CloseIcon onClick={handleCloseLogin} className={styles.close_icon} />
                 </div>
                 <p>Welcome to Drivezy!</p>
+                <label htmlFor="">Full Name</label>
+                <input 
+                type="text"
+                onChange={(e)=>setName(e.target.value)}
+                
+                 value={name}
+                 placeholder="Joe West" 
+                  />
+                   {name.length<5 && name.length!==0&& <h6>Enter Full Name</h6>}
                   <label htmlFor="">Phone</label>
                 <input 
                 type="number"
@@ -45,15 +62,15 @@ dispatch(authLoginPhone({mobile:input}))
                  value={input}
                  placeholder="Enter your phone number" 
                   />
-               {input.length!==10&& <h6>Invalid Phone Number</h6>}
+               {input.length<10&& input.length!==0 &&<h6>Invalid Phone Number</h6>}
               
-                <Button onClick={handleVerify} disabled={input.length!==10} >Process</Button >
+                <Button onClick={handleVerify} disabled={input.length!==10 ||  name.length<5} >Process</Button >
                 <div className={styles.or_divider}>
                     <div></div>
                     <p>or</p>
                     <div></div>
                 </div>
-                <img src="googlesigin.png" alt="googlesigin" />
+                <img onClick={handlegoogleauth} src="googlesigin.png" alt="googlesigin" />
             </Paper>
 
         </Modal>

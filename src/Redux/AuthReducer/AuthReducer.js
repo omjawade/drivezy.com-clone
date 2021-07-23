@@ -1,4 +1,4 @@
-import { AUTH_FAILURE, AUTH_REQUEST, AUTH_SUCCESS, LOGIN_REQUEST } from "./AuthActionTypes"
+import { AUTH_FAILURE, AUTH_REQUEST, AUTH_SUCCESS, LOGIN_REQUEST, SAVE_NAME } from "./AuthActionTypes"
 
 
 const initState = {
@@ -7,7 +7,8 @@ const initState = {
   user: localStorage.getItem("user") || null,
   token: localStorage.getItem("token") || null,
   loginRes:null,
-  verified:false
+  verified:false,
+  name:null
 };
 
 export const authReducer = (state = initState, action) => {
@@ -37,6 +38,12 @@ export const authReducer = (state = initState, action) => {
         ...state,
         authLoading: false,
         authFailure: true
+      };
+    }
+    case SAVE_NAME: {
+      return {
+        ...state,
+       name:action.payload
       };
     }
     case LOGIN_REQUEST: {

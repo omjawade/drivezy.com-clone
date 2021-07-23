@@ -40,6 +40,18 @@ input::-webkit-inner-spin-button {
     border: 1px solid gray;
     padding: 0px 10px;
   }
+  .login_model input[type=text] {
+    -moz-appearance: textfield;
+    width: 80%;
+    margin: auto;
+    height: 40px;
+    margin-left: 30px;
+    margin-bottom: 0px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid gray;
+    padding: 0px 10px;
+  }
   .login_model button{
     
     width: 86%;

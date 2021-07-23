@@ -14,6 +14,8 @@ const [count,setCount]=useState(60)
 
 const loginRes= useSelector((state)=>state.auth.loginRes)
 const user=useSelector((state)=>state.auth.user)
+
+const name=useSelector((state)=>state.auth.name)
 let time;
 const dispatch= useDispatch()
 const handleinput=(value)=>{
@@ -22,7 +24,7 @@ const handleinput=(value)=>{
 }
 
 const handleVerify=(e)=>{
-dispatch(authVerifyPhone({mobile:loginRes,OTPcode:input}))
+dispatch(authVerifyPhone({mobile:loginRes,OTPcode:input,name:name.name}))
 }
 
 

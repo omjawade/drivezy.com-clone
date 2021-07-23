@@ -1,4 +1,4 @@
-import { AUTH_FAILURE, AUTH_REQUEST, AUTH_SUCCESS,LOGIN_REQUEST } from "./AuthActionTypes"
+import { AUTH_FAILURE, AUTH_REQUEST, AUTH_SUCCESS,LOGIN_REQUEST, SAVE_NAME } from "./AuthActionTypes"
 import axios from "axios";
 export const authRequest = () => {
   
@@ -27,6 +27,12 @@ export const loginRequest=(payload)=>{
         payload
     }
 }
+export const savename=(payload)=>{
+    return {
+        type:SAVE_NAME,
+        payload
+    }
+}
 export const authLoginPhone=(payload)=>(dispatch)=>{
       console.log(payload);
     return axios.post("http://localhost:8080/auth/login",payload)
@@ -43,6 +49,16 @@ export const authVerifyPhone=(payload)=>(dispatch)=>{
   .then((res)=>{
        const data= res.data.data
        dispatch(authSuccess(data))
+       console.log(data);
+  })
+
+}
+export const authgooglelogin=(payload)=>(dispatch)=>{
+    console.log(payload);
+  return axios.get("http://localhost:8080/auth/google")
+  .then((res)=>{
+       const data= res.data
+      // dispatch(authSuccess(data))
        console.log(data);
   })
 
