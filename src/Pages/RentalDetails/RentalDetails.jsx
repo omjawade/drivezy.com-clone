@@ -6,12 +6,13 @@ import { VehicleDetails } from "../../Components/VehicleDetails/VehicleDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { getVehicleData } from "../../Redux/vehicleDetails/vehicleAction";
 export const RentalDetails = () => {
-  // const { data: vehicle, isLoading, isError } = useSelector((state) => state.vehicle.vehicle);
-  // console.log(vehicle?.data);
+  const { data: vehicle, isLoading, isError } = useSelector((state) => state.vehicle.vehicle);
+  console.log(vehicle?.data);
   // const { data: date } = useSelector((state) => state.vehicle.dates);
   // console.log(date);
-  // const { data: filter } = useSelector((state) => state.vehicle.filters);
-  // console.log(filter);
+  const { data: filter } = useSelector((state) => state.vehicle.filters);
+  console.log(filter);
+
   return (
     <>
       <Main>

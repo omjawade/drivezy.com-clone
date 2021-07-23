@@ -1,10 +1,10 @@
 import React from "react";
-import styles from "./NavBar.module.css"
-import MenuItem from '@material-ui/core/MenuItem';
-import Popover from '@material-ui/core/Popover';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import ShoppingCartRoundedIcon from '@material-ui/icons/ShoppingCartRounded';
-import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
+import styles from "./NavBar.module.css";
+import MenuItem from "@material-ui/core/MenuItem";
+import Popover from "@material-ui/core/Popover";
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
+import ShoppingCartRoundedIcon from "@material-ui/icons/ShoppingCartRounded";
+import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import { useDispatch, useSelector } from "react-redux";
 import { authFailureAction, authRequest } from "../../Redux/AuthReducer/AuthAction";
 import LoginModel from "../Login_Popup/LoginModel";
@@ -199,7 +199,8 @@ function NavBar() {
 
 
         </div>
-    )
+   
+  );
 }
 
-export { NavBar }
+export { NavBar };

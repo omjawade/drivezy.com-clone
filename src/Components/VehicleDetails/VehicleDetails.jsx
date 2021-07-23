@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import FormControl from "@material-ui/core/FormControl";
 import Switch from "@material-ui/core/Switch";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export const VehicleDetails = () => {
   const [sortBy, setSortBy] = React.useState("");
@@ -18,7 +19,22 @@ export const VehicleDetails = () => {
   const { data: vehicle, isLoading, isError } = useSelector((state) => state.vehicle.vehicle);
   console.log(vehicle?.data);
   const carDetails = vehicle?.data;
-  // console.log(carDetails[0].Sub_area[0].distance);
+  let params = new URLSearchParams(document.location.search.substring(1));
+  let searchName = params.get("name");
+  const { data: filter } = useSelector((state) => state.vehicle.filters);
+  let filterData = filter;
+  console.log(filterData);
+  const { data: type } = useSelector((state) => state.vehicle.vehicleType);
+  // console.log(type);
+  // const filteringFunction=()=>{
+  //   let newArr = []
+  //   for(i=0;i<filterData.length;i++){
+  //     carDetails.map((item)=>(item.))
+  //   }
+  // }
+  // useEffect(() => {}, [type]);
+  console.log(type);
+
   return (
     <>
       <CarDetails>
@@ -29,16 +45,20 @@ export const VehicleDetails = () => {
           />
         </Banner>
         <LocationBar>
-          <p>Vehicles are available at the following location Koramangala Agara</p>
+          <p>Vehicles are available at the following location {searchName}.</p>
         </LocationBar>
         <FilterBar>
           <FilterBoxes>
-            <FilterBoxes2>240 kms</FilterBoxes2>
+            {filterData.map((item, i) => (
+              <FilterBoxes2 key={i + 1}>
+                <p> {item}</p>
+              </FilterBoxes2>
+            ))}
           </FilterBoxes>
           <DropDown>
             <div>Sort By</div>
             <FormControl variant="outlined">
-              <NativeSelect variant="outlined" value={sortBy} onChange={handleChange}>
+              <NativeSelect variant="outlined" value={sortBy} onChange={handleChange} disableUnderline>
                 <option value={"distance"}>Distance</option>
                 <option value={"low"}>Price - Low to High</option>
                 <option value={"high"}>Price - High to Low</option>
@@ -51,31 +71,41 @@ export const VehicleDetails = () => {
           </MapBox>
         </FilterBar>
         <CarsCont>
-          {carDetails?.map((item) => (
-            <CarCard key={item.id}>
-              <PriceCont>
-                <p>{item.Price}</p>
-              </PriceCont>
-              <ImgCont>
-                <img src={item.Image} alt="vehicleImage" />
-              </ImgCont>
-              <TextCont>
-                <h5>{item.Title}</h5>
-                <p>
-                  {item.Transmission_type},{item.Seats},{item.Fuel_type}
-                </p>
-                <p>{item.Location.Area}</p>
-                {/* <p>{item.Sub_area[0].distance}</p> */}
+          {carDetails
+            ?.filter((el) => el.Location.Area == searchName)
+            .filter((el) => {
+              if (type?.length > 0) {
+                return el.Car_type == type;
+              }
+              return el;
+            })
+            .map((item) => (
+              <CarCard key={item.id}>
+                <PriceCont>
+                  <p>{item.Price}</p>
+                </PriceCont>
+                <ImgCont>
+                  <Link to={`/vehicleDetails/${item.id}`} style={{ textDecoration: "none" }}>
+                    <img src={item.Image} alt="vehicleImage" />
+                  </Link>
+                </ImgCont>
+                <TextCont>
+                  <h5>{item.Title}</h5>
+                  <p>
+                    {item.Transmission_type},{item.Seats},{item.Fuel_type}
+                  </p>
+                  <p>{item.Location.Area}</p>
+                  {/* <p>{item.Sub_area[0].distance}</p> */}
 
-                {/* {item.Sub_area?.map((el) => (
+                  {/* {item.Sub_area?.map((el) => (
                   <p>{el.distance}</p>
                 ))} */}
-              </TextCont>
-              <BtnCont>
-                <p>QUICK VIEW</p>
-              </BtnCont>
-            </CarCard>
-          ))}
+                </TextCont>
+                <BtnCont>
+                  <p>QUICK VIEW</p>
+                </BtnCont>
+              </CarCard>
+            ))}
         </CarsCont>
       </CarDetails>
     </>
@@ -87,8 +117,8 @@ export const VehicleDetails = () => {
 const CarDetails = styled.div`
   width: 75%;
   height: 100%;
-
   padding-left: 1%;
+  overflow: hidden;
   p,
   h5 {
     margin: 0;
@@ -182,16 +212,19 @@ const MapBox = styled.div`
 `;
 
 const FilterBoxes2 = styled.div`
-  width: 12%;
   height: 75%;
   border-radius: 7px;
   border: 1px solid gray;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
-  color: gray;
-  font-weight: 500;
+  margin: 0 5px;
+  p {
+    font-size: 14px;
+    color: gray;
+    font-weight: 500;
+    padding: 0 5px;
+  }
 `;
 
 const CarsCont = styled.div`
@@ -211,6 +244,7 @@ const CarCard = styled.div`
   border-radius: 7px;
   border: 1px solid gray;
   margin-bottom: 2%;
+  color: #222222;
 `;
 
 const ImgCont = styled.div`
@@ -222,6 +256,13 @@ const ImgCont = styled.div`
   border-bottom: 1px solid gray;
   img {
     width: 60%;
+  }
+  a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `;
 const TextCont = styled.div`
