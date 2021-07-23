@@ -26,6 +26,7 @@ function NavBar() {
     const [openLogin, setOpenLogin] = React.useState(false)
 
     const handleCloseLogin = () => {
+        console.log(openLogin);
         setOpenLogin(false)
     }
 

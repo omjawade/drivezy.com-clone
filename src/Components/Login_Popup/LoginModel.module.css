@@ -14,3 +14,71 @@
 .close_icon{
     margin: 20px;
 }
+.login_model p{
+    margin: 0px 30px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.login_model label{
+    margin: 10px 30px;
+    font-size: 12px;
+}
+.login_model input[type=number] {
+    -moz-appearance: textfield;
+    width: 80%;
+    margin: auto;
+    height: 40px;
+    margin-left: 30px;
+    margin-bottom: 0px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid gray;
+    padding: 0px 10px;
+  }
+  .login_model button{
+    
+    width: 86%;
+    margin: auto;
+    height: 40px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid gray;
+    padding: 0px 10px;
+    cursor: pointer;
+    background-color: #41B6AC;
+    color: white;
+    margin-top: 10px;
+  }
+  .login_model button:hover{
+    background-color: #328b84;
+  }
+  .login_model h6{
+      margin: 0px 35px;
+      color: tomato;
+  }
+
+  .or_divider{
+      display: flex;
+    
+      width: 40%;
+      margin: 10px auto;
+
+  }
+  .or_divider div{
+      width: 50px;
+      border: 1px solid gray;
+      height: 0px;
+      margin: 15px auto;
+  }
+
+  .login_model img{
+      width: 200px;
+      margin: 10px 95px;
+  }

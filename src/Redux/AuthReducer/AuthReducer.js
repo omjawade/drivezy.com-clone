@@ -1,11 +1,12 @@
-import { AUTH_FAILURE, AUTH_REQUEST, AUTH_SUCCESS } from "./AuthActionTypes"
+import { AUTH_FAILURE, AUTH_REQUEST, AUTH_SUCCESS, LOGIN_REQUEST } from "./AuthActionTypes"
 
 
 const initState = {
   authLoading: false,
   authFailure: false,
   user: null,
-  token: null
+  token: null,
+  loginRes:null
 };
 console.log("reducer");
 export const authReducer = (state = initState, action) => {
@@ -31,6 +32,13 @@ export const authReducer = (state = initState, action) => {
         ...state,
         authLoading: false,
         authFailure: true
+      };
+    }
+    case LOGIN_REQUEST: {
+      return {
+        ...state,
+        authLoading: false,
+        loginRes:action.payload
       };
     }
 
