@@ -1,0 +1,19 @@
+.container1 {
+    width: 22.5%;
+    height: 75vh;
+}
+
+.container1 h2 {
+    padding: 2.5% 7.5%;
+    font-weight: 400;
+}
+
+.list {
+    width: 100%;
+    max-width: 360;
+    padding-left: 7.5%;
+    background-color: rgb(247, 247, 247);
+}
+.listItem:hover {
+    background-color: white;
+}

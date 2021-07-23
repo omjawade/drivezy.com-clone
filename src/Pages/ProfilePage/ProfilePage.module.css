@@ -1,0 +1,7 @@
+.container1 {
+    width: 90%;
+    padding: 2.5% 5%;
+    display:flex;
+    flex-direction: row;
+    gap: 5%;
+}
