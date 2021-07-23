@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { addFilterDetails, addVehicleType } from "../../Redux/vehicleDetails/vehicleAction";
 
-let carType = [];
+let carType = ["Hatchback"];
 let distanceArr = ["240km"];
-let transmissionArr = [];
-let fuelArr = [];
+let transmissionArr = ["Manual"];
+let fuelArr = ["Petrol"];
 let ageLimit = [];
 export const SideBar = () => {
   const [val, setVal] = useState({});

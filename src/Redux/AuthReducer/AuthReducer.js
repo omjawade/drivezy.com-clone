@@ -14,13 +14,12 @@ const initState = {
 export const authReducer = (state = initState, action) => {
 
   switch (action.type) {
-
     case AUTH_REQUEST: {
-      console.log("reducer auth", action)
+      // console.log("reducer auth", action)
       return {
         ...state,
-        authLoading: true
-      }
+        authLoading: true,
+      };
     }
     case AUTH_SUCCESS: {
       localStorage.setItem("drivezyuserKey",JSON.stringify(action.payload.user))
@@ -37,7 +36,7 @@ export const authReducer = (state = initState, action) => {
       return {
         ...state,
         authLoading: false,
-        authFailure: true
+        authFailure: true,
       };
     }
     case SAVE_NAME: {
@@ -53,7 +52,6 @@ export const authReducer = (state = initState, action) => {
         loginRes:action.payload
       };
     }
-
 
     default:
       return state;
