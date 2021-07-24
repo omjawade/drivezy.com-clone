@@ -16,7 +16,7 @@ import styles from "./ProfileSideBar.module.css"
 
 function ProfileSideBar() {
 
-    const [selectedIndex, setSelectedIndex] = React.useState(1);
+    const [selectedIndex, setSelectedIndex] = React.useState(0);
 
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);
