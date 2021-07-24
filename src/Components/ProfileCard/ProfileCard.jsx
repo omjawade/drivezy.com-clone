@@ -11,11 +11,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-const useStyles = makeStyles((theme) => ({
-    input: {
-        display: 'none',
-    },
-}));
+
 
 function ProfileCard() {
     const user=useSelector((state)=>state.auth.user)
@@ -23,22 +19,11 @@ function ProfileCard() {
     const [email, setEmail] = useState("sonuabhsardagi@gmail.com");
     const [mobile, setMobile] = useState("7259961321");
 
-   // const classes = useStyles();
+  
 
     return (
         <div className={styles.container1}>
-            <AccountCircleOutlinedIcon style={{ color: "grey", fontSize: "800%" }} />
-            <input
-                style={{ marginLeft: "-275%", marginBottom: "225%", }}
-                accept="image/*"
-                className={classes.input}
-                id="icon-button-file"
-                type="file" />
-            <label htmlFor="icon-button-file">
-                <IconButton style={{ color: "black" }} aria-label="upload picture" component="span">
-                    <AddCircleIcon style={{ marginLeft: "-275%", marginBottom: "225%", fontSize: "150%" }} />
-                </IconButton>
-            </label>
+       
             <Card className={styles.container2}>
                 <div className={styles.left2}>
                     <h4>Personal Information</h4>
