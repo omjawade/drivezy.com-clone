@@ -11,7 +11,7 @@ function ProfilePage() {
         <div>
             <Divider />
             <div className={styles.container1}>
-                <ProfileSideBar />
+                <ProfileSideBar/>
                 <ProfileCard />
                 {/* <BookingCard /> */}
             </div>
