@@ -13,16 +13,32 @@ import AssignmentIndOutlinedIcon from '@material-ui/icons/AssignmentIndOutlined'
 import AccountBalanceOutlinedIcon from '@material-ui/icons/AccountBalanceOutlined';
 import AccountBalanceWalletOutlinedIcon from '@material-ui/icons/AccountBalanceWalletOutlined';
 import styles from "./ProfileSideBar.module.css"
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useParams } from "react-router-dom";
+import { authUserLogOut } from "../../Redux/AuthReducer/AuthAction";
 
 function ProfileSideBar() {
 
     const [selectedIndex, setSelectedIndex] = React.useState(0);
     const user=useSelector((state)=>state.auth.user)
+    const {tab}=useParams()
+
+    const history=useHistory()
+    const dispatch= useDispatch()
+
+    const handleTab=(tab)=>{
+        history.replace(`/account/${tab}`)
+    }
 
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);
     };
+
+    const handleLogout=()=>{
+       dispatch(authUserLogOut())
+      history.replace("/")
+    }
+
 
     return (
         <Card className={styles.container1}>
@@ -38,7 +54,7 @@ function ProfileSideBar() {
                         <ListItemIcon>
                             <AccountCircleOutlinedIcon style={{ fontSize: "175%"}} />
                         </ListItemIcon>
-                        <ListItemText primary="My Profile" />
+                        <ListItemText onClick={()=>handleTab("profile")} primary="My Profile" />
                     </ListItem>
                     <ListItem
                         button
@@ -48,7 +64,7 @@ function ProfileSideBar() {
                         <ListItemIcon>
                             <MapOutlinedIcon style={{ fontSize: "175%" }} />
                         </ListItemIcon>
-                        <ListItemText primary="My Bookings" />
+                        <ListItemText onClick={()=>handleTab("mybooking")}  primary="My Bookings" />
                     </ListItem>
                     <ListItem
                         button
@@ -98,7 +114,7 @@ function ProfileSideBar() {
                         <ListItemIcon>
                             <MeetingRoomOutlinedIcon style={{ fontSize: "175%" }} />
                         </ListItemIcon>
-                        <ListItemText primary="Log out" />
+                        <ListItemText onClick={handleLogout} primary="Log out" />
                     </ListItem>
                 </List>
             </div>

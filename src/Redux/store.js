@@ -12,7 +12,6 @@ const rootReducer = combineReducers({
 export const store = createStore(
   rootReducer,
   compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION_ || window.__REDUX_DEVTOOLS_EXTENSION__()
+    applyMiddleware(thunk)
   )
 );

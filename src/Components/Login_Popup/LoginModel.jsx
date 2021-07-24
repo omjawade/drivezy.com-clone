@@ -13,6 +13,7 @@ const [input,setInput]=useState("")
 const [name,setName]=useState("")
 const dispatch= useDispatch()
 const authLoading =useSelector((state)=> state.authLoading)
+const loginRes =useSelector((state)=> state.loginRes)
 const handleinput=(e)=>{
 
      setInput(e.target.value)
@@ -22,16 +23,18 @@ const handleVerify=(e)=>{
  
     dispatch(savename({name:name}))
 dispatch(authLoginPhone({mobile:input}))
+handleResponse()
 }
 
 const history=useHistory()
 
 const handlegoogleauth=()=>{
- history.push("http://localhost:8080/auth/google")
+ history.push("auth/google")
+
 }
 
 useEffect(()=>{
-handleResponse()
+  
 },[authLoading])
 
     return (
@@ -75,7 +78,7 @@ handleResponse()
                     <p>or</p>
                     <div></div>
                 </div>
-                <img onClick={handlegoogleauth} src="googlesigin.png" alt="googlesigin" />
+                <img onClick={handlegoogleauth} src="https://androidexample365.com/content/images/2019/11/GButton.jpg" alt="googlesigin" />
             </Paper>
 
         </Modal>

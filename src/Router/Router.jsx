@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import { Footer } from "../Components/Footer/Footer";
 import { NavBar } from "../Components/NavBar/NavBar";
 import { HomePage } from "../Pages/HomePage/HomePage";
@@ -21,8 +21,22 @@ const Router = () => {
         <Route path="/vehicleDetails/:id">
           <PaymentConfirm />
         </Route>
-        <Route exact path="/account/:tab">
-          <ProfilePage />
+        <Route
+    path="/account"
+    render={({ match: { url } }) => (
+      <>
+       <Route path={`${url}`} >
+          <Redirect to={`${url}/profile`} />
+        </Route>
+        <Route exact path={`${url}/:tab`}>
+        <ProfilePage />
+        </Route>
+  
+      </>
+    )}
+  />
+     <Route >
+          <Redirect to="/" />
         </Route>
       </Switch>
       {/* <Footer /> */}

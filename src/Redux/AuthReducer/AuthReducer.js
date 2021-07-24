@@ -1,4 +1,4 @@
-import { AUTH_FAILURE, AUTH_REQUEST, AUTH_SUCCESS, LOGIN_REQUEST, SAVE_NAME } from "./AuthActionTypes"
+import { AUTH_FAILURE, AUTH_REQUEST, AUTH_SUCCESS, LOGIN_REQUEST, SAVE_NAME, USER_LOGOUT } from "./AuthActionTypes"
 
 
 const initState = {
@@ -31,6 +31,18 @@ export const authReducer = (state = initState, action) => {
         token:action.payload.token,
         verified:true
       };
+    }
+    case USER_LOGOUT: {
+      localStorage.removeItem("drivezyuserKey")
+      localStorage.removeItem("drivezytoken")
+      return {
+        ...state,
+        user:null,
+        token:null,
+        authLoading: false,
+        authFailure: true,
+      };
+     
     }
     case AUTH_FAILURE: {
       return {
