@@ -96,7 +96,6 @@ function Profile() {
             </ListItem>
           </List>
         </Card>
-    
       </div>
     </>
   );
