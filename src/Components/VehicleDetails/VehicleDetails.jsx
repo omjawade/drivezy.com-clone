@@ -23,18 +23,16 @@ export const VehicleDetails = () => {
   let searchName = params.get("name");
   const { data: filter } = useSelector((state) => state.vehicle.filters);
   let filterData = filter;
-  // console.log(filterData);
+  // console.log(filterData[filterData.length - 1]);
   const { data: type = "Hatchback" } = useSelector((state) => state.vehicle.vehicleType);
   // console.log(type);
-  // const filteringFunction=()=>{
-  //   let newArr = []
-  //   for(i=0;i<filterData.length;i++){
-  //     carDetails.map((item)=>(item.))
-  //   }
-  // }
+  const { data: detail } = useSelector((state) => state.vehicle.vehicleDetails);
+  console.log(detail);
+
   // useEffect(() => {}, [type]);
   // console.log(type);
-
+  let carPrice = Math.floor(Number(filterData[filterData.length - 1]?.slice(0, 3)) / 200);
+  // console.log(carPrice);
   return (
     <>
       <CarDetails>
@@ -79,18 +77,24 @@ export const VehicleDetails = () => {
             //   }
             //   return el;
             // })
+            // && el.Fuel_type && el.Transmission_type
             .filter((el) => {
-              if (filterData.includes(el.Car_type && el.Fuel_type && el.Transmission_type)) {
+              if (filterData.includes(el.Car_type)) {
+                return el;
+              }
+            })
+            .filter((el) => {
+              if (filterData.includes(el.Fuel_type && el.Transmission_type)) {
                 return el;
               }
             })
             .map((item) => (
               <CarCard key={item.id}>
                 <PriceCont>
-                  <p>{item.Price}</p>
+                  <p>₹{item.Price}</p>
                 </PriceCont>
                 <ImgCont>
-                  <Link to={`/vehicleDetails/${item.id}`} style={{ textDecoration: "none" }}>
+                  <Link to={`/vehicleDetails/${item._id}`} style={{ textDecoration: "none" }}>
                     <img src={item.Image} alt="vehicleImage" />
                   </Link>
                 </ImgCont>
@@ -239,7 +243,7 @@ const CarsCont = styled.div`
   border-radius: 7px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: left;
   align-items: center;
 `;
 
@@ -248,7 +252,7 @@ const CarCard = styled.div`
   height: 90%;
   border-radius: 7px;
   border: 1px solid gray;
-  margin-bottom: 2%;
+  margin: 0.5%;
   color: #222222;
 `;
 

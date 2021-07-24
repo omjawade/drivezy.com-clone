@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import TextField from "@material-ui/core/TextField";
 import { useDispatch, useSelector } from "react-redux";
-import { addDateDetails } from "../../Redux/vehicleDetails/vehicleAction";
+import { addDateDetails, addVehicleDetails } from "../../Redux/vehicleDetails/vehicleAction";
 import { getVehicleData } from "../../Redux/vehicleDetails/vehicleAction";
 export const TopBar = () => {
   const [time, setTime] = useState({
@@ -16,9 +16,13 @@ export const TopBar = () => {
     const { value, name } = e.target;
     setTime({ ...time, [name]: value });
   };
-
+  let currentDate = new Date().toString();
+  let date = currentDate.slice(8, 10);
+  let hour = currentDate.slice(16, 18);
+  let minutes = currentDate.slice(19, 21);
   useEffect(() => {
     dispatch(getVehicleData(vehicleSelect ? "cars" : "bikes"));
+    dispatch(addVehicleDetails(vehicleSelect ? "cars" : "bikes"));
   }, [vehicleSelect]);
 
   const handleSearch = () => {
@@ -62,7 +66,7 @@ export const TopBar = () => {
             <TextField
               type="datetime-local"
               name="pickUpTime"
-              defaultValue="2021-07-23T12:30"
+              defaultValue={"2021-07-" + date + "T" + hour + ":" + minutes}
               onChange={handleChange}
               InputProps={{
                 disableUnderline: true,
