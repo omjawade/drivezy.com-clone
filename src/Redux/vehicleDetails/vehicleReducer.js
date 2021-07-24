@@ -26,7 +26,7 @@ const initState = {
     data: [],
   },
   vehicleType: {
-    data: "",
+    data: [],
   },
   vehicleDetails: {
     data: "",
