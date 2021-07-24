@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./NavBar.module.css";
 import MenuItem from "@material-ui/core/MenuItem";
 import Popover from "@material-ui/core/Popover";
@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { authFailureAction, authRequest } from "../../Redux/AuthReducer/AuthAction";
 import LoginModel from "../Login_Popup/LoginModel";
 import OTPmodel from "../OtpModel/OTPmodel";
+import { useHistory } from "react-router-dom";
 
 function NavBar() {
 
@@ -26,15 +27,37 @@ function NavBar() {
     const [anchorE3, setAnchorE3] = React.useState(null);
     const [openLogin, setOpenLogin] = React.useState(false)
     const [openOTP,setOpenOTP]= React.useState(false)
-    const loginRes= useSelector((state)=>state.auth.loginRes)
+
+    const open1 = Boolean(anchorEl);
+    const open2 = Boolean(anchorE2);
+    const open3 = Boolean(anchorE3);
+    const id1 = open1 ? 'simple-popover' : undefined;
+    const id2 = open2 ? 'simple-popover' : undefined;
+    const id3 = open3 ? 'simple-popover' : undefined;
+    const user= useSelector((state)=>state.auth.user)
+    const history=useHistory()
+    
     const handleCloseLogin = () => {
-        console.log(openLogin);
+       
         setOpenLogin(false)
+        
+    }
+
+    const handleResponse=()=>{
         setOpenOTP(true)
+        setOpenLogin(false)
     }
 
     const handleModel = () => {
         setOpenLogin(true)
+    }
+
+    const handleAccount=()=>{
+        if(user===null){
+            handleModel()
+        }else{
+
+        }
     }
     const handleCloseOTP = () => {
        setOpenOTP(false)
@@ -65,17 +88,16 @@ function NavBar() {
         setAnchorE3(null);
     };
 
-    const open1 = Boolean(anchorEl);
-    const open2 = Boolean(anchorE2);
-    const open3 = Boolean(anchorE3);
-    const id1 = open1 ? 'simple-popover' : undefined;
-    const id2 = open2 ? 'simple-popover' : undefined;
-    const id3 = open3 ? 'simple-popover' : undefined;
+useEffect(()=>{
+    localStorage.getItem("drivezyuserKey")
+})
+  
 
+    
 
     return (
         <div className={styles.Box}>
-            <LoginModel openLogin={openLogin} handleCloseLogin={handleCloseLogin} />
+            <LoginModel openLogin={openLogin} handleResponse={handleResponse} handleCloseLogin={handleCloseLogin} />
             <OTPmodel openOTP={openOTP} handleCloseOTP={handleCloseOTP}/>
             <div className={styles.left}>
                 <div>
@@ -120,8 +142,8 @@ function NavBar() {
             </div>
             <div className={styles.right}>
                 <div className={styles.flex}>
-                    <div className={styles.flex} onClick={handleClick2}>
-                        <p>Earn with us</p>
+                    <div  className={styles.flex} onClick={handleClick2}>
+                        <p style={{width:"100px"}} >Earn with us</p>
                         <KeyboardArrowDownIcon style={{ marginTop: "17.5%" }} />
                     </div>
                     <Popover
@@ -150,8 +172,8 @@ function NavBar() {
                         </MenuItem>
                     </Popover>
                 </div>
-                <div className={styles.flex}>
-                    <p>My Offers</p>
+                <div  className={styles.flex}>
+                    <p style={{width:"70px"}}>My Offers</p>
                 </div>
                 <div className={styles.flex}>
                     <div className={styles.flex} onClick={handleClick3}>
