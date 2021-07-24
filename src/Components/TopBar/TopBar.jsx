@@ -131,7 +131,6 @@ const LocationSection = styled.div`
 const DateSection = styled.div`
   width: 15%;
   height: 70%;
-
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -150,6 +149,7 @@ const SearchBtn = styled.div`
   color: white;
   font-size: 16px;
   font-weight: bold;
+  cursor: pointer;
 `;
 
 const VehicleBox = styled.div`
@@ -174,6 +174,7 @@ const VehicleBox = styled.div`
     img {
       width: 70%;
       margin-bottom: 5%;
+      cursor: pointer;
     }
   }
   div:nth-child(1) {
@@ -208,4 +209,7 @@ const DateBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  * {
+    cursor: pointer;
+  }
 `;

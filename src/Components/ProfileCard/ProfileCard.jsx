@@ -1,8 +1,8 @@
 import React from "react";
-// import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
-// import AddCircleIcon from '@material-ui/icons/AddCircle';
-// import IconButton from '@material-ui/core/IconButton';
-// import { makeStyles } from '@material-ui/core/styles';
+import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import IconButton from '@material-ui/core/IconButton';
+import { makeStyles } from '@material-ui/core/styles';
 import styles from "./ProfileCard.module.css"
 import Card from '@material-ui/core/Card';
 import Paper from '@material-ui/core/Paper';
@@ -11,11 +11,11 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-// const useStyles = makeStyles((theme) => ({
-//     input: {
-//         display: 'none',
-//     },
-// }));
+const useStyles = makeStyles((theme) => ({
+    input: {
+        display: 'none',
+    },
+}));
 
 function ProfileCard() {
     const user=useSelector((state)=>state.auth.user)
@@ -27,7 +27,7 @@ function ProfileCard() {
 
     return (
         <div className={styles.container1}>
-            {/* <AccountCircleOutlinedIcon style={{ color: "grey", fontSize: "800%" }} />
+            <AccountCircleOutlinedIcon style={{ color: "grey", fontSize: "800%" }} />
             <input
                 style={{ marginLeft: "-275%", marginBottom: "225%", }}
                 accept="image/*"
@@ -38,7 +38,7 @@ function ProfileCard() {
                 <IconButton style={{ color: "black" }} aria-label="upload picture" component="span">
                     <AddCircleIcon style={{ marginLeft: "-275%", marginBottom: "225%", fontSize: "150%" }} />
                 </IconButton>
-            </label> */}
+            </label>
             <Card className={styles.container2}>
                 <div className={styles.left2}>
                     <h4>Personal Information</h4>

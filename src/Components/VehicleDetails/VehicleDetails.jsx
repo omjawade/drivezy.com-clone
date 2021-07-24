@@ -17,22 +17,17 @@ export const VehicleDetails = () => {
     setChecked((prev) => !prev);
   };
   const { data: vehicle, isLoading, isError } = useSelector((state) => state.vehicle.vehicle);
-  // console.log(vehicle?.data);
+  console.log(vehicle?.data);
   const carDetails = vehicle?.data;
   let params = new URLSearchParams(document.location.search.substring(1));
   let searchName = params.get("name");
   const { data: filter } = useSelector((state) => state.vehicle.filters);
   let filterData = filter;
-  // console.log(filterData[filterData.length - 1]);
-  const { data: type = "Hatchback" } = useSelector((state) => state.vehicle.vehicleType);
-  // console.log(type);
+  const { data: bikeFilters } = useSelector((state) => state.vehicle.vehicleType);
   const { data: detail } = useSelector((state) => state.vehicle.vehicleDetails);
-  console.log(detail);
-
-  // useEffect(() => {}, [type]);
-  // console.log(type);
   let carPrice = Math.floor(Number(filterData[filterData.length - 1]?.slice(0, 3)) / 200);
-  // console.log(carPrice);
+  let bikePrice = Math.floor(Number(bikeFilters[0]?.slice(0, 2)) / 7);
+  console.log(bikePrice);
   return (
     <>
       <CarDetails>
@@ -47,11 +42,23 @@ export const VehicleDetails = () => {
         </LocationBar>
         <FilterBar>
           <FilterBoxes>
-            {filterData.map((item, i) => (
-              <FilterBoxes2 key={i + 1}>
-                <p> {item}</p>
-              </FilterBoxes2>
-            ))}
+            {detail == "cars" ? (
+              <>
+                {filterData.map((item, i) => (
+                  <FilterBoxes2 key={i + 1}>
+                    <p> {item}</p>
+                  </FilterBoxes2>
+                ))}
+              </>
+            ) : (
+              <>
+                {bikeFilters.map((item, i) => (
+                  <FilterBoxes2 key={i + 1}>
+                    <p> {item}</p>
+                  </FilterBoxes2>
+                ))}
+              </>
+            )}
           </FilterBoxes>
           <DropDown>
             <div>Sort By</div>
@@ -68,54 +75,76 @@ export const VehicleDetails = () => {
             <Switch color="default" checked={checked} onChange={toggleChecked} />
           </MapBox>
         </FilterBar>
-        <CarsCont>
-          {carDetails
-            ?.filter((el) => el.Location.Area == searchName)
-            // .filter((el) => {
-            //   if (type?.length > 0) {
-            //     return el.Car_type == type;
-            //   }
-            //   return el;
-            // })
-            // && el.Fuel_type && el.Transmission_type
-            .filter((el) => {
-              if (filterData.includes(el.Car_type)) {
-                return el;
-              }
-            })
-            .filter((el) => {
-              if (filterData.includes(el.Fuel_type && el.Transmission_type)) {
-                return el;
-              }
-            })
-            .map((item) => (
-              <CarCard key={item.id}>
-                <PriceCont>
-                  <p>₹{item.Price}</p>
-                </PriceCont>
-                <ImgCont>
-                  <Link to={`/vehicleDetails/${item._id}`} style={{ textDecoration: "none" }}>
-                    <img src={item.Image} alt="vehicleImage" />
-                  </Link>
-                </ImgCont>
-                <TextCont>
-                  <h5>{item.Title}</h5>
-                  <p>
-                    {item.Transmission_type},{item.Seats},{item.Fuel_type}
-                  </p>
-                  <p>{item.Location.Area}</p>
-                  {/* <p>{item.Sub_area[0].distance}</p> */}
-
-                  {/* {item.Sub_area?.map((el) => (
-                  <p>{el.distance}</p>
-                ))} */}
-                </TextCont>
-                <BtnCont>
-                  <p>QUICK VIEW</p>
-                </BtnCont>
-              </CarCard>
-            ))}
-        </CarsCont>
+        {detail == "cars" ? (
+          <CarsCont>
+            {carDetails
+              ?.filter((el) => el.Location.Area == searchName)
+              .filter((el) => {
+                if (filterData.includes(el.Car_type)) {
+                  return el;
+                }
+              })
+              .filter((el) => {
+                if (filterData.includes(el.Fuel_type && el.Transmission_type)) {
+                  return el;
+                }
+              })
+              .map((item) => (
+                <CarCard key={item.id}>
+                  <PriceCont>
+                    <p>₹{item.Price}</p>
+                  </PriceCont>
+                  <ImgCont>
+                    <Link to={`/vehicleDetails/${item._id}`} style={{ textDecoration: "none" }}>
+                      <img src={item.Image} alt="vehicleImage" />
+                    </Link>
+                  </ImgCont>
+                  <TextCont>
+                    <h5>{item.Title}</h5>
+                    <p>
+                      {item.Transmission_type},{item.Seats},{item.Fuel_type}
+                    </p>
+                    <p>{item.Location.Area}</p>
+                  </TextCont>
+                  <BtnCont>
+                    <p>QUICK VIEW</p>
+                  </BtnCont>
+                </CarCard>
+              ))}
+          </CarsCont>
+        ) : (
+          <CarsCont>
+            {carDetails
+              ?.filter((el) => el.Location.Area == searchName)
+              .filter((el) => {
+                if (bikeFilters.includes(el.Transmission_type)) {
+                  return el;
+                }
+              })
+              .map((item) => (
+                <CarCard key={item.id}>
+                  <PriceCont>
+                    <p>₹ {item.Price * bikePrice}</p>
+                  </PriceCont>
+                  <ImgCont>
+                    <Link to={`/vehicleDetails/${item._id}`} style={{ textDecoration: "none" }}>
+                      <img src={item.Image} alt="vehicleImage" />
+                    </Link>
+                  </ImgCont>
+                  <TextCont>
+                    <h5>{item.Title}</h5>
+                    <p>
+                      {item.Transmission_type},{item.Seats},{item.Fuel_type}
+                    </p>
+                    <p>{item.Location.Area}</p>
+                  </TextCont>
+                  <BtnCont>
+                    <p>QUICK VIEW</p>
+                  </BtnCont>
+                </CarCard>
+              ))}
+          </CarsCont>
+        )}
       </CarDetails>
     </>
   );
