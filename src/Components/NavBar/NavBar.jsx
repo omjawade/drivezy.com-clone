@@ -10,6 +10,7 @@ import { authFailureAction, authRequest, authVerifyUser } from "../../Redux/Auth
 import LoginModel from "../Login_Popup/LoginModel";
 import OTPmodel from "../OtpModel/OTPmodel";
 import { useHistory } from "react-router-dom";
+import { Profile } from "../ProfileModel/ProfileModel";
 
 function NavBar() {
 
@@ -24,6 +25,7 @@ function NavBar() {
     const [anchorE3, setAnchorE3] = React.useState(null);
     const [openLogin, setOpenLogin] = React.useState(false)
     const [openOTP,setOpenOTP]= React.useState(false)
+    const [showModel,setShowmode]= React.useState(false)
 
     const open1 = Boolean(anchorEl);
     const open2 = Boolean(anchorE2);
@@ -53,7 +55,7 @@ function NavBar() {
         if(user===null){
             handleModel()
         }else{
-            history.replace("/account/profile")
+           setShowmode(true)
         }
     }
     const handleCloseOTP = () => {
@@ -87,8 +89,8 @@ function NavBar() {
     
 
 useEffect(()=>{
-//     const id= user?._id
-// dispatch(authVerifyUser(id))
+    const id= user?._id
+user&&dispatch(authVerifyUser(id))
 },[])
   
 
@@ -213,8 +215,13 @@ useEffect(()=>{
                     <ShoppingCartRoundedIcon style={{ marginTop: "20%", fontSize: 25 }} />
                     <p>My Plan</p>
                 </div>
-                <div onClick={()=>handleAccount()} className={styles.flex}>
+                <div  onClick={()=>handleAccount()} className={styles.user}>
                     <AccountCircleOutlinedIcon style={{ fontSize: 50 }} />
+
+                   { showModel&& <div onMouseLeave={()=>setShowmode(false)} className={styles.profilesModel}>
+                    <Profile />
+                    </div> }
+                   
                 </div>
             </div>
 
