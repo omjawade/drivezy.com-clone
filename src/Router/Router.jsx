@@ -21,11 +21,11 @@ const Router = () => {
         <Route path="/vehicleDetails/:id">
           <PaymentConfirm />
         </Route>
-        <Route exact path="/account">
+        <Route exact path="/account/:tab">
           <ProfilePage />
         </Route>
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

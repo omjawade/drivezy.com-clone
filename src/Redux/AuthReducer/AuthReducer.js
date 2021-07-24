@@ -4,8 +4,8 @@ import { AUTH_FAILURE, AUTH_REQUEST, AUTH_SUCCESS, LOGIN_REQUEST, SAVE_NAME } fr
 const initState = {
   authLoading: false,
   authFailure: false,
-  user: localStorage.getItem("user") || null,
-  token: localStorage.getItem("token") || null,
+  user: JSON.parse(localStorage.getItem("drivezyuserKey")) || null,
+  token: JSON.parse(localStorage.getItem("drivezytoken")) || null,
   loginRes:null,
   verified:false,
   name:null

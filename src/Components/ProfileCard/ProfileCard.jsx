@@ -9,49 +9,35 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
-const useStyles = makeStyles((theme) => ({
-    input: {
-        display: 'none',
-    },
-}));
+
 
 function ProfileCard() {
-
+    const user=useSelector((state)=>state.auth.user)
     const [name, setName] = useState("Abhishek Sardagi");
     const [email, setEmail] = useState("sonuabhsardagi@gmail.com");
     const [mobile, setMobile] = useState("7259961321");
 
-    const classes = useStyles();
+  
 
     return (
         <div className={styles.container1}>
-            <AccountCircleOutlinedIcon style={{ color: "grey", fontSize: "800%" }} />
-            <input
-                style={{ marginLeft: "-275%", marginBottom: "225%", }}
-                accept="image/*"
-                className={classes.input}
-                id="icon-button-file"
-                type="file" />
-            <label htmlFor="icon-button-file">
-                <IconButton style={{ color: "black" }} aria-label="upload picture" component="span">
-                    <AddCircleIcon style={{ marginLeft: "-275%", marginBottom: "225%", fontSize: "150%" }} />
-                </IconButton>
-            </label>
+       
             <Card className={styles.container2}>
                 <div className={styles.left2}>
                     <h4>Personal Information</h4>
                     <div>
                         <p>Full Name</p>
-                        <p>{name}</p>
+                        <p>{user?.name}</p>
                     </div>
                     <div>
                         <p>Email ID</p>
-                        <p>{email}</p>
+                        <p>{user?.email&&user.email}</p>
                     </div>
                     <div>
                         <p>Mobile Number</p>
-                        <p>{mobile}</p>
+                        <p>{user?.mobile&&user.mobile}</p>
                     </div>
                     <p>
                         Please ensure you carry the following when you come to pick up your vehicle:

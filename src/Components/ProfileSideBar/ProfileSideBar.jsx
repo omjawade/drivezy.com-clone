@@ -13,10 +13,12 @@ import AssignmentIndOutlinedIcon from '@material-ui/icons/AssignmentIndOutlined'
 import AccountBalanceOutlinedIcon from '@material-ui/icons/AccountBalanceOutlined';
 import AccountBalanceWalletOutlinedIcon from '@material-ui/icons/AccountBalanceWalletOutlined';
 import styles from "./ProfileSideBar.module.css"
+import { useSelector } from "react-redux";
 
 function ProfileSideBar() {
 
     const [selectedIndex, setSelectedIndex] = React.useState(0);
+    const user=useSelector((state)=>state.auth.user)
 
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);
@@ -24,7 +26,7 @@ function ProfileSideBar() {
 
     return (
         <Card className={styles.container1}>
-            <h2>Hi Abhishek</h2>
+            <h2>Hi {user?.name}</h2>
             <Divider />
             <div className={styles.list}>
                 <List component="nav" aria-label="main mailbox folders">

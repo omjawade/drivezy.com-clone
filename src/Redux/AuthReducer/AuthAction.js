@@ -34,7 +34,7 @@ export const savename=(payload)=>{
     }
 }
 export const authLoginPhone=(payload)=>(dispatch)=>{
-      console.log(payload);
+     dispatch(authRequest())
     return axios.post("http://localhost:8080/auth/login",payload)
     .then((res)=>{
        const mobile= res.data.data.to.substring(3)
@@ -44,7 +44,7 @@ export const authLoginPhone=(payload)=>(dispatch)=>{
 
 }
 export const authVerifyPhone=(payload)=>(dispatch)=>{
-    console.log(payload);
+    dispatch(authRequest())
   return axios.post("http://localhost:8080/auth/verify",payload)
   .then((res)=>{
        const data= res.data.data
