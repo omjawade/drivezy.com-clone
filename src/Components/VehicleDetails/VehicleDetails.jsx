@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import FormControl from "@material-ui/core/FormControl";
 import Switch from "@material-ui/core/Switch";
@@ -16,7 +16,7 @@ export const VehicleDetails = () => {
   const toggleChecked = () => {
     setChecked((prev) => !prev);
   };
-  const { data: vehicle, isLoading, isError } = useSelector((state) => state.vehicle.vehicle);
+  const { data: vehicle } = useSelector((state) => state.vehicle.vehicle);
   console.log(vehicle?.data);
   const carDetails = vehicle?.data;
   let params = new URLSearchParams(document.location.search.substring(1));
@@ -27,7 +27,6 @@ export const VehicleDetails = () => {
   const { data: detail } = useSelector((state) => state.vehicle.vehicleDetails);
   let carPrice = Math.floor(Number(filterData[filterData.length - 1]?.slice(0, 3)) / 200);
   let bikePrice = Math.floor(Number(bikeFilters[0]?.slice(0, 2)) / 7);
-  console.log(bikePrice);
   return (
     <>
       <CarDetails>
@@ -42,7 +41,7 @@ export const VehicleDetails = () => {
         </LocationBar>
         <FilterBar>
           <FilterBoxes>
-            {detail == "cars" ? (
+            {detail === "cars" ? (
               <>
                 {filterData.map((item, i) => (
                   <FilterBoxes2 key={i + 1}>
@@ -75,19 +74,21 @@ export const VehicleDetails = () => {
             <Switch color="default" checked={checked} onChange={toggleChecked} />
           </MapBox>
         </FilterBar>
-        {detail == "cars" ? (
+        {detail === "cars" ? (
           <CarsCont>
             {carDetails
-              ?.filter((el) => el.Location.Area == searchName)
+              ?.filter((el) => el.Location.Area === searchName)
               .filter((el) => {
                 if (filterData.includes(el.Car_type)) {
                   return el;
                 }
+                return null;
               })
               .filter((el) => {
                 if (filterData.includes(el.Fuel_type && el.Transmission_type)) {
                   return el;
                 }
+                return null;
               })
               .map((item) => (
                 <CarCard key={item.id}>
@@ -115,11 +116,12 @@ export const VehicleDetails = () => {
         ) : (
           <CarsCont>
             {carDetails
-              ?.filter((el) => el.Location.Area == searchName)
+              ?.filter((el) => el.Location.Area === searchName)
               .filter((el) => {
                 if (bikeFilters.includes(el.Transmission_type)) {
                   return el;
                 }
+                return null;
               })
               .map((item) => (
                 <CarCard key={item.id}>
