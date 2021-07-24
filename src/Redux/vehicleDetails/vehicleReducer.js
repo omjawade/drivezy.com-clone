@@ -4,6 +4,7 @@ import {
   //   ADD_VEHICLE_DETAILS_SUCCESS,
   ADD_FILTER_DETAILS,
   ADD_DATE_DETAILS,
+  ADD_VEHICLE_DETAILS,
   ADD_VEHICLE_TYPE,
   GET_VEHICLE_DETAILS_FAILURE,
   GET_VEHICLE_DETAILS_REQUEST,
@@ -25,6 +26,9 @@ const initState = {
     data: [],
   },
   vehicleType: {
+    data: "",
+  },
+  vehicleDetails: {
     data: "",
   },
 };
@@ -80,6 +84,14 @@ export const vehicleReducer = (state = initState, action) => {
       return {
         ...state,
         vehicleType: {
+          data: action.payload,
+        },
+      };
+    }
+    case ADD_VEHICLE_DETAILS: {
+      return {
+        ...state,
+        vehicleDetails: {
           data: action.payload,
         },
       };

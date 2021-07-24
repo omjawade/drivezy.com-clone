@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { addFilterDetails, addVehicleType } from "../../Redux/vehicleDetails/vehicleAction";
 
-let carType = ["Hatchback"];
+let carType = ["Hatchback", "Sedan", "SUV"];
 let distanceArr = ["240km"];
 let transmissionArr = ["Manual"];
 let fuelArr = ["Petrol"];
@@ -255,7 +255,7 @@ const FuelCont = styled.div`
     justify-content: center;
     color: #555555d5;
   }
-  div:nth-child(1) {
+  div:nth-child(2) {
     background-color: #daf7f4;
   }
 `;
