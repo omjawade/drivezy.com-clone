@@ -77,13 +77,20 @@ export const SideBar = () => {
     const successAction = addFilterDetails(filterArray);
     dispatch(successAction);
     dispatch(addVehicleType(bikeFilterArr));
-  }, [val]);
+  }, [dispatch, val]);
   const { data: detail } = useSelector((state) => state.vehicle.vehicleDetails);
+  let currentPackage = [{ title: "240km" }, { title: "480km" }, { title: "700km" }];
+  let carTypeList = [{ title: "Hatchback" }, { title: "Sedan" }, { title: "SUV" }, { title: "Mini SUV" }];
+  let transmissionList = [{ title: "Manual" }, { title: "Automatic" }];
+  let fuelList = [{ title: "Diesel" }, { title: "Petrol" }];
+  let durationList = [{ title: "7 Days" }, { title: "15 Days" }, { title: "30 Days" }];
+  let gearList = [{ title: "Geared" }, { title: "Gearless" }];
+  let capacityList = [{ title: "110cc" }, { title: "111-150cc" }, { title: "150cc" }];
 
   return (
     <>
       <SideBarCont>
-        {detail == "cars" ? (
+        {detail === "cars" ? (
           <>
             <BookingDetails>
               <h4>Select your fuel package</h4>
@@ -94,33 +101,18 @@ export const SideBar = () => {
               <Package>
                 <p>Current Package</p>
                 <BtnCont>
-                  <Button
-                    style={{
-                      border: distanceArr.includes("240km") ? "2px solid #41b6ac" : "",
-                      color: distanceArr.includes("240km") ? "#41b6ac" : "",
-                    }}
-                    onClick={(e) => handleDistanceClick(e)}
-                  >
-                    240km
-                  </Button>
-                  <Button
-                    style={{
-                      border: distanceArr.includes("480km") ? "2px solid #41b6ac" : "",
-                      color: distanceArr.includes("480km") ? "#41b6ac" : "",
-                    }}
-                    onClick={(e) => handleDistanceClick(e)}
-                  >
-                    480km
-                  </Button>
-                  <Button
-                    style={{
-                      border: distanceArr.includes("700km") ? "2px solid #41b6ac" : "",
-                      color: distanceArr.includes("700km") ? "#41b6ac" : "",
-                    }}
-                    onClick={(e) => handleDistanceClick(e)}
-                  >
-                    700km
-                  </Button>
+                  {currentPackage.map((item, i) => (
+                    <Button
+                      style={{
+                        border: distanceArr.includes(item.title) ? "2px solid #41b6ac" : "",
+                        color: distanceArr.includes(item.title) ? "#41b6ac" : "",
+                      }}
+                      onClick={(e) => handleDistanceClick(e)}
+                      key={i + 1}
+                    >
+                      {item.title}
+                    </Button>
+                  ))}
                 </BtnCont>
               </Package>
             </BookingDetails>
@@ -129,84 +121,48 @@ export const SideBar = () => {
               <Package>
                 <p>Car type</p>
                 <BtnCont2>
-                  <Button
-                    style={{
-                      border: carType.includes("Hatchback") ? "2px solid #41b6ac" : "",
-                      color: carType.includes("Hatchback") ? "#41b6ac" : "",
-                    }}
-                    onClick={(e) => handleClick(e)}
-                  >
-                    Hatchback
-                  </Button>
-                  <Button
-                    style={{
-                      border: carType.includes("Sedan") ? "2px solid #41b6ac" : "",
-                      color: carType.includes("Sedan") ? "#41b6ac" : "",
-                    }}
-                    onClick={(e) => handleClick(e)}
-                  >
-                    Sedan
-                  </Button>
-                  <Button
-                    style={{
-                      border: carType.includes("SUV") ? "2px solid #41b6ac" : "",
-                      color: carType.includes("SUV") ? "#41b6ac" : "",
-                    }}
-                    onClick={(e) => handleClick(e)}
-                  >
-                    SUV
-                  </Button>
-                  <Button
-                    style={{
-                      border: carType.includes("Mini SUV") ? "2px solid #41b6ac" : "",
-                      color: carType.includes("Mini SUV") ? "#41b6ac" : "",
-                    }}
-                    onClick={(e) => handleClick(e)}
-                  >
-                    Mini SUV
-                  </Button>
+                  {carTypeList.map((item, i) => (
+                    <Button
+                      style={{
+                        border: carType.includes(item.title) ? "2px solid #41b6ac" : "",
+                        color: carType.includes(item.title) ? "#41b6ac" : "",
+                      }}
+                      onClick={(e) => handleClick(e)}
+                      key={i + 1}
+                    >
+                      {item.title}
+                    </Button>
+                  ))}
                 </BtnCont2>
                 <p>Transmission type</p>
                 <BtnCont2>
-                  <Button
-                    style={{
-                      border: transmissionArr.includes("Manual") ? "2px solid #41b6ac" : "",
-                      color: transmissionArr.includes("Manual") ? "#41b6ac" : "",
-                    }}
-                    onClick={(e) => handleTransmissionClick(e)}
-                  >
-                    Manual
-                  </Button>
-                  <Button
-                    style={{
-                      border: transmissionArr.includes("Automatic") ? "2px solid #41b6ac" : "",
-                      color: transmissionArr.includes("Automatic") ? "#41b6ac" : "",
-                    }}
-                    onClick={(e) => handleTransmissionClick(e)}
-                  >
-                    Automatic
-                  </Button>
+                  {transmissionList.map((item, i) => (
+                    <Button
+                      style={{
+                        border: transmissionArr.includes(item.title) ? "2px solid #41b6ac" : "",
+                        color: transmissionArr.includes(item.title) ? "#41b6ac" : "",
+                      }}
+                      onClick={(e) => handleTransmissionClick(e)}
+                      key={i + 1}
+                    >
+                      {item.title}
+                    </Button>
+                  ))}
                 </BtnCont2>
                 <p>Fuel type</p>
                 <BtnCont2>
-                  <Button
-                    style={{
-                      border: fuelArr.includes("Diesel") ? "2px solid #41b6ac" : "",
-                      color: fuelArr.includes("Diesel") ? "#41b6ac" : "",
-                    }}
-                    onClick={(e) => handleFuelClick(e)}
-                  >
-                    Diesel
-                  </Button>
-                  <Button
-                    style={{
-                      border: fuelArr.includes("Petrol") ? "2px solid #41b6ac" : "",
-                      color: fuelArr.includes("Petrol") ? "#41b6ac" : "",
-                    }}
-                    onClick={(e) => handleFuelClick(e)}
-                  >
-                    Petrol
-                  </Button>
+                  {fuelList.map((item, i) => (
+                    <Button
+                      style={{
+                        border: fuelArr.includes(item.title) ? "2px solid #41b6ac" : "",
+                        color: fuelArr.includes(item.title) ? "#41b6ac" : "",
+                      }}
+                      onClick={(e) => handleFuelClick(e)}
+                      key={i + 1}
+                    >
+                      {item.title}
+                    </Button>
+                  ))}
                 </BtnCont2>
                 <p>Age Limit</p>
                 <BtnCont2>
@@ -230,33 +186,18 @@ export const SideBar = () => {
               <Package>
                 <p>Current Booking Duration</p>
                 <BtnCont>
-                  <Button
-                    style={{
-                      border: durationArr.includes("7 Days") ? "2px solid #41b6ac" : "",
-                      color: durationArr.includes("7 Days") ? "#41b6ac" : "",
-                    }}
-                    onClick={(e) => handleDurationClick(e)}
-                  >
-                    7 Days
-                  </Button>
-                  <Button
-                    style={{
-                      border: durationArr.includes("15 Days") ? "2px solid #41b6ac" : "",
-                      color: durationArr.includes("15 Days") ? "#41b6ac" : "",
-                    }}
-                    onClick={(e) => handleDurationClick(e)}
-                  >
-                    15 Days
-                  </Button>
-                  <Button
-                    style={{
-                      border: durationArr.includes("30 Days") ? "2px solid #41b6ac" : "",
-                      color: durationArr.includes("30 Days") ? "#41b6ac" : "",
-                    }}
-                    onClick={(e) => handleDurationClick(e)}
-                  >
-                    30 Days
-                  </Button>
+                  {durationList.map((item, i) => (
+                    <Button
+                      style={{
+                        border: durationArr.includes(item.title) ? "2px solid #41b6ac" : "",
+                        color: durationArr.includes(item.title) ? "#41b6ac" : "",
+                      }}
+                      onClick={(e) => handleDurationClick(e)}
+                      key={i + 1}
+                    >
+                      {item.title}
+                    </Button>
+                  ))}
                 </BtnCont>
               </Package>
             </BookingDetails>
@@ -265,54 +206,33 @@ export const SideBar = () => {
               <Package2>
                 <p>Transmission type</p>
                 <BtnCont2>
-                  <Button
-                    style={{
-                      border: engineTypeArr.includes("Geared") ? "2px solid #41b6ac" : "",
-                      color: engineTypeArr.includes("Geared") ? "#41b6ac" : "",
-                    }}
-                    onClick={(e) => handleEngineClick(e)}
-                  >
-                    Geared
-                  </Button>
-                  <Button
-                    style={{
-                      border: engineTypeArr.includes("Gearless") ? "2px solid #41b6ac" : "",
-                      color: engineTypeArr.includes("Gearless") ? "#41b6ac" : "",
-                    }}
-                    onClick={(e) => handleEngineClick(e)}
-                  >
-                    Gearless
-                  </Button>
+                  {gearList.map((item, i) => (
+                    <Button
+                      style={{
+                        border: engineTypeArr.includes(item.title) ? "2px solid #41b6ac" : "",
+                        color: engineTypeArr.includes(item.title) ? "#41b6ac" : "",
+                      }}
+                      onClick={(e) => handleEngineClick(e)}
+                      key={i + 1}
+                    >
+                      {item.title}
+                    </Button>
+                  ))}
                 </BtnCont2>
                 <p>Engine capacity</p>
                 <BtnCont2>
-                  <Button
-                    style={{
-                      border: engineCapacityArr.includes("110cc") ? "2px solid #41b6ac" : "",
-                      color: engineCapacityArr.includes("110cc") ? "#41b6ac" : "",
-                    }}
-                    onClick={(e) => handleEngineCapClick(e)}
-                  >
-                    110cc
-                  </Button>
-                  <Button
-                    style={{
-                      border: engineCapacityArr.includes("111-150cc") ? "2px solid #41b6ac" : "",
-                      color: engineCapacityArr.includes("111-150cc") ? "#41b6ac" : "",
-                    }}
-                    onClick={(e) => handleEngineCapClick(e)}
-                  >
-                    111-150cc
-                  </Button>
-                  <Button
-                    style={{
-                      border: engineCapacityArr.includes("150cc") ? "2px solid #41b6ac" : "",
-                      color: engineCapacityArr.includes("150cc") ? "#41b6ac" : "",
-                    }}
-                    onClick={(e) => handleEngineCapClick(e)}
-                  >
-                    150cc
-                  </Button>
+                  {capacityList.map((item, i) => (
+                    <Button
+                      style={{
+                        border: engineCapacityArr.includes(item.title) ? "2px solid #41b6ac" : "",
+                        color: engineCapacityArr.includes(item.title) ? "#41b6ac" : "",
+                      }}
+                      onClick={(e) => handleEngineCapClick(e)}
+                      key={i + 1}
+                    >
+                      {item.title}
+                    </Button>
+                  ))}
                 </BtnCont2>
               </Package2>
             </Filter>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import TextField from "@material-ui/core/TextField";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addDateDetails, addVehicleDetails } from "../../Redux/vehicleDetails/vehicleAction";
 import { getVehicleData } from "../../Redux/vehicleDetails/vehicleAction";
 export const TopBar = () => {
@@ -23,7 +23,7 @@ export const TopBar = () => {
   useEffect(() => {
     dispatch(getVehicleData(vehicleSelect ? "cars" : "bikes"));
     dispatch(addVehicleDetails(vehicleSelect ? "cars" : "bikes"));
-  }, [vehicleSelect]);
+  }, [dispatch, vehicleSelect]);
 
   const handleSearch = () => {
     dispatch(addDateDetails(time));
