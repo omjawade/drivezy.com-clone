@@ -5,6 +5,7 @@ function App() {
   return (
     <>
       <Router />
+      {/* <h1>Hi</h1> */}
     </>
   );
 }

@@ -10,19 +10,41 @@ import Button from '@material-ui/core/Button';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { grey } from "@material-ui/core/colors";
 
-
+const useStyle= makeStyles({
+    avatar:{
+        fontSize:"100px",
+        color: "gray",
+    }
+})
 
 function ProfileCard() {
+    const style= useStyle()
     const user=useSelector((state)=>state.auth.user)
-    const [name, setName] = useState("Abhishek Sardagi");
-    const [email, setEmail] = useState("sonuabhsardagi@gmail.com");
-    const [mobile, setMobile] = useState("7259961321");
+    const [hover, setHover] = useState(false);
+  
 
   
 
     return (
         <div className={styles.container1}>
+
+            <Card className={styles.info_card}>
+                <label htmlFor="avatar">
+                     <div onMouseOver={()=>setHover(true)} onMouseLeave={()=>setHover(false)} className={style.avatar_div}>
+                     <AccountCircleOutlinedIcon className={style.avatar} />
+                 { hover&&  <div  className={styles.upload_div} >
+                      <h3>Upload Picture</h3>
+                     </div> }
+                     <input type="file" id="avatar" style={{display:"none"}} accept="image/*" multiple = "false"/>
+                 </div>
+                 </label>
+                 <div>
+                     <h2>{user?.name}</h2>
+
+                 </div>
+            </Card>
        
             <Card className={styles.container2}>
                 <div className={styles.left2}>
@@ -50,7 +72,7 @@ function ProfileCard() {
                 <div className={styles.right2}>
                     <h4>License Details</h4>
                     <Paper style={{height: "65%"}} variant="outlined">
-                        <img src="DL.png" alt="logo" />
+                        <img style={{}} src="https://thumbs.dreamstime.com/b/driver-licence-icon-driver-id-card-vector-license-drive-identity-photo-identification-driver-licence-icon-driver-id-card-vector-167518886.jpg" alt="logo" />
                         <Button 
                             variant="contained" 
                             style={{ 
@@ -61,6 +83,7 @@ function ProfileCard() {
                                 }}>
                             UPLOAD LICENSE
                         </Button>
+                        
                     </Paper>
                 </div>
             </Card>

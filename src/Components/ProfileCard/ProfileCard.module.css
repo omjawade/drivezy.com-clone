@@ -43,3 +43,42 @@
     margin-top: 20%;
     margin-bottom: 15%;
 }
+
+.info_card{
+    display: flex;
+   margin: 10px 0px;
+   width: 130%;
+
+}
+
+.avatar{
+   font-size: 100px;
+  
+}
+.avatar_div{
+    position: relative;
+    overflow: hidden;
+}
+
+.upload_div{
+    position: absolute;
+   
+    top: 170px;
+    left: 410px;
+    border-radius: 50%;
+    background-color: rgba(41, 40, 40, 0.705);
+    color: white;
+    height: 80px;
+    width: 80px;
+    
+    transition: top 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+
+
+.upload_div h3{
+    font-size: 15px;
+    text-align: center;
+
+}

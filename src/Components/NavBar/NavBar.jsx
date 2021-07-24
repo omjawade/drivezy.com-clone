@@ -6,10 +6,11 @@ import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import ShoppingCartRoundedIcon from "@material-ui/icons/ShoppingCartRounded";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import { useDispatch, useSelector } from "react-redux";
-import { authFailureAction, authRequest } from "../../Redux/AuthReducer/AuthAction";
+import { authFailureAction, authRequest, authVerifyUser } from "../../Redux/AuthReducer/AuthAction";
 import LoginModel from "../Login_Popup/LoginModel";
 import OTPmodel from "../OtpModel/OTPmodel";
 import { useHistory } from "react-router-dom";
+import { Profile } from "../ProfileModel/ProfileModel";
 
 function NavBar() {
 
@@ -17,16 +18,14 @@ function NavBar() {
 
     const dispatch = useDispatch()
 
-    const handlechange = () => {
-        dispatch(authRequest())
-        console.log("calling", authLoading);
-    }
+  
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [anchorE2, setAnchorE2] = React.useState(null);
     const [anchorE3, setAnchorE3] = React.useState(null);
     const [openLogin, setOpenLogin] = React.useState(false)
     const [openOTP,setOpenOTP]= React.useState(false)
+    const [showModel,setShowmode]= React.useState(false)
 
     const open1 = Boolean(anchorEl);
     const open2 = Boolean(anchorE2);
@@ -56,7 +55,7 @@ function NavBar() {
         if(user===null){
             handleModel()
         }else{
-
+           setShowmode(true)
         }
     }
     const handleCloseOTP = () => {
@@ -87,10 +86,12 @@ function NavBar() {
     const handleClose3 = () => {
         setAnchorE3(null);
     };
+    
 
 useEffect(()=>{
-    localStorage.getItem("drivezyuserKey")
-})
+    const id= user?._id
+user&&dispatch(authVerifyUser(id))
+},[])
   
 
     
@@ -101,11 +102,11 @@ useEffect(()=>{
             <OTPmodel openOTP={openOTP} handleCloseOTP={handleCloseOTP}/>
             <div className={styles.left}>
                 <div>
-                    <img style={{ height: "40px", marginTop: "5%" }} src="Drivezyheaderlogo.svg" alt="logo" />
+                    <img style={{ height: "40px", marginTop: "5%" }} src="https://jtride-data.s3.ap-south-1.amazonaws.com/uploads/1566911193_Drivezyheaderfulllogo.svg" alt="logo" />
                 </div>
                 <div className={styles.flex} >
                     <div className={styles.flex} onClick={handleClick1}>
-                        <img style={{ height: "20px", paddingRight: "5%", marginTop: "20%" }} src="IndianFlag.png" alt="flag" />
+                        <img style={{ height: "20px", paddingRight: "5%", marginTop: "20%" }} src="https://jtride-data.s3.ap-south-1.amazonaws.com/uploads/1566564152_indiaflag.svg" alt="flag" />
                         <p>India</p>
                         <KeyboardArrowDownIcon style={{ marginTop: "20%" }} />
                     </div>
@@ -214,8 +215,13 @@ useEffect(()=>{
                     <ShoppingCartRoundedIcon style={{ marginTop: "20%", fontSize: 25 }} />
                     <p>My Plan</p>
                 </div>
-                <div onClick={()=>handleModel()} className={styles.flex}>
+                <div  onClick={()=>handleAccount()} className={styles.user}>
                     <AccountCircleOutlinedIcon style={{ fontSize: 50 }} />
+
+                   { showModel&& <div onMouseLeave={()=>setShowmode(false)} className={styles.profilesModel}>
+                    <Profile />
+                    </div> }
+                   
                 </div>
             </div>
 

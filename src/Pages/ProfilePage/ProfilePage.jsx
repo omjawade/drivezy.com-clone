@@ -8,11 +8,16 @@ import { useSelector } from "react-redux";
 import { Redirect, useParams } from "react-router-dom";
 
 function ProfilePage() {
+
 const user=useSelector((state)=>state.auth.user)
+
 const {tab}= useParams()
+
 useEffect(()=>{
 console.log(user);
 },[])
+
+
 if(user===null){
     return <Redirect to="/"/>
 
@@ -23,8 +28,8 @@ if(user===null){
             <Divider />
             <div className={styles.container1}>
                 <ProfileSideBar />
-                {/* <ProfileCard /> */}
-                <BookingCard />
+               {tab==="profile"&& <ProfileCard /> }
+                {tab==="mybooking"&&<BookingCard />}
             </div>
         </div>
     )

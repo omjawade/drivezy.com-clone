@@ -28,6 +28,15 @@
 .flex {
   display: flex;
   cursor: pointer;
+}
+
+.user{
   
+}
+.user:hover > .profilesModel{
+
+}
+
+.profilesModel{
 
 }
