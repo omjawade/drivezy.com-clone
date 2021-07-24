@@ -4,7 +4,8 @@ import { Footer } from "../Components/Footer/Footer";
 import { NavBar } from "../Components/NavBar/NavBar";
 import { HomePage } from "../Pages/HomePage/HomePage";
 import { RentalDetails } from "../Pages/RentalDetails/RentalDetails";
-import {ProfilePage} from "../Pages/ProfilePage/ProfilePage"
+import { ProfilePage } from "../Pages/ProfilePage/ProfilePage";
+import PaymentConfirm from "../Pages/PaymentConfirmation/PaymentConfirm";
 
 const Router = () => {
   return (
@@ -17,7 +18,9 @@ const Router = () => {
         <Route exact path="/search">
           <RentalDetails />
         </Route>
-        <Route path="/vehicleDetails/:id"></Route>
+        <Route path="/vehicleDetails/:id">
+          <PaymentConfirm />
+        </Route>
         <Route exact path="/account">
           <ProfilePage />
         </Route>

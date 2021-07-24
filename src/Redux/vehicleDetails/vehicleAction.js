@@ -8,6 +8,7 @@ import {
   ADD_FILTER_DETAILS,
   ADD_DATE_DETAILS,
   ADD_VEHICLE_TYPE,
+  ADD_VEHICLE_DETAILS,
 } from "./vehicleActionTypes";
 
 import axios from "axios";
@@ -41,6 +42,12 @@ export const addFilterDetails = (payload) => {
 export const addVehicleType = (payload) => {
   return {
     type: ADD_VEHICLE_TYPE,
+    payload,
+  };
+};
+export const addVehicleDetails = (payload) => {
+  return {
+    type: ADD_VEHICLE_DETAILS,
     payload,
   };
 };
