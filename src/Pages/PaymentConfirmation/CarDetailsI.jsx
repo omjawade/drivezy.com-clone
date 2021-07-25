@@ -3,7 +3,9 @@ import Address from './Address';
 import FuelInfo from './FuelInfo';
 import Templete from './Templete';
 
-function CarDetailsI(props) {
+function CarDetailsI({data}) {
+
+    console.log(data,"passed")
     return (
         <div >
 
@@ -12,7 +14,7 @@ function CarDetailsI(props) {
               <br/>         
                   <div style={{display:"flex"}}>
                       <div style={{padding:"10px"}}>
-                           <h2 className="car-name1">Maruti Suzuki Wagon R VXi (Manual)</h2>
+                           <h2 className="car-name1">{data?.Title}</h2>
 
                            <div className="features-block1">
                                <img src="https://drivezy.com/static/media/Manual.da2da54d.svg" alt="" className="car-features1"/>
@@ -29,7 +31,7 @@ function CarDetailsI(props) {
                   
 
                       <div style={{padding:"10px",height:"50px",marginLeft:"120px"}}>
-                          <img src="https://jtride-data.s3.ap-south-1.amazonaws.com/uploads/1558701323_wagon-r.png" alt=""  style={{height:"150px"}}/>
+                          <img src={data?.Image} alt=""  style={{height:"150px"}}/>
                       </div>
 
                       

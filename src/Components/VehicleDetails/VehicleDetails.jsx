@@ -96,7 +96,7 @@ export const VehicleDetails = () => {
                     <p>₹{item.Price}</p>
                   </PriceCont>
                   <ImgCont>
-                    <Link to={`/vehicleDetails/${item._id}`} style={{ textDecoration: "none" }}>
+                    <Link to={`/vehicleDetails/${item._id}?vehicle=cars`} style={{ textDecoration: "none" }}>
                       <img src={item.Image} alt="vehicleImage" />
                     </Link>
                   </ImgCont>
@@ -129,7 +129,7 @@ export const VehicleDetails = () => {
                     <p>₹ {item.Price * bikePrice}</p>
                   </PriceCont>
                   <ImgCont>
-                    <Link to={`/vehicleDetails/${item._id}`} style={{ textDecoration: "none" }}>
+                    <Link to={`/vehicleDetails/${item._id}?vehicle=bikes`} style={{ textDecoration: "none" }}>
                       <img src={item.Image} alt="vehicleImage" />
                     </Link>
                   </ImgCont>

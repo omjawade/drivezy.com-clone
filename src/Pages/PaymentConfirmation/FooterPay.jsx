@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-
+import "./CarDetail.css";
 function FooterPay(props) {
 
 
@@ -28,7 +28,7 @@ function FooterPay(props) {
       
     
     return (
-        <div style={{marginTop:"210px",width:"130%"}}>
+        <div className="footerpaypage">
             <div style={{backgroundColor:"white",border:"1px solid whitesmoke",height:"100px",display:"flex", boxShadow:" 0 2px 8px -2px rgb(31 45 61 / 40%)",}}>
 
                 <div style={{

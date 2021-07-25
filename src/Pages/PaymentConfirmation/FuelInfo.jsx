@@ -75,7 +75,7 @@ function FuelInfo(props) {
         <div>
           <div>
             <select className="inp-fuel" onChange={handleChange}>
-              <option> </option>
+       
               <option value="60">60 km</option>
               <option value="120">120 km</option>
               <option value="180">180 km</option>
