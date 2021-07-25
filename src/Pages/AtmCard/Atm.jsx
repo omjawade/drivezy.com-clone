@@ -65,33 +65,33 @@ export default function Atm({ toogle }) {
                         </div>
 
 
-                        <div className="container">
-                            <div className="fontuser">
+                        <div className="container234">
+                            <div className="fontuser321">
 
                                 <input placeholder="Card Number" className="Atm-inputonee" />
                                 <i className="fa fa-credit-card"></i>
                             </div>
                             <br />
-                            <div className="fontuser">
+                            <div className="fontuser321">
 
                                 <input placeholder="Your Name" className="Atm-inputonee" />
                                 <i className="fa fa-user fa-lg"></i>
                             </div>
                             <br />
-                            <div className="fontpassword">
+                            <div className="fontpassword321">
 
                                 <input placeholder="CVV" className="Atm-inputonee" />
                                 <i className="fa fa-lock"></i>
                             </div>
                             <br />
-                            <div className="fontpassword">
+                            <div className="fontpassword321">
 
                                 <input placeholder="Exp Date" className="Atm-inputonee" />
                                 <i className="fa fa-calendar"></i>
                             </div>
                             <br/>   <br/>
                             <Button variant="contained" color="primary" size="small" style={{marginLeft:"140px",backgroundColor:"#528FF0"}}>CONFIRM TO PAY</Button>
-                            <br/>
+                            <br/>       <br/>
                         </div>
 
 
