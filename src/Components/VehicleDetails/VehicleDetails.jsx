@@ -17,6 +17,8 @@ export const VehicleDetails = () => {
     setChecked((prev) => !prev);
   };
   const { data: vehicle } = useSelector((state) => state.vehicle.vehicle);
+  const { data: datesDetails } = useSelector((state) => state.vehicle.dates);
+  console.log(datesDetails);
   console.log(vehicle?.data);
   const carDetails = vehicle?.data;
   let params = new URLSearchParams(document.location.search.substring(1));
@@ -85,7 +87,13 @@ export const VehicleDetails = () => {
                 return null;
               })
               .filter((el) => {
-                if (filterData.includes(el.Fuel_type && el.Transmission_type)) {
+                if (filterData.includes(el.Transmission_type)) {
+                  return el;
+                }
+                return null;
+              })
+              .filter((el) => {
+                if (filterData.includes(el.Fuel_type)) {
                   return el;
                 }
                 return null;
@@ -93,7 +101,7 @@ export const VehicleDetails = () => {
               .map((item) => (
                 <CarCard key={item.id}>
                   <PriceCont>
-                    <p>₹{item.Price}</p>
+                    <p>₹{Math.floor(item.Price * carPrice)} </p>
                   </PriceCont>
                   <ImgCont>
                     <Link to={`/vehicleDetails/${item._id}?vehicle=cars`} style={{ textDecoration: "none" }}>

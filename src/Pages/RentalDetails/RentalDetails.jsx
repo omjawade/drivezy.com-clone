@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { TopBar } from "../../Components/TopBar/TopBar";
 import { SideBar } from "../../Components/SideBar/SideBar";
 import { VehicleDetails } from "../../Components/VehicleDetails/VehicleDetails";
-import { useDispatch, useSelector } from "react-redux";
-import { getVehicleData } from "../../Redux/vehicleDetails/vehicleAction";
+import { useSelector } from "react-redux";
+// import { getVehicleData } from "../../Redux/vehicleDetails/vehicleAction";
 export const RentalDetails = () => {
   const { data: vehicle, isLoading, isError } = useSelector((state) => state.vehicle.vehicle);
   // console.log(vehicle?.data);
@@ -35,6 +35,7 @@ const Main = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  margin-top: 110px;
 `;
 const DetailsSection = styled.div`
   width: 100%;

@@ -20,14 +20,15 @@ export const TopBar = () => {
   let date = currentDate.slice(8, 10);
   let hour = currentDate.slice(16, 18);
   let minutes = currentDate.slice(19, 21);
-  useEffect(() => {
-    dispatch(getVehicleData(vehicleSelect ? "cars" : "bikes"));
-    dispatch(addVehicleDetails(vehicleSelect ? "cars" : "bikes"));
-  }, [dispatch, vehicleSelect]);
-
   const handleSearch = () => {
     dispatch(addDateDetails(time));
   };
+  useEffect(() => {
+    dispatch(getVehicleData(vehicleSelect ? "cars" : "bikes"));
+    dispatch(addVehicleDetails(vehicleSelect ? "cars" : "bikes"));
+    dispatch(addDateDetails(time));
+  }, [vehicleSelect, time]);
+
   let params = new URLSearchParams(document.location.search.substring(1));
   let name = params.get("name");
 
@@ -58,6 +59,24 @@ export const TopBar = () => {
           <p>I need my vehicle near</p>
           <SearchBox>
             <p>{name}</p>
+            {/* <Modal
+        open={open}
+        onClose={handleClose}
+        disablePortal
+        disableEnforceFocus
+        disableAutoFocus
+      >
+        <Paper>
+          <TagCont >
+            <input
+              type="text"
+            />
+          </TagCont>
+          <NameCont>
+            <h5>{cityName}</h5>
+    </NameCont>
+        </Paper>
+      </Modal> */}
           </SearchBox>
         </LocationSection>
         <DateSection>
