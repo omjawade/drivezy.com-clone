@@ -27,8 +27,8 @@ const BookedCard = ({Card}) => {
          <div className={styles.info}>
              <h3>{vehicle?.Title}</h3>
              <div>
-                 <p>Pickup Date: <span>{Card.pickup}</span></p>
-                 <p> Drop Date: <span>{Card.drop}</span></p>
+                 <p>Pickup Date: <br /> <span>{Card.pickup}</span></p>
+                 <p> Drop Date: <br /> <span>{Card.drop}</span></p>
              </div>
              <p>Price: <span>{Card.price}</span></p>
          </div>

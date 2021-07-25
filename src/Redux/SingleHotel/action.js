@@ -59,10 +59,11 @@ export const getbookedDetails=(userid)=>(dispatch)=>{
 }
 
 export const postBooked=(payload)=>(dispatch)=>{
-
+    console.log("postbook",payload);
   return axios.post(`http://localhost:8080/booking`,payload)
   .then((res)=>{
     console.log(res.data.data,"booked1212112");
+    alert("Payment Successful");
      dispatch(getBooked(res.data.data))
   })
 }

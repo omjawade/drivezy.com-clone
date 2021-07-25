@@ -35,7 +35,7 @@ export default function Atm({ atm, handleclose, filterData, fuelInfo }) {
 
   const data = useSelector((state) => state.singleCars.data._id);
   const data22 = useSelector((state) => state.singleCars.data);
-  const user = useSelector((state) => state.vehicle.date);
+  const user = useSelector((state) => state.auth.user);
 
   const { id } = useParams();
 
@@ -51,7 +51,7 @@ export default function Atm({ atm, handleclose, filterData, fuelInfo }) {
   const payload = {
     carID: data,
     bikeID: data,
-    user: user,
+    user: user._id,
     price: pricesend,
     package: fuelInfo,
     pickup: filterData.pickUpTime,
@@ -99,8 +99,8 @@ export default function Atm({ atm, handleclose, filterData, fuelInfo }) {
       query.cvv !== "" &&
       query.month !== ""
     ) {
-      alert("Payment Successful");
-
+      
+      console.log(payload,"payment");
       dispatch(postBooked(payload));
     } else {
       if (query.name === "") {

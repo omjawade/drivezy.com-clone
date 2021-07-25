@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCar } from "../../Redux/SingleHotel/action";
-import Confetti from "react-confetti";
+
 
 const PaymentConfirm = () => {
   const [editModalIsOpen, setEditModalIsOpen] = useState(false);
@@ -35,14 +35,14 @@ const PaymentConfirm = () => {
 
   return (
     <div>
-      {editModalIsOpen ? (
+      {/* {editModalIsOpen ? (
         <Confetti
           recycle="false"
           numberOfPieces={180}
           width="1200px"
           height="2000px"
         />
-      ) : null}
+      ) : null} */}
       <div
         style={{
           position: "fixed",

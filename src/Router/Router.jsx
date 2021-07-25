@@ -34,7 +34,7 @@ const Router = () => {
         </Route>
         <Route exact path={`${url}/:tab`}>
         <ProfilePage />
-        <Footer />
+       
         </Route>
   
       </>
