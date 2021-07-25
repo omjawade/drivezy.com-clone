@@ -5,7 +5,10 @@
   margin: auto;
   display: flex;
   gap: 25%;
+  position: fixed;
   justify-content: space-between;
+  background-color: white;
+  top: 0;
 
 }
 

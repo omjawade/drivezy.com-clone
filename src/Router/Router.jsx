@@ -5,7 +5,8 @@ import { NavBar } from "../Components/NavBar/NavBar";
 import { HomePage } from "../Pages/HomePage/HomePage";
 import { RentalDetails } from "../Pages/RentalDetails/RentalDetails";
 import { ProfilePage } from "../Pages/ProfilePage/ProfilePage";
-import PaymentConfirm from "../Pages/PaymentConfirmation/PaymentConfirm";
+import { PaymentConfirm } from "../Pages/PaymentConfirmation/PaymentConfirm";
+
 
 const Router = () => {
   return (

@@ -1,0 +1,88 @@
+
+
+.atmHead-1 {
+
+
+
+
+    background-color: whitesmoke;
+    width: 21%;
+   
+    height: 450px;
+
+}
+
+
+.atmHead-1:focus {
+
+
+    outline: none;
+
+    background-color: whitesmoke;
+    width: 21%;
+   
+    height: 450px;
+
+}
+
+.atmHead-2 {
+
+  
+
+    background-color: #528FF0;
+    padding: 20px;
+    height: 70px;
+
+}
+
+.Atm-inputonee {
+    background-color: #F5F5F5;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid gray;
+    width: 60%;
+    margin-left: 16%;
+    padding: 10px;
+}
+
+.Atm-inputonee:focus {
+
+    outline: none;
+    background-color: #F5F5F5;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid gray;
+    width: 60%;
+
+}
+
+/* ///// */
+
+
+.container234 { 
+    padding: 16px; 
+} 
+
+.fontuser321 {
+    position: relative;
+}
+  
+.fontuser321 i{
+    position: absolute;
+    left: 15px;
+    top: 10px;
+    color: gray;
+}
+  
+.fontpassword321 {
+    position: relative;
+}
+  
+.fontpassword321 i{
+    position: absolute;
+    left: 15px;
+    top: 12px;
+    color: gray;
+}

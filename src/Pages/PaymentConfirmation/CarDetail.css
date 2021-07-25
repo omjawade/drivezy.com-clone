@@ -14,7 +14,7 @@
 
 .inp-fuel {
  width:200px;
- height:40px;
+ height:43px;
  margin-top: 30px;
 
 }
@@ -63,7 +63,7 @@
     flex-grow: 8;
 }
 .car-features1 {
-    margin-left:"2px"
+    margin-left:4px;
 }
 
 
@@ -110,4 +110,13 @@
     font-weight: lighter;
     
 
+}
+
+
+/* ///////////// */
+
+.footerpaypage {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

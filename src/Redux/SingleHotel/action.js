@@ -23,15 +23,16 @@ export const getcarFail = (err) => {
   };
 };
 
-export const getCar = (id) => (dispatch, getState) => {
+export const getCar = (vehicle,id) => (dispatch, getState) => {
   const reqAction = getcarReq();
   dispatch(reqAction);
 
   return axios
-    .get(`http://localhost:8001//${id}`)
+    .get(`http://localhost:8080/${vehicle}/${id}`)
     .then((res) => {
       const sucAction = getcarSuc(res.data.data);
       dispatch(sucAction);
+      console.log(res.data,"anil")
       return { success: true };
     })
     .catch((err) => {
