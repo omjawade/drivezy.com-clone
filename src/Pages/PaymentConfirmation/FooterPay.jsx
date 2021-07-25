@@ -5,12 +5,13 @@ import { useSelector } from 'react-redux';
 import Atm from '../AtmCard/Atm';
 import ErrorModal from '../ErrorModal/ErrorModal';
 import "./CarDetail.css";
-function FooterPay(props) {
+
+function FooterPay({setEditModalIsOpen}) {
 
 
     const [show, setShow] = useState(false)
     const [toogle, setToggle] = useState()
-
+ 
     const user = useSelector((state) => state.auth.user)
 
 
@@ -45,17 +46,9 @@ function FooterPay(props) {
      
 
     }
-
- 
-
-   
-
-
-
-
-
     return (
         <div className="footerpaypage">
+         
             <div style={{ backgroundColor: "white", border: "1px solid whitesmoke", height: "100px", display: "flex", boxShadow: " 0 2px 8px -2px rgb(31 45 61 / 40%)", }}>
 
                 <div style={{
@@ -100,11 +93,16 @@ function FooterPay(props) {
                             Quick Book
                         </button>
 
+                        
+
                     </div>}
-                        {toogle ? <Atm /> :  <ErrorModal /> }
+                        {toogle ? <ErrorModal />:  null }
+                        {!toogle ? <Atm setEditModalIsOpen={setEditModalIsOpen} /> :null}
                 </div>
               
             </div>
+
+           
 
         </div>
     );

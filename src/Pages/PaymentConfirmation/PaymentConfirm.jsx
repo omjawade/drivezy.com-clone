@@ -9,10 +9,10 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCar } from '../../Redux/SingleHotel/action';
-
+import Confetti from "react-confetti";
 
 const PaymentConfirm = ()=> {
-
+    const [editModalIsOpen, setEditModalIsOpen] = useState(false);
     const [vall,setVall] = useState(5)
     let params = new URLSearchParams(document.location.search.substring(1));
     let vehicle = params.get("vehicle");
@@ -34,6 +34,14 @@ const PaymentConfirm = ()=> {
 
     return (
        <div>
+        { editModalIsOpen ? (
+        <Confetti
+          recycle="false"
+          numberOfPieces={180}
+          width="1200px"
+          height="2000px"
+        />
+      ) : null}
         <div style={{position: 'fixed',top:0,width:"100%",backgroundColor:"white"}}>
         {/* <NavBar /> */}
         {/* <TopBar/> */}
@@ -45,7 +53,7 @@ const PaymentConfirm = ()=> {
         </div>
        
         <div >
-        <FooterPay data={data} />
+        <FooterPay data={data} setEditModalIsOpen={setEditModalIsOpen} />
         </div>
 
        </div>
