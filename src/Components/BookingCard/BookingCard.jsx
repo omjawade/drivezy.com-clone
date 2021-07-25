@@ -5,7 +5,10 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import { Divider } from "@material-ui/core";
+import { Card, Divider } from "@material-ui/core";
+import { useSelector } from "react-redux";
+import { Bookmark } from "@material-ui/icons";
+import BookedCard from "../BookedCard/BookedCard";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -43,6 +46,13 @@ function a11yProps(index) {
 function BookingCard() {
 
     const [value, setValue] = React.useState(0);
+    const booked= useSelector((state)=>state.singleCars.booked)
+
+    // const vehicle= booked?.carID!==null? booked.carID:booked.bikeID
+
+   const upcomming= booked?.filter((card)=> card.status===true)
+   const cancelled= booked?.filter((card)=> card.status===false)
+    console.log(booked,"book");
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -58,16 +68,40 @@ function BookingCard() {
             </Tabs>
             <Divider />
             <TabPanel value={value} index={0}>
-                No upcoming bookings!
+              {
+                  upcomming?.map((card)=>
+                    <BookedCard  Card={card} />
+                   
+                  )
+              }
+              {
+                  !upcomming&&<h4>No active bookings!</h4>
+                
+              }
+              {
+                    upcomming.length==0&&<h4>No active bookings!</h4>
+              }
             </TabPanel>
             <TabPanel value={value} index={1}>
-                No active bookings!
+            <h4>No active bookings!</h4>
             </TabPanel>
             <TabPanel value={value} index={2}>
-                No completed bookings!
+            <h4>No active bookings!</h4>
             </TabPanel>
             <TabPanel value={value} index={3}>
-                No cancelled bookings!
+            {
+                  cancelled?.map((card)=>
+                    <BookedCard  Card={card} />
+                   
+                  )
+              }
+                  {
+                  !cancelled&&<h4>No active bookings!</h4>
+                
+              }
+              {
+                    cancelled.length==0&&<h4>No active bookings!</h4>
+              }
             </TabPanel>
         </div>
     )
