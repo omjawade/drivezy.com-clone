@@ -26,21 +26,21 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function ErrorModal({ toogle }) {
+export default function ErrorModal({ error, handleclose }) {
 
-    console.log(toogle)
+  
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
 
-    const handleOpen = () => {
-        if (toogle) {
-            setOpen(true);
-        }
-    };
+    // const handleOpen = () => {
+    //     if (toogle) {
+    //         setOpen(true);
+    //     }
+    // };
 
-    const handleClose = () => {
-        setOpen(false);
-    };
+    // const handleClose = () => {
+    //     setOpen(false);
+    // };
 
     return (
         <div>
@@ -49,8 +49,8 @@ export default function ErrorModal({ toogle }) {
                     aria-labelledby="transition-modal-title"
                     aria-describedby="transition-modal-description"
                     className={classes.modal}
-                    open={open}
-                    onClose={handleClose}
+                    open={error}
+                    onClose={handleclose}
                     closeAfterTransition
                     BackdropComponent={Backdrop}
                     BackdropProps={{

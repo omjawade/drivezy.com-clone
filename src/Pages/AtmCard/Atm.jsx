@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        
     },
     paper: {
         backgroundColor: theme.palette.background.paper,
@@ -27,21 +28,21 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Atm({ toogle }) {
+export default function Atm({ atm,handleclose }) {
 
-    console.log(toogle)
+    // console.log(toogle)
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
 
-    const handleOpen = () => {
-        if (toogle) {
-            setOpen(true);
-        }
-    };
+    // const handleOpen = () => {
+    //     if (toogle) {
+    //         setOpen(true);
+    //     }
+    // };
 
-    const handleClose = () => {
-        setOpen(false);
-    };
+    // const handleClose = () => {
+    //     setOpen(false);
+    // };
 
     return (
         <div>
@@ -50,8 +51,8 @@ export default function Atm({ toogle }) {
                     aria-labelledby="transition-modal-title"
                     aria-describedby="transition-modal-description"
                     className={classes.modal}
-                    open={open}
-                    onClose={handleClose}
+                    open={atm}
+                    onClose={handleclose}
                     closeAfterTransition
                     BackdropComponent={Backdrop}
                     BackdropProps={{
@@ -61,7 +62,7 @@ export default function Atm({ toogle }) {
 
                     <div className="atmHead-1">
                         <div className="atmHead-2">
-                            <div ><img src="https://razorpay.com/assets/upi-autopay/logo-mobile.png" alt="" style={{ height: "72px", width: "240px" }} /></div>
+                            <div ><img src="https://razorpay.com/assets/upi-autopay/logo-mobile.png" alt="" style={{ height: "72px", width: "280px" }} /></div>
                         </div>
 
 
