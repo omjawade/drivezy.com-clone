@@ -12,12 +12,15 @@ const Router = () => {
   return (
     <div>
       <NavBar />
+      <div style={{height:"100px"}}></div>
       <Switch>
         <Route exact path="/">
           <HomePage />
+          <Footer />
         </Route>
         <Route exact path="/search">
           <RentalDetails />
+          <Footer />
         </Route>
         <Route path="/vehicleDetails/:id">
           <PaymentConfirm />
@@ -31,6 +34,7 @@ const Router = () => {
         </Route>
         <Route exact path={`${url}/:tab`}>
         <ProfilePage />
+        <Footer />
         </Route>
   
       </>
@@ -40,7 +44,7 @@ const Router = () => {
           <Redirect to="/" />
         </Route>
       </Switch>
-      {/* <Footer /> */}
+     
     </div>
   );
 };

@@ -66,3 +66,12 @@ export const postBooked=(payload)=>(dispatch)=>{
      dispatch(getBooked(res.data.data))
   })
 }
+
+export const cancelBokking=(payload,id,userid)=>(dispatch)=>{
+
+  return axios.patch(`http://localhost:8080/booking/${id}/${userid}`,payload)
+  .then((res)=>{
+    console.log(res.data.data,"canceleed");
+     dispatch(getBooked(res.data.data))
+  })
+}
