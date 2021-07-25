@@ -1,7 +1,14 @@
 
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import "./CarDetail.css";
 function FooterPay(props) {
+
+
+    const nil = useSelector((state)=> state.auth.user)
+
+  
+
 
 
     var initialobj = {
@@ -22,6 +29,16 @@ function FooterPay(props) {
         });
       };
 
+      const handleCheck = ()=>{
+
+        if(nil === null){
+            
+        }
+        else{
+            
+        }
+
+      }
     return (
         <div className="footerpaypage">
             <div style={{backgroundColor:"white",border:"1px solid whitesmoke",height:"100px",display:"flex", boxShadow:" 0 2px 8px -2px rgb(31 45 61 / 40%)",}}>
@@ -53,7 +70,7 @@ function FooterPay(props) {
                         Add To Cart
                     </button>
 
-                    <button  style={{marginLeft:"20px",borderRadius:"6px",height:"40px",width:"240px",color:"gray",backgroundColor:"#dde2e8",border:"1px solid gray"}} >
+                    <button  style={{marginLeft:"20px",borderRadius:"6px",height:"40px",width:"240px",color:"gray",backgroundColor:"#dde2e8",border:"1px solid gray"}} onClick={handleCheck} >
                         Quick Book
                     </button>
                     
