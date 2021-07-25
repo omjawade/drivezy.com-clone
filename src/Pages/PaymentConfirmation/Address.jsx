@@ -20,10 +20,11 @@ function Address({data}) {
 
                 <div style={{display:"flex"}}>
                 <img src="https://drivezy.com/static/media/location_icon.a7c35c82.svg" alt="" />
-            
+                <p>{data?.Location?.Area}</p>
                 </div>
              
 
+                <h6 style={{color:"gray"}}>{data?.Location?.Address}</h6>
 
             </div>
 
@@ -42,10 +43,10 @@ function Address({data}) {
                 </div>
                 <div style={{display:"flex",marginLeft:"230px"}}>
                 <img src="https://drivezy.com/static/media/location_icon.a7c35c82.svg" alt="" />
-           
+                <p>{data?.Location?.Area}</p>
                 </div>
 
-       
+                <a style={{color:"gray"}}>{data?.Location?.Address}</a>
 
             </div>
            

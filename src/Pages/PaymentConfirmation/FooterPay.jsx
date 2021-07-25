@@ -9,13 +9,9 @@ function FooterPay(props) {
 
 
     const [show, setShow] = useState(false)
-    const [toogle, setToggle] = useState(false)
+    const [toogle, setToggle] = useState()
 
-    const nil = useSelector((state) => state.auth.user)
-
-
-
-    console.log(nil.name.length,"devnil22")
+    const user = useSelector((state) => state.auth.user)
 
 
     var initialobj = {
@@ -38,8 +34,12 @@ function FooterPay(props) {
 
     const handleCheck = ()=>{
 
-        if(nil.name.length > 2 ){
-            alert()
+        if(user){
+            setToggle(false)
+           
+        }
+        else{
+            setToggle(true)
         }
    
      
@@ -101,7 +101,7 @@ function FooterPay(props) {
                         </button>
 
                     </div>}
-{!nil.name.length > 2 ? <ErrorModal /> : <Atm />}
+                        {toogle ? <Atm /> :  <ErrorModal /> }
                 </div>
               
             </div>
