@@ -6,7 +6,7 @@ import { addFilterDetails, addVehicleType } from "../../Redux/vehicleDetails/veh
 let carType = ["Hatchback", "Sedan", "SUV"];
 let distanceArr = ["240km"];
 let transmissionArr = ["Manual"];
-let fuelArr = ["Petrol"];
+let fuelArr = ["Petrol", "Disel"];
 let ageLimit = [];
 let durationArr = ["7 Days"];
 let engineTypeArr = ["Geared", "Gearless"];
@@ -56,8 +56,14 @@ export const SideBar = () => {
     setVal({ ...val, [e.target.textContent]: 1 });
   };
   const handleFuelClick = (e) => {
-    fuelArr.pop();
-    fuelArr.push(e.target.textContent);
+    if (fuelArr.includes(e.target.textContent)) {
+      const index = fuelArr.indexOf(e.target.textContent);
+      if (index > -1) {
+        fuelArr.splice(index, 1);
+      }
+    } else {
+      fuelArr.push(e.target.textContent);
+    }
     setVal({ ...val, [e.target.textContent]: 1 });
   };
   const handleAgeClick = (e) => {
@@ -82,7 +88,7 @@ export const SideBar = () => {
   let currentPackage = [{ title: "240km" }, { title: "480km" }, { title: "700km" }];
   let carTypeList = [{ title: "Hatchback" }, { title: "Sedan" }, { title: "SUV" }, { title: "Mini SUV" }];
   let transmissionList = [{ title: "Manual" }, { title: "Automatic" }];
-  let fuelList = [{ title: "Diesel" }, { title: "Petrol" }];
+  let fuelList = [{ title: "Disel" }, { title: "Petrol" }];
   let durationList = [{ title: "7 Days" }, { title: "15 Days" }, { title: "30 Days" }];
   let gearList = [{ title: "Geared" }, { title: "Gearless" }];
   let capacityList = [{ title: "110cc" }, { title: "111-150cc" }, { title: "150cc" }];
