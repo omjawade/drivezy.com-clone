@@ -3,9 +3,9 @@ import Address from './Address';
 import FuelInfo from './FuelInfo';
 import Templete from './Templete';
 
-function CarDetailsI({data}) {
-
-    console.log(data,"passed")
+function CarDetailsI({data,setVall}) {
+   
+    console.log(data,"passed ")
     return (
         <div >
 
@@ -18,14 +18,14 @@ function CarDetailsI({data}) {
 
                            <div className="features-block1">
                                <img src="https://drivezy.com/static/media/Manual.da2da54d.svg" alt="" className="car-features1"/>
-                               <p style={{marginLeft:"5px"}}>Manual</p>
+                               <p style={{marginLeft:"5px"}}>{data?.Transmission_type}</p>
                                <img src="https://drivezy.com/static/media/seats.b777050d.svg" alt="" className="car-features1"/>
 
-                               <p style={{marginLeft:"5px"}}>seat5 Seater </p>
+                               <p style={{marginLeft:"5px"}}>{data?.Seats} seater </p>
                                <img src="https://drivezy.com/static/media/fuel.5001188a.svg" alt="" className="car-features1"/>
-                               <p style={{marginLeft:"5px"}}>fuelPetrol</p>
+                               <p style={{marginLeft:"5px"}}>{data?.Fuel_type}</p>
                            </div>
-                           <p style={{ marginTop:"-2px",fontFamily:"font-family: 'Open Sans', sans-serif" ,color:"gray",fontSize:"12px",fontweight:"bold"}}>Note: This image is for representation purpose only. The colour of the actual vehicle may differ.</p>
+                           <p style={{ marginTop:"-2px",fontFamily:"font-family: 'Open Sans', sans-serif" ,color:"gray",fontSize:"12px",fontweight:"bold"}}> Note: This image is for representation purpose only. The colour of the actual vehicle may differ.</p>
                            <br/>
                       </div>
                   
@@ -37,7 +37,7 @@ function CarDetailsI({data}) {
                       
                   </div>
                   <div style={{ borderBottom:"0.2px solid gray",marginTop: "-10px"}}></div>
-                  <FuelInfo />
+                  <FuelInfo data={data}  setVall={ setVall} />
 
                   <br/>
 
@@ -46,8 +46,9 @@ function CarDetailsI({data}) {
                   <br/>
                   <div style={{ borderBottom:"0.2px solid gray",marginTop: "-10px"}}></div>
                   <br/>
-                  <Address />
-                  <hr/>
+                  <Address data={data}/>
+                  <br/>      <br/>
+                  <div style={{ borderBottom:"0.2px solid gray",marginTop: "-10px"}}></div>
                   <Templete />
                   <br/><br/><br/><br/><br/><br/><br/><br/>
               </div>

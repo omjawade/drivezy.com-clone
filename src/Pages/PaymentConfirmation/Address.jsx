@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Address(props) {
+function Address({data}) {
 
     var currentDate= new Date()
     
@@ -11,17 +11,20 @@ function Address(props) {
         <div style={{display:"flex"}}>
 
             <div style={{width: "360px"}}>
-                <h3>Pick Up & Drop</h3>
-                <p>{month} Jan 2022</p>
-
+                <h4>Pick Up & Drop</h4>
                 <div style={{display:"flex"}}>
-                <img src="https://drivezy.com/static/media/location_icon.a7c35c82.svg" alt="" />
-                <p>Pune</p>
+                <a style={{fontSize:"30px"}}> {month}  </a>
+                <p style={{marginLeft:"10px"}}> Jan {years}</p>
                 </div>
              
 
-                <h6 style={{color:"gray"}}>Opposite New India School ,Gali Number 4, Right Bhusari Colony, Kothrud, Pune 411038 - "Home Delivery Service Available - "Free Home Delivery for Long Term Bookings"
-                    - 9923786464</h6>
+                <div style={{display:"flex"}}>
+                <img src="https://drivezy.com/static/media/location_icon.a7c35c82.svg" alt="" />
+                <p>{data?.Location.Area}</p>
+                </div>
+             
+
+         <a style={{color:"gray"}}>{data?.Location.Address}</a>
 
             </div>
 
@@ -32,15 +35,18 @@ function Address(props) {
             </div>
 
             <div style={{width: "360px",marginLeft:"20px",textAlign:"right"}}>
-                <h3>Pick Up & Drop</h3>
-                <p>{month} Jan 2022</p>
-                <div style={{display:"flex",marginLeft:"300px"}}>
+            <h4>Pick Up & Drop</h4>
+               
+                <div style={{display:"flex",marginLeft:"270px"}}>
+                <a style={{fontSize:"30px"}}> {month}  </a>
+                <p style={{marginLeft:"10px"}}> Jan {years}</p>
+                </div>
+                <div style={{display:"flex",marginLeft:"230px"}}>
                 <img src="https://drivezy.com/static/media/location_icon.a7c35c82.svg" alt="" />
-                <p>Pune</p>
+                <p>{data?.Location.Area}</p>
                 </div>
 
-                <h6 style={{color:"gray"}}>Opposite New India School ,Gali Number 4, Right Bhusari Colony, Kothrud, Pune 411038 - "Home Delivery Service Available - "Free Home Delivery for Long Term Bookings"
-                    - 9923786464</h6>
+                <a style={{color:"gray"}}>{data?.Location.Address}</a>
 
             </div>
            

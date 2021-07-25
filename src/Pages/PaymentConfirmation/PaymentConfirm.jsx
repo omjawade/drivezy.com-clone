@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CarDetailsI from './CarDetailsI';
 import CarPriceD from './CarPriceD';
 import "./CarDetail.css"
@@ -10,11 +10,14 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCar } from '../../Redux/SingleHotel/action';
 
+
 const PaymentConfirm = ()=> {
 
+    const [vall,setVall] = useState(5)
     let params = new URLSearchParams(document.location.search.substring(1));
     let vehicle = params.get("vehicle");
 
+    console.log(vall,"nilofer")
 
     const {id} = useParams()
 
@@ -37,8 +40,8 @@ const PaymentConfirm = ()=> {
         </div>
         <div className="Header-Parent">
       
-            <CarDetailsI   data={data}/>
-            <CarPriceD data={data}/>
+            <CarDetailsI  setVall={setVall} data={data}/>
+            <CarPriceD data={data} vall={vall}/>
         </div>
        
         <div >

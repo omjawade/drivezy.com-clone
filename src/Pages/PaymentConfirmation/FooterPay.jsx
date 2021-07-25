@@ -22,11 +22,6 @@ function FooterPay(props) {
         });
       };
 
-    
-    console.log(checkn,{married})
- 
-      
-    
     return (
         <div className="footerpaypage">
             <div style={{backgroundColor:"white",border:"1px solid whitesmoke",height:"100px",display:"flex", boxShadow:" 0 2px 8px -2px rgb(31 45 61 / 40%)",}}>

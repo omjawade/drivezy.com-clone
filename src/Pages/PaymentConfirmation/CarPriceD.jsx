@@ -3,13 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getCar } from "../../Redux/SingleHotel/action";
 import "./CarDetail.css";
-function CarPriceD(props) {
+function CarPriceD({dataa,vall}) {
   const [carinfo, setCarInfo] = useState([]);
   const { id } = useParams();
 
   const dispatch = useDispatch();
   const data = useSelector((state) => state.singleCars.data);
 
+  var valmultiply = vall / 10 /5
+
+  console.log(vall,valmultiply)
   useEffect(() => {
     dispatch(getCar(id));
   }, [dispatch, id]);
@@ -20,7 +23,7 @@ function CarPriceD(props) {
         <br />
         <div className="fare-block" style={{ marginTop: "-10px" }}>
           <h4 className="fare-name">Weekday Charges</h4>
-          <p className="fare-amout">₹466.40</p>
+          <p className="fare-amout">{data?.Price}</p>
         </div>
 
         <div className="fare-block" style={{ marginTop: "-30px" }}>
@@ -34,7 +37,11 @@ function CarPriceD(props) {
 
         <div className="fare-block">
           <h4 className="fare-name">Total Fare</h4>
-          <h4 className="fare-amout">₹466.40</h4>
+
+          {vall === "No Fuel" || vall == undefined ? <h4 className="fare-amout">{1013.36}</h4> : 
+           <h4 className="fare-amout">{1013.36 * valmultiply}</h4>
+          }
+         
         </div>
 
         <div className="fare-block">
