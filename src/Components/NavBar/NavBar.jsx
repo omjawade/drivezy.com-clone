@@ -11,6 +11,7 @@ import LoginModel from "../Login_Popup/LoginModel";
 import OTPmodel from "../OtpModel/OTPmodel";
 import { useHistory } from "react-router-dom";
 import { Profile } from "../ProfileModel/ProfileModel";
+import { getbookedDetails } from "../../Redux/SingleHotel/action";
 
 function NavBar() {
 
@@ -90,7 +91,9 @@ function NavBar() {
 
 useEffect(()=>{
     const id= user?._id
+    const userid=user?._id
 user&&dispatch(authVerifyUser(id))
+user&&dispatch(getbookedDetails(userid))
 },[])
   
 

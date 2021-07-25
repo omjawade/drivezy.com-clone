@@ -8,66 +8,49 @@ import "./CarDetail.css";
 function FooterPay(props) {
 
 
-    const [show, setShow] = useState(false)
-    const [toogle, setToggle] = useState()
+    const [atm, setatm] = useState(false)
+    const [error, setError] = useState(false)
 
     const user = useSelector((state) => state.auth.user)
 
 
-    var initialobj = {
-        married: false
-    };
-    const [checkn, notCheckn] = useState(initialobj)
+    
+    const [check, setCheck] = useState(false)
 
-    const { married } = checkn
-
-    const handlechange = (e) => {
-        const { name, value, type, checked } = e.target;
-
-        let val = type === "checkbox" ? checked : value;
-
-        notCheckn({
-            ...checkn,
-            [name]: val
-        });
-    };
+ 
+    const handleclose=()=>{
+        setatm(false)
+        setError(false)
+    }
 
     const handleCheck = ()=>{
 
         if(user){
-            setToggle(false)
+            setatm(true)
            
         }
         else{
-            setToggle(true)
+          setError(true)
         }
    
      
 
     }
 
- 
-
-   
-
-
-
-
-
     return (
         <div className="footerpaypage">
             <div style={{ backgroundColor: "white", border: "1px solid whitesmoke", height: "100px", display: "flex", boxShadow: " 0 2px 8px -2px rgb(31 45 61 / 40%)", }}>
 
                 <div style={{
-                    width: "790px", marginLeft: "100px", marginTop: "40px", display: "flex"
+                    width: "25%", marginLeft: "2%", marginTop: "40px", display: "flex"
                 }}>
                     <div>
                         <input
-                            value={married}
+                            value={check}
                             name="married"
                             type="checkbox"
                             placeholder="write married"
-                            onChange={handlechange}
+                            onChange={()=>setCheck(!check)}
                             style={{ padding: "10px", height: "20px", width: "20px", marginRight: "60px" }}
                         />
                     </div>
@@ -82,7 +65,7 @@ function FooterPay(props) {
                         <a style={{ color: "gray" }}>Show Breakup</a></p>
 
 
-                    {married ? <div style={{ marginTop: "20px", marginLeft: "5px" }}>
+                    {check ? <div style={{ marginTop: "20px", marginLeft: "60px", display: "flex" }}>
                         <button style={{ borderRadius: "6px", height: "40px", width: "240px", color: "gray", backgroundColor: " white", border: "1px solid gray" }}>
                             Add To Cart
                         </button>
@@ -91,22 +74,25 @@ function FooterPay(props) {
                             Quick Book
                         </button>
 
-                    </div> : <div style={{ marginTop: "20px", marginLeft: "5px", display: "flex" }}>
-                        <button style={{ borderRadius: "6px", height: "40px", width: "240px", color: "gray", backgroundColor: " white", border: "1px solid gray" }}>
-                            Add To Cart
+                    </div> :
+                     <div style={{ marginTop: "20px", marginLeft: "60px", display: "flex" }}>
+                        <button disabled={!check} style={{ borderRadius: "6px", height: "40px", width: "240px", color: "gray", backgroundColor: " white", border: "1px solid gray" }}>
+                           Add To Cart
                         </button>
 
-                        <button disabled style={{ marginLeft: "20px", borderRadius: "6px", height: "40px", width: "240px", color: "gray", backgroundColor: "whitesmoke", border: "1px solid gray" }} >
+                        <button disabled style={{ marginLeft: "20px", borderRadius: "6px", height: "40px", width: "240px", color: "blue", backgroundColor: "#a0a2a5", border: "1px solid gray" }} >
                             Quick Book
                         </button>
 
-                    </div>}
-                        {toogle ? <Atm /> :  <ErrorModal /> }
+                    </div>
+}
+                        {atm && <Atm handleclose={handleclose} atm={atm} /> }
+                        {error && <ErrorModal handleclose={handleclose} error={error}  /> }
                 </div>
               
             </div>
-
-        </div>
+</div>
+        
     );
 }
 

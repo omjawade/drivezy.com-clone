@@ -18,6 +18,7 @@ const initState = {
     // dates: [],
     isLoading: false,
     isError: false,
+    
   },
   filters: {
     data: [],
@@ -31,6 +32,7 @@ const initState = {
   vehicleDetails: {
     data: "",
   },
+  
 };
 
 export const vehicleReducer = (state = initState, action) => {
