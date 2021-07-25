@@ -62,7 +62,7 @@ export const postBooked=(payload)=>(dispatch)=>{
 
   return axios.post(`http://localhost:8080/booking`,payload)
   .then((res)=>{
-    console.log(res.data.data,"booked");
+    console.log(res.data.data,"booked1212112");
      dispatch(getBooked(res.data.data))
   })
 }
