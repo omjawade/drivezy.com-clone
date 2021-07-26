@@ -1,16 +1,14 @@
-
-
 import React from "react";
 import "./CarDetail.css";
 
-function FuelInfo({data, setVall}) {
-  
+function FuelInfo({ data, setVall,setFuelInfo }) {
   const [age, setAge] = React.useState();
   const handleChange = (event) => {
     setAge(event.target.value);
+    setFuelInfo(event.target.value)
   };
 
-  setVall(age)
+  setVall(age);
 
   return (
     <div>
@@ -31,7 +29,6 @@ function FuelInfo({data, setVall}) {
         <div>
           <div>
             <select className="inp-fuel" onChange={handleChange}>
-       
               <option value="60">60 km</option>
               <option value="120">120 km</option>
               <option value="180">180 km</option>

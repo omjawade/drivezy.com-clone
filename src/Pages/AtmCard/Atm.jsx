@@ -1,53 +1,78 @@
-
-import React ,{useState}from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import "./Atm.css"
-import { Button } from '@material-ui/core';
-import { Link } from 'react-router-dom';
-
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import "./Atm.css";
+import { Button } from "@material-ui/core";
+import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { postBooked } from "../../Redux/SingleHotel/action";
 
 const useStyles = makeStyles((theme) => ({
-    modal: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    border: "2px solid #000",
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
+  root: {
+    width: "100%",
+    "& > * + *": {
+      marginTop: theme.spacing(2),
     },
-    paper: {
-        backgroundColor: theme.palette.background.paper,
-        border: '2px solid #000',
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
-    },
-    root: {
-        width: '100%',
-        '& > * + *': {
-            marginTop: theme.spacing(2),
-        },
-    },
+  },
 }));
 
-export default function Atm({ toogle,setEditModalIsOpen }) {
+export default function Atm({ atm, handleclose, filterData, fuelInfo }) {
+  console.log(filterData, "toogle");
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(true);
 
+  const data = useSelector((state) => state.singleCars.data._id);
+  const data22 = useSelector((state) => state.singleCars.data);
+  const user = useSelector((state) => state.vehicle.date);
 
-    var obj1 = {
-        name: "",
- 
-        card: "",
-        month: "",
-        cvv: "",
-    };
+  const { id } = useParams();
 
-    const [query, setQuery] = useState(obj1);
+  const data222 = useSelector((state) => state.singleCars.data);
 
-    const { name,  card, month, cvv } = query;
+  console.log(data222.Price, "yogi");
 
+  var valmultiply = 1100 / 10 / 5;
 
- 
+  var pricesend = data222.Price * valmultiply;
+
+  const dispatch = useDispatch();
+  const payload = {
+    carID: data,
+    bikeID: data,
+    user: user,
+    price: pricesend,
+    package: fuelInfo,
+    pickup: filterData.pickUpTime,
+    drop: filterData.dropUpTime,
+    payment: true,
+    status: true,
+  };
+
+  var obj1 = {
+    name: "",
+    card: "",
+    month: "",
+    cvv: "",
+  };
+
+  const [query, setQuery] = useState(obj1);
+
+  const { name, card, month, cvv } = query;
 
   const handleChange = (e) => {
-      e.preventDefault()
+    e.preventDefault();
     const { name, value } = e.target;
 
     setQuery({
@@ -55,39 +80,28 @@ export default function Atm({ toogle,setEditModalIsOpen }) {
       [name]: value,
     });
   };
-    console.log(toogle)
-    const classes = useStyles();
-    const [open, setOpen] = React.useState(true);
 
-    const handleOpen = () => {
-        if (toogle) {
-            setOpen(true);
-        }
-    };
+  // const handleOpen = () => {
+  //     if (toogle) {
+  //         setOpen(true);
+  //     }
+  // };
 
-    const handleClose = () => {
-        setOpen(false);
-    };
+  // const handleClose = () => {
+  //     setOpen(false);
+  // };
 
-
-    
   const handleAdd = () => {
     console.log(query);
-    if(
+    if (
       query.name !== "" &&
       query.card !== "" &&
       query.cvv !== "" &&
-     
       query.month !== ""
     ) {
+      alert("Payment Successful");
 
-
-
-       setEditModalIsOpen(true);
-        alert("Payment Successful")
-        
-
-
+      dispatch(postBooked(payload));
     } else {
       if (query.name === "") {
         alert("Please Enter Name");
@@ -98,21 +112,22 @@ export default function Atm({ toogle,setEditModalIsOpen }) {
         alert("Please Enter Valid Card Digit");
       } else if (query.cvv === "") {
         alert("Please Enter CVV");
-      }else if (query.month === "") {
+      } else if (query.month === "") {
         alert("Please Enter Month details properly");
-      } 
+      }
     }
   };
 
-    return (
+  return (
+    <div>
       <div>
         <div>
           <Modal
             aria-labelledby="transition-modal-title"
             aria-describedby="transition-modal-description"
             className={classes.modal}
-            open={open}
-            onClose={handleClose}
+            open={atm}
+            onClose={handleclose}
             closeAfterTransition
             BackdropComponent={Backdrop}
             BackdropProps={{
@@ -125,13 +140,12 @@ export default function Atm({ toogle,setEditModalIsOpen }) {
                   <img
                     src="https://razorpay.com/assets/upi-autopay/logo-mobile.png"
                     alt=""
-                    style={{ height: "72px", width: "240px" }}
+                    style={{ height: "72px", width: "280px" }}
                   />
                 </div>
               </div>
 
               <div className="container234">
-                
                 <div className="fontuser321">
                   <input
                     type="text"
@@ -155,15 +169,16 @@ export default function Atm({ toogle,setEditModalIsOpen }) {
                   />
                   <i className="fa fa-credit-card"></i>
                 </div>
-            
                 <br />
                 <div className="fontpassword321">
-                  <input 
-                  type="password"
-                  onChange={handleChange}
-                  value={cvv}
-                  name="cvv"
-                  placeholder="CVV" className="Atm-inputonee" />
+                  <input
+                    type="password"
+                    onChange={handleChange}
+                    value={cvv}
+                    name="cvv"
+                    placeholder="CVV"
+                    className="Atm-inputonee"
+                  />
                   <i className="fa fa-lock"></i>
                 </div>
                 <br />
@@ -184,7 +199,6 @@ export default function Atm({ toogle,setEditModalIsOpen }) {
                   color="primary"
                   size="small"
                   style={{ marginLeft: "140px", backgroundColor: "#528FF0" }}
-                  
                   onClick={handleAdd}
                 >
                   CONFIRM TO PAY
@@ -193,10 +207,8 @@ export default function Atm({ toogle,setEditModalIsOpen }) {
               </div>
             </div>
           </Modal>
-      
         </div>
-
-      
       </div>
-    );
+    </div>
+  );
 }

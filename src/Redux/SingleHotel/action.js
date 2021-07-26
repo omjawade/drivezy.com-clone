@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  GET_BOOKED,
   GET_CAR_FAILURE,
   GET_CAR_REQUEST,
   GET_CAR_SUCCESS,
@@ -23,6 +24,13 @@ export const getcarFail = (err) => {
   };
 };
 
+export const getBooked=(payload)=>{
+  return{
+    type:GET_BOOKED,
+    payload
+  }
+}
+
 export const getCar = (vehicle,id) => (dispatch, getState) => {
   const reqAction = getcarReq();
   dispatch(reqAction);
@@ -40,3 +48,21 @@ export const getCar = (vehicle,id) => (dispatch, getState) => {
       dispatch(errAction);
     });
 };
+
+export const getbookedDetails=(userid)=>(dispatch)=>{
+
+  return axios.get(`http://localhost:8080/booking/${userid}`)
+  .then((res)=>{
+    console.log(res.data.data,"booked");
+     dispatch(getBooked(res.data.data))
+  })
+}
+
+export const postBooked=(payload)=>(dispatch)=>{
+
+  return axios.post(`http://localhost:8080/booking`,payload)
+  .then((res)=>{
+    console.log(res.data.data,"booked1212112");
+     dispatch(getBooked(res.data.data))
+  })
+}
