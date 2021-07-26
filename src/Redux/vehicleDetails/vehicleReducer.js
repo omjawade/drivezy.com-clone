@@ -1,7 +1,4 @@
 import {
-  //   ADD_VEHICLE_DETAILS_FAILURE,
-  //   ADD_VEHICLE_DETAILS_REQUEST,
-  //   ADD_VEHICLE_DETAILS_SUCCESS,
   ADD_FILTER_DETAILS,
   ADD_DATE_DETAILS,
   ADD_VEHICLE_DETAILS,
@@ -14,11 +11,8 @@ import {
 const initState = {
   vehicle: {
     data: [],
-    // filters: [],
-    // dates: [],
     isLoading: false,
     isError: false,
-    
   },
   filters: {
     data: [],
@@ -32,7 +26,6 @@ const initState = {
   vehicleDetails: {
     data: "",
   },
-  
 };
 
 export const vehicleReducer = (state = initState, action) => {
@@ -98,36 +91,6 @@ export const vehicleReducer = (state = initState, action) => {
         },
       };
     }
-    // case ADD_VEHICLE_DETAILS_REQUEST: {
-    //   return {
-    //     ...state,
-    //     vehicle: {
-    //       ...state.vehicle,
-    //       isLoading: true,
-    //       isError: false,
-    //     },
-    //   };
-    // }
-    // case ADD_VEHICLE_DETAILS_SUCCESS: {
-    //   return {
-    //     ...state,
-    //     vehicle: {
-    //       ...state.vehicle,
-    //       data: [...state.vehicle.data, action.payload],
-    //       isLoading: false,
-    //     },
-    //   };
-    // }
-    // case ADD_VEHICLE_DETAILS_FAILURE: {
-    //   return {
-    //     ...state,
-    //     vehicle: {
-    //       ...state.vehicle,
-    //       isLoading: false,
-    //       isError: true,
-    //     },
-    //   };
-    // }
     default:
       return state;
   }
